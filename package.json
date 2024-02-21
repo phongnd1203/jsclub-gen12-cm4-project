@@ -2,6 +2,7 @@
   "name": "jsclub-gen12-cm4-project",
   "version": "0.0.1",
   "private": true,
+  "type": "module",
   "scripts": {
     "dev": "nodemon server.js",
     "start": "node server.js",
