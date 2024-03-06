@@ -1,7 +1,6 @@
-import globals from "globals";
-
-import js from "@eslint/js";
-import prettier from "eslint-plugin-prettier";
+const js = require("@eslint/js");
+const globals = require("globals");
+const prettier = require("eslint-plugin-prettier");
 
 /** @type {import('eslint').Linter.FlatConfig[]} */
 const config = [
@@ -12,7 +11,7 @@ const config = [
     languageOptions: {
       parserOptions: {
         ecmaVersion: "latest",
-        sourceType: "module",
+        sourceType: "script",
       },
       globals: {
         ...globals.builtin,
@@ -30,4 +29,4 @@ const config = [
   },
 ];
 
-export default config;
+module.exports = config;
