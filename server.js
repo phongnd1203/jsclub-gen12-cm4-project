@@ -1,15 +1,10 @@
 const dotenv = require("dotenv");
-const mongoose = require("mongoose");
+
+dotenv.config();
 
 const app = require("./src/app");
-
-dotenv.config({});
-
-mongoose.connect(process.env.MONGO_URI || "mongodb://localhost:27017");
-
-mongoose.connection.on("connected", () => {
-  console.log("Connected to MongoDB");
-});
+const mongoose = require("./src/databases/init.mongodb.js");
+const redis = require("./src/databases/init.redis.js");
 
 const port = parseInt(process.env.APP_PORT, 10) || 3000;
 
@@ -20,4 +15,5 @@ app.listen(port, () => {
 
 app.on("close", async () => {
   await mongoose.connection.close();
+  await redis.disconnect();
 });
