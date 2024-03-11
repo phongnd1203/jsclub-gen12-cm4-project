@@ -1,6 +1,4 @@
-const dotenv = require("dotenv");
-
-dotenv.config();
+require("dotenv").config();
 
 const app = require("./src/app");
 const mongoose = require("./src/databases/init.mongodb.js");

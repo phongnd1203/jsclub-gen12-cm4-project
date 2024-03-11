@@ -5,8 +5,14 @@ const bodyParser = require("body-parser");
 const session = require("express-session");
 const RedisStore = require("connect-redis").default;
 
+const mongodbConnection = require("./databases/init.mongodb.js");
+
 const app = express();
 const redisClient = require("./databases/init.redis.js");
+
+app.on("close", async () => {
+  await mongodbConnection.close();
+});
 
 app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "views"));
@@ -33,5 +39,9 @@ app.use(
 
 app.use("/login", require("./routes/auth/login.route"));
 app.use("/register", require("./routes/auth/register.route"));
+
+app.get("/", (req, res) => {
+  return res.status(200).send("Hello World");
+});
 
 module.exports = app;

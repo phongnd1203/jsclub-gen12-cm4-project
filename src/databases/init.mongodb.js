@@ -4,12 +4,14 @@ const uri = process.env.MONGO_URI || "mongodb://localhost:27017";
 
 mongoose.connect(uri);
 
-mongoose.connection.on("connected", () => {
-  console.log("Connected to MongoDB");
+const connection = mongoose.connection;
+
+connection.on("connected", () => {
+  console.log("MongoDB connected");
 });
 
-mongoose.connection.on("error", (error) => {
-  console.error("MongoDB error", error);
+connection.on("error", (err) => {
+  console.error("MongoDB connection error", err);
 });
 
-module.exports = mongoose;
+module.exports = connection;

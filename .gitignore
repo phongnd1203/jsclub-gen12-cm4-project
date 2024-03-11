@@ -14,3 +14,5 @@ node_modules/
 
 # Docker
 .docker/
+
+.vercel

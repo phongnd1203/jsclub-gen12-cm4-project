@@ -32,6 +32,13 @@ loginRouter.post(
 
     // User authentication
 
+    const user = await UserModel.findOne({ email }).select("+password").exec();
+
+    if (!user) {
+      return res.status(400).render("auth/login.view.ejs", {
+        errors: [{ msg: "Email không tồn tại" }],
+      });
+    }
     // Session handling
 
     // Redirect to home page
