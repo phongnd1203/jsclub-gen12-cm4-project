@@ -1,8 +1,11 @@
 version: "latest"
 
 services:
-  database:
+  mongo:
     image: mongo:latest
-    container_name: database
     ports:
       - "27017:27017"
+  redis:
+    image: redis:latest
+    ports:
+      - "6379:6379"
