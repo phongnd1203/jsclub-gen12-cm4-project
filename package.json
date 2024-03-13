@@ -3,8 +3,8 @@
   "version": "0.0.1",
   "private": true,
   "scripts": {
-    "dev": "nodemon --watch src src/server.js",
-    "start": "node src/server.js",
+    "dev": "nodemon server.js",
+    "start": "node server.js",
     "lint": "eslint .",
     "format": "prettier --write .",
     "vercel:dev": "vercel dev"

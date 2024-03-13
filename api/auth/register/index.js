@@ -12,8 +12,6 @@ registerRouter.get("/", async (req, res) => {
   res.render("auth/register.view.ejs");
 });
 
-registerRouter.path = "/register";
-
 registerRouter.post(
   "/",
   validator

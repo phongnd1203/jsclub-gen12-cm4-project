@@ -8,8 +8,6 @@ const UserModel = require("../../../models/users/user.model");
 
 const loginRouter = express.Router();
 
-loginRouter.path = "/login";
-
 loginRouter.get("/", async (req, res) => {
   res.render("auth/login.view.ejs");
 });

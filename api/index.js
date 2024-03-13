@@ -16,7 +16,7 @@ app.use(morgan("dev"));
 app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "../views"));
 
-app.use(express.static(path.join(__dirname, "../static")));
+app.use(express.static(path.join(__dirname, "../public")));
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -45,15 +45,8 @@ app.use(
   }),
 );
 
-const routes = glob.sync(`${__dirname}/**/index.js`, {
-  ignore: [`${__dirname}/index.js`],
-});
-routes.forEach((route) => {
-  const router = require(route);
-  const routePath =
-    router.path || `/${path.dirname(path.relative(__dirname, route))}`;
-  app.use(routePath, router);
-});
+app.use("/login", require("./auth/login"));
+app.use("/register", require("./auth/register"));
 
 app.get("/", (req, res) => {
   return res.send("Hello World");
