@@ -1,6 +1,6 @@
 require("dotenv").config();
 
-const app = require("./src/app");
+const app = require("./api");
 
 const port = parseInt(process.env.APP_PORT, 10) || 3000;
 
