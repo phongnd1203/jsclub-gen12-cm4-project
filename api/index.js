@@ -9,9 +9,12 @@ const session = require("express-session");
 const MongoStore = require("connect-mongo");
 const mongodbConnection = require("../databases/init.mongodb.js");
 
-const app = express();
+const appConfig = require("../configs/app.config.js");
 
-app.use(morgan("dev"));
+const app = express();
+const config = appConfig();
+
+app.use(morgan(config.logger.morgan.mode));
 
 app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "../views"));
@@ -24,7 +27,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(
   session({
     name: "sid",
-    secret: process.env.APP_SESSION_SECRET,
+    secret: config.session.secret,
     saveUninitialized: false,
     resave: false,
     cookie: {
@@ -38,8 +41,7 @@ app.use(
       autoRemove: "native",
       autoRemoveInterval: 10,
       crypto: {
-        secret:
-          process.env.MONGODB_SESSION_SECRET || process.env.APP_SESSION_SECRET,
+        secret: config.session.stores.mongodb.secret,
       },
     }),
   }),
