@@ -52,7 +52,8 @@ registerRouter.post(
     .body("password")
     .isLength({ min: 8 })
     .withMessage("Mật khẩu phải chứa ít nhất 8 ký tự"),
-  validator.body("passwordConfirmation").custom((value, { req }) => {
+  validator.body("confirmPassword").custom((value, { req }) => {
+    console.log(value, req.body.password);
     if (value !== req.body.password) {
       throw new Error("Mật khẩu không khớp");
     }
@@ -67,11 +68,15 @@ registerRouter.post(
       });
     }
 
-    const { name, email, password } = req.body;
-
+    const { name, email, phone, password } = req.body;
     const hashedPassword = await argon2.hash(password);
 
-    const user = new UserModel({ name, email, password: hashedPassword });
+    const user = new UserModel({
+      name,
+      email,
+      phone,
+      password: hashedPassword,
+    });
 
     await user.save();
 
