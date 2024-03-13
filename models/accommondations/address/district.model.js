@@ -9,10 +9,6 @@ const districtSchema = mongoose.Schema({
     type: String,
     required: true,
   },
-  province: {
-    type: mongoose.Schema.Types.ObjectId,
-    ref: "Province",
-  },
 });
 
 const DistrictModel = mongoose.model("District", districtSchema);

@@ -36,11 +36,6 @@ const roomSchema = mongoose.Schema(
 );
 
 const addressSchema = mongoose.Schema({
-  province: {
-    type: mongoose.Schema.Types.ObjectId,
-    ref: "Province",
-    required: true,
-  },
   district: {
     type: mongoose.Schema.Types.ObjectId,
     ref: "District",
