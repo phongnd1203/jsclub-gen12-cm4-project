@@ -46,7 +46,7 @@ loginRouter.post(
     }
 
     // TODO: Handle user session
-
+    req.session.user = new UserModel(user);
     res.redirect("/");
   },
 );

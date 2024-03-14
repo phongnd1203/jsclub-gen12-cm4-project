@@ -47,9 +47,14 @@ app.use(
 
 app.use("/login", require("./auth/login"));
 app.use("/register", require("./auth/register"));
+app.use("/room", require("./accommodations/room"));
+
+app.get("/home", (req, res) => {
+  res.render("common/home");
+});
 
 app.get("/", (req, res) => {
-  return res.send("Hello World");
+  res.redirect("home");
 });
 
 app.on("close", async () => {

@@ -1,5 +1,22 @@
 const mongoose = require("mongoose");
 
+// const addressSchema = mongoose.Schema({
+//   district: {
+//     type: mongoose.Schema.Types.ObjectId,
+//     ref: "District",
+//     required: true,
+//   },
+//   commune: {
+//     type: mongoose.Schema.Types.ObjectId,
+//     ref: "Commune",
+//     required: true,
+//   },
+//   address: {
+//     type: String,
+//     required: true,
+//   },
+// });
+
 const roomSchema = mongoose.Schema(
   {
     name: {
@@ -10,7 +27,8 @@ const roomSchema = mongoose.Schema(
       type: String,
     },
     address: {
-      type: addressSchema,
+      // type: addressSchema,
+      type: String,
     },
     price: {
       type: Number,
@@ -34,23 +52,6 @@ const roomSchema = mongoose.Schema(
     timestamps: true,
   },
 );
-
-const addressSchema = mongoose.Schema({
-  district: {
-    type: mongoose.Schema.Types.ObjectId,
-    ref: "District",
-    required: true,
-  },
-  commune: {
-    type: mongoose.Schema.Types.ObjectId,
-    ref: "Commune",
-    required: true,
-  },
-  address: {
-    type: String,
-    required: true,
-  },
-});
 
 const RoomModel = mongoose.model("Room", roomSchema);
 
