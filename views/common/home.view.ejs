@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trang chủ</title>
+    <link rel="stylesheet" href="/styles/homeview.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+</head>
+
+<body>
+    <div id="main">
+        <div id="header">
+            <div class="button-head-list">
+                <ul id="nav">
+                    <li><a href="/"><button class="nav btnlist">PHÒNG TRỌ</button></a></li>
+                    <li><a href="/"><button class="nav btnlist">NHÀ, CĂN HỘ</button></a></li>
+                    <li><a href="/"><button class="nav btnlist">LIÊN HỆ</button></a></li>
+                    <li><a href="/"><button class="nav btnlist">HƯỚNG DẪN</button></a></li>
+                </ul>
+            </div>
+
+            <ul id="log-btn">
+                <div class="log">
+                    <li><a href="/register">
+                            <h6 class="nav btnsign up">ĐĂNG KÝ</h6>
+                        </a></li>
+                    <li><a href="/login">
+                            <h6 class="nav btnsign in">ĐĂNG NHẬP</h6>
+                        </a></li>
+                </div>
+                <li><a href="/"><button class="nav btnpost">ĐĂNG TIN</button></a></li>
+            </ul>
+        </div>
+
+        <div id="slider">
+            <div class="text-content">
+                <h1 class="text-heading">TÌM NHANH, KIẾM DỄ<br>
+                    TRỌ HÀ NỘI
+                </h1>
+                <div class="text-description">
+                    <p>Trohanoi.com - Trang thông tin tìm và cho thuê phòng trọ nhanh chóng, hiệu <br>quả số với hơn 500
+                        tin đăng
+                        mới và 30.000 lượt xem mỗi ngày.</p>
+                </div>
+            </div>
+        </div>
+        <div>
+            <div id="rcorners1">
+                <div class="sidebar-container">
+                    <input id="search" placeholder="Tìm kiếm nhanh" autocomplete="off">
+                    <div id="sidebar" class="sidebar">
+                        <ul class="main-search">
+                            <li>
+                                <div class="wrapper">
+                                    <p>Địa chỉ</p>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="wrapper">
+                                    <p class="sidebar-title">Giá tiền </p>
+                                    <div class="price">
+                                        <span class="radio">
+                                            <input class="custom-radio" type="radio" name="opt_price">
+                                            <label for="all">Tất cả</label>
+                                        </span>
+                                        <span class="radio">
+                                            <input class="custom-radio" type="radio" name="opt_price">
+                                            <label for="opt_price-1">Dưới 1 triệu</label>
+                                        </span>
+                                        <span class="radio">
+                                            <input class="custom-radio" type="radio" name="opt_price">
+                                            <label for="opt_price-2">1 triệu - 2 triệu</label>
+                                        </span>
+                                        <span class="radio">
+                                            <input class="custom-radio" type="radio" name="opt_price">
+                                            <label for="opt_price-3">2 triệu - 3 triệu</label>
+                                        </span>
+                                        <span class="radio">
+                                            <input class="custom-radio" type="radio" name="opt_price">
+                                            <label for="opt_price-4">3 triệu - 5 triệu</label>
+                                        </span>
+                                        <span class="radio">
+                                            <input class="custom-radio" type="radio" name="opt_price">
+                                            <label for="opt_price-5">5 triệu - 7 triệu</label>
+                                        </span>
+                                        <span class="radio">
+                                            <input class="custom-radio" type="radio" name="opt_price">
+                                            <label for="opt_price-6">7 triệu - 10 triệu</label>
+                                        </span>
+                                        <span class="radio">
+                                            <input class="custom-radio" type="radio" name="opt_price">
+                                            <label for="opt_price-7">10 triệu - 15 triệu</label>
+                                        </span>
+                                        <span class="radio">
+                                            <input class="custom-radio" type="radio" name="opt_price">
+                                            <label for="opt_price-8">Trên 15 triệu</label>
+                                        </span>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="wrapper">
+                                    <p class="sidebar-title">Diện tích</p>
+                                    <div class="dientich">
+                                        <span class="radio">
+                                            <input class="custom-radio" type="radio" name="duoisize">
+                                            <label for="all">Tất cả</label>
+                                        </span>
+                                        <span class="radio">
+                                            <input class="custom-radio" type="radio" name="duoisize">
+                                            <label for="duoisize-0">Dưới 20 m2</label>
+                                        </span>
+                                        <span class="radio">
+                                            <input class="custom-radio" type="radio" name="duoisize">
+                                            <label for="duoisize-1">20 - 30 m2</label>
+                                        </span>
+                                        <span class="radio">
+                                            <input class="custom-radio" type="radio" name="duoisize">
+                                            <label for="duoisize-2">30 - 50 m2</label>
+                                        </span>
+                                        <span class="radio">
+                                            <input class="custom-radio" type="radio" name="duoisize">
+                                            <label for="duoisize-3">50 - 60 m2</label>
+                                        </span>
+                                        <span class="radio">
+                                            <input class="custom-radio" type="radio" name="duoisize">
+                                            <label for="duoisize-4">60 - 70 m2</label>
+                                        </span>
+                                        <span class="radio">
+                                            <input class="custom-radio" type="radio" name="duoisize">
+                                            <label for="duoisize-5">70 - 80 m2</label>
+                                        </span>
+                                        <span class="radio">
+                                            <input class="custom-radio" type="radio" name="duoisize">
+                                            <label for="duoisize-6">Trên 80 m2</label>
+                                        </span>
+                                    </div>
+                                </div>
+                            </li>
+
+                            <a href="/"><button class="btn-search">Tìm
+                                    kiếm</button></a>
+
+
+                        </ul>
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+        <div id="content">
+            <div class="tour-section">
+                <div class="content-section">
+                    <h2 class="section-heading text">LỰA CHỌN NỔI BẬT</h2>
+                    <p class="section-slogan text">Remember to book your rooms</p>
+
+                    <!-- Places -->
+
+                    <div class="places-list">
+                        <div class="place-item">
+                            <img src="img/house1.png" alt="" class="place-img">
+                            <div class="place-body">
+                                <h3 class="place-heading">Mỹ Đình</h3>
+                                <p class="place-time">Còn phòng</p>
+                                <p class="place-des">3.100.000 VNĐ</p>
+                                <button class="place-buy-btn js-buy-tickets">CHỌN PHÒNG</button>
+                            </div>
+                        </div>
+                        <div class="place-item">
+                            <img src="img/house2.jpg" alt="" class="place-img">
+                            <div class="place-body">
+                                <h3 class="place-heading">Cầu Giấy</h3>
+                                <p class="place-time">Hết phòng</p>
+                                <p class="place-des">3.600.000 VNĐ</p>
+                                <button class="place-buy-btn js-buy-tickets">CHỌN PHÒNG</button>
+                            </div>
+                        </div>
+                        <div class="place-item">
+                            <img src="img/house3.jpg" alt="" class="place-img">
+                            <div class="place-body">
+                                <h3 class="place-heading">Thanh Xuân</h3>
+                                <p class="place-time">Còn phòng</p>
+                                <p class="place-des">2.800.000 VNĐ</p>
+                                <button class="place-buy-btn js-buy-tickets">CHỌN PHÒNG</button>
+                            </div>
+                        </div>
+                        <div class="place-item">
+                            <img src="img/house1.png" alt="" class="place-img">
+                            <div class="place-body">
+                                <h3 class="place-heading">Mỹ Đình</h3>
+                                <p class="place-time">Còn phòng</p>
+                                <p class="place-des">4.500.000 VNĐ</p>
+                                <button class="place-buy-btn js-buy-tickets">CHỌN PHÒNG</button>
+                            </div>
+                        </div>
+                        <div class="clear"></div>
+                    </div>
+                    <div class="places-list">
+                        <div class="place-item">
+                            <img src="img/house1.png" alt="" class="place-img">
+                            <div class="place-body">
+                                <h3 class="place-heading">Mỹ Đình</h3>
+                                <p class="place-time">Còn phòng</p>
+                                <p class="place-des">3.100.000 VNĐ</p>
+                                <button class="place-buy-btn js-buy-tickets">CHỌN PHÒNG</button>
+                            </div>
+                        </div>
+                        <div class="place-item">
+                            <img src="img/house2.jpg" alt="" class="place-img">
+                            <div class="place-body">
+                                <h3 class="place-heading">Cầu Giấy</h3>
+                                <p class="place-time">Hết phòng</p>
+                                <p class="place-des">3.600.000 VNĐ</p>
+                                <button class="place-buy-btn js-buy-tickets">CHỌN PHÒNG</button>
+                            </div>
+                        </div>
+                        <div class="place-item">
+                            <img src="img/house3.jpg" alt="" class="place-img">
+                            <div class="place-body">
+                                <h3 class="place-heading">Thanh Xuân</h3>
+                                <p class="place-time">Còn phòng</p>
+                                <p class="place-des">2.800.000 VNĐ</p>
+                                <button class="place-buy-btn js-buy-tickets">CHỌN PHÒNG</button>
+                            </div>
+                        </div>
+                        <div class="place-item">
+                            <img src="img/house1.png" alt="" class="place-img">
+                            <div class="place-body">
+                                <h3 class="place-heading">Mỹ Đình</h3>
+                                <p class="place-time">Còn phòng</p>
+                                <p class="place-des">4.500.000 VNĐ</p>
+                                <button class="place-buy-btn js-buy-tickets">CHỌN PHÒNG</button>
+                            </div>
+                        </div>
+                        <div class="clear"></div>
+                    </div>
+                    <div class="places-list">
+                        <div class="place-item">
+                            <img src="img/house1.png" alt="" class="place-img">
+                            <div class="place-body">
+                                <h3 class="place-heading">Mỹ Đình</h3>
+                                <p class="place-time">Còn phòng</p>
+                                <p class="place-des">3.100.000 VNĐ</p>
+                                <button class="place-buy-btn js-buy-tickets">CHỌN PHÒNG</button>
+                            </div>
+                        </div>
+                        <div class="place-item">
+                            <img src="img/house2.jpg" alt="" class="place-img">
+                            <div class="place-body">
+                                <h3 class="place-heading">Cầu Giấy</h3>
+                                <p class="place-time">Hết phòng</p>
+                                <p class="place-des">3.600.000 VNĐ</p>
+                                <button class="place-buy-btn js-buy-tickets">CHỌN PHÒNG</button>
+                            </div>
+                        </div>
+                        <div class="place-item">
+                            <img src="img/house3.jpg" alt="" class="place-img">
+                            <div class="place-body">
+                                <h3 class="place-heading">Thanh Xuân</h3>
+                                <p class="place-time">Còn phòng</p>
+                                <p class="place-des">2.800.000 VNĐ</p>
+                                <button class="place-buy-btn js-buy-tickets">CHỌN PHÒNG</button>
+                            </div>
+                        </div>
+                        <div class="place-item">
+                            <img src="img/house1.png" alt="" class="place-img">
+                            <div class="place-body">
+                                <h3 class="place-heading">Mỹ Đình</h3>
+                                <p class="place-time">Còn phòng</p>
+                                <p class="place-des">4.500.000 VNĐ</p>
+                                <button class="place-buy-btn js-buy-tickets">CHỌN PHÒNG</button>
+                            </div>
+                        </div>
+                        <div class="clear"></div>
+                    </div>
+                </div>
+
+            </div>
+            <!-- Contact section -->
+
+            <div class="content-section">
+                <h2 class="section-heading">CONTACT</h2>
+                <p class="section-slogan">Phone me whenever you want</p>
+            </div>
+
+        </div>
+
+        <div id="footer">
+
+        </div>
+
+    </div>
+
+    <div class="modal js-modal">
+        <div class="modal-container">
+            <div class="modal-close js-modal-close">
+                <i class='bx bx-x'></i>
+            </div>
+
+            <header class="modal-header">
+                <i class='bx bxs-shopping-bag' style="margin-right: 16px;"></i>
+                Đặt phòng
+            </header>
+
+            <div class="modal-body">
+                <label for="" class="modal-label">
+                    <i class='bx bx-cart'></i>
+                    Số lượng
+                </label>
+                <input type="text" class="modal-input" placeholder="Số lượng phòng...">
+
+                <label for="" class="modal-label">
+                    <i class='bx bx-user'></i>
+                    Gửi đến
+                </label>
+                <input type="number" class="modal-input" placeholder="Số điện thoại...">
+
+                <button id="buy-tickets">
+                    Đặt phòng <i class='bx bx-check'></i>
+                </button>
+            </div>
+
+            <footer class="modal-footer">
+                <p class="modal-help">Need <a href="" style="color: #2196F3;">help?</a></p>
+            </footer>
+        </div>
+    </div>
+
+    <script>
+        const buyBtns = document.querySelectorAll('.js-buy-tickets')
+        const modal = document.querySelector('.js-modal')
+        const modalClose = document.querySelector('.js-modal-close')
+
+        // Hàm hiển thị modal mua vé (thêm class open vào modal)
+        function showBuyTickets() {
+            modal.classList.add('open')
+        }
+
+        // Hàm ẩn modal mua vé (gỡ bỏ class open vào modal)
+        function hideBuyTickets() {
+            modal.classList.remove('open')
+        }
+
+        // Lặp qua từng thẻ button và nghe hành vi click 
+        for (const buyBtn of buyBtns) {
+            buyBtn.addEventListener('click', showBuyTickets)
+        }
+
+        // Nghe hành vi click vào button close
+        modalClose.addEventListener('click', hideBuyTickets)
+    </script>
+
+</body>
+
+</html>

@@ -49,7 +49,7 @@ app.use("/login", require("./auth/login"));
 app.use("/register", require("./auth/register"));
 
 app.get("/", (req, res) => {
-  return res.send("Hello World");
+  return res.render("common/home.view.ejs")
 });
 
 app.on("close", async () => {
