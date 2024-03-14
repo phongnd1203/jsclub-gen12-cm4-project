@@ -1,0 +1,21 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>All Rooms and Houses</title>
+  </head>
+  <body>
+    <h1>Đây là toàn bộ nhà trọ:</h1>
+    <% if (data.length > 0) data.forEach(room => {%>
+    <a class="single" href="/room/<%= room._id %>">
+      <h1 class="Name"><%= room.name %></h1>
+      <p class="Price">Giá: <%= room.price %></p>
+      <p class="Adress">Địa chỉ: <%= room.address %></p>
+      <br />
+    </a>
+    <% }); else { %>
+    <p>There are no rooms to display.</p>
+    <% } %>
+  </body>
+</html>

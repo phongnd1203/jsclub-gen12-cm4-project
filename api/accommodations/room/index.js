@@ -4,15 +4,26 @@ const validator = require("express-validator");
 const roomModel = require("../../../models/accommondations/room.model");
 const roomRouter = express.Router();
 
-//
+// HomePage
 roomRouter.get("/", async (req, res) => {
-  res.render("common/home");
+  roomModel
+    .find()
+    .sort({ createdAt: -1 })
+    .then((allRoom) => {
+      res.render("accommodations/show", {
+        data: allRoom,
+      });
+    })
+    .catch((err) => {
+      res.status(400);
+      console.log(err);
+    });
 });
-//
+//Create Page
 roomRouter.get("/create", async (req, res) => {
   res.render("accommodations/create");
 });
-
+// Create room
 roomRouter.post(
   "/create",
   validator.body("name").notEmpty().withMessage("Vui lòng nhập tên"),
@@ -68,7 +79,7 @@ roomRouter.get(
   },
 );
 
-// edit house
+// edit room
 // roomRouter.put(
 //     '/:id/edit',
 //     validator.body("name").notEmpty().withMessage("Vui lòng nhập tên"),
