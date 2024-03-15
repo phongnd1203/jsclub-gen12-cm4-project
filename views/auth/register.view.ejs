@@ -13,7 +13,15 @@
     </header>
     <main>
       <h1>Đăng kí</h1>
-
+      <div>
+        <% if (locals.errors) { %>
+        <ul>
+          <% locals.errors.forEach(error => { %>
+          <li><%= error.msg %></li>
+          <% }) %>
+        </ul>
+        <% } %>
+      </div>
       <form method="post">
         <div>
           <label for="name">Tên hiển thị</label>
@@ -67,6 +75,9 @@
         </div>
         <button type="submit">Đăng kí</button>
       </form>
+      <div>
+        <a href="/login">Đăng nhập</a>
+      </div>
     </main>
   </body>
 </html>
