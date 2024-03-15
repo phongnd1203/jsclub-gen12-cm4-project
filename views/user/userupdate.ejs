@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title> Cập nhật tài khoản</title>
+  </head>
+  <body>
+    <header>
+      <nav>
+        <a href="/">Trang chủ</a>
+      </nav>
+    </header>
+    <main>
+      <h1>Cập nhật tài khoản</h1>
+      <div>
+        <% if (locals.errors) { %>
+        <ul>
+          <% locals.errors.forEach(error => { %>
+          <li><%= error.msg %></li>
+          <% }) %>
+        <% } %>
+      </div>
+      <form method="post">
+        <div>
+          <label for="name">Tên hiển thị mới</label>
+          <input
+            value="<%= user.name %>"
+            type="text"
+            id="name"
+            name="name"
+            required
+            autocomplete="name"
+          />
+        </div>
+        <div>
+          <label for="email">Địa chỉ email mới</label>
+          <input
+            value="<%= user.email %>"
+            type="email"
+            id="email"
+            name="email"
+            required
+            autocomplete="email"
+          />
+        </div>
+        <div>
+          <label for="phone">Số điện thoại mới</label>
+          <input
+            value="<%= user.phone %>"
+            type="tel"
+            id="phone"
+            name="phone"
+            required
+            autocomplete="tel"
+          />
+        </div>
+        <div>
+          <label for="password">Mật khẩu mới</label>
+          <input
+            type="password"
+            id="password"
+            name="password"
+            required
+            autocomplete="new-password"
+          />
+        </div>
+        <div>
+          <label for="confirmPassword">Xác nhận mật khẩu</label>
+          <input
+            type="password"
+            id="confirmPassword"
+            name="confirmPassword"
+            required
+            autocomplete="new-password"
+          />
+        </div>
+        <button type="submit">Cập nhật</button>
+      </form>
+    </main>
+  </body>
+</html>

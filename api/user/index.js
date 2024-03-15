@@ -4,8 +4,7 @@ const userModel = require("../../models/users/user.model");
 const userRouter = express.Router();
 
 //profile
-userRouter.get(
-    '/',
+userRouter.get('/',
     // validator.param('id').isMongoId(),
     async(req, res) => {
         const id = req.session.user._id;
@@ -15,42 +14,41 @@ userRouter.get(
     }
 )
 
-// // update
-// userRouter.post(
-//   '/:id',
+// update
+userRouter.get('/edit/:id', async (req, res) => {
+    const { id } = req.params;
+    userModel.findById(id)
+      .then((user) => {
+        res.render("user/userupdate", {
+          user: user,
+        });
+      })
+      .catch((err) => console.log(err));
+    });
+userRouter.post('/edit/:id',
 //   validator.param('id').isMongoId(),
-//   validator.body("name").notEmpty(),
-//   validator.body("phone").notEmpty().isNumeric().isMobilePhone(),
-//   validator.body("email").notEmpty().isEmail().normalizeEmail().trim(),
-//   validator.body("password").notEmpty().isLength({ min: 8 }),
+  validator.body("name").notEmpty().withMessage("Vui lòng nhập tên mới"),
+  validator.body("phone").notEmpty().isNumeric().isMobilePhone(),
+  validator.body("email").notEmpty().isEmail().normalizeEmail().trim(),
+  validator.body("password").notEmpty().isLength({ min: 8 }),
 
-//   async (req, res) => {
-//     const validationErrors = validator.validationResult(req);
-//     if (!validationErrors.isEmpty()) {
-//       return res.status(400).render("", {
-//         errors: validationErrors.array(),
-//       });
-//     }
+  async (req, res) => {
+    try{
+        const validationErrors = validator.validationResult(req);
+    if (!validationErrors.isEmpty()) {
+      return res.status(400).render("common/404", {
+        errors: validationErrors.array(),
+      });
+    }
 
+      const userUpdated = await userModel.findByIdAndUpdate(req.params.id, req.body, { new: true});
 
-//     try{
-//       const userId = req.params.id;
-//       const updateData = req.body;
-
-//       const user = await user.findByIdAndUpdate(userId, updatedData, { new: true});
-
-//       if (!user){
-//         return res.status(404).json({ message: 'User not found' });
-//       }
-
-//       res.json({message: 'User updated successfully', user});
-//     }
-
-//     catch(err){
-//       console.error(err);
-//       res.status(500).json({message: 'Server error'});
-//     }
-//   }
-// );
+      res.status(304).redirect('/home');
+    } catch(err){
+      status: 'fail',
+      res.status(404).json({message: 'Server error'});
+    }
+  }
+);
 
 module.exports = userRouter;
