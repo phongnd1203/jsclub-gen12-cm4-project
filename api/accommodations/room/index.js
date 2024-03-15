@@ -1,5 +1,4 @@
 const express = require("express");
-// const mongoose = require('mongoose');
 const validator = require("express-validator");
 const roomModel = require("../../../models/accommondations/room.model");
 const roomRouter = express.Router();

@@ -48,6 +48,8 @@ app.use(
 app.use("/login", require("./auth/login"));
 app.use("/register", require("./auth/register"));
 app.use("/room", require("./accommodations/room"));
+app.use("/user", require("./user"));
+
 
 app.get("/home", (req, res) => {
   res.render("common/home");
