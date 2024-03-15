@@ -1,4 +1,5 @@
 const path = require("path");
+const glob = require("glob");
 
 const express = require("express");
 const bodyParser = require("body-parser");
@@ -8,12 +9,9 @@ const session = require("express-session");
 const MongoStore = require("connect-mongo");
 const mongodbConnection = require("../databases/init.mongodb.js");
 
-const appConfig = require("../configs/app.config.js");
-
 const app = express();
-const config = appConfig();
 
-app.use(morgan(config.logger.morgan.mode));
+app.use(morgan("dev"));
 
 app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "../views"));
@@ -26,7 +24,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(
   session({
     name: "sid",
-    secret: config.session.secret,
+    secret: process.env.APP_SESSION_SECRET,
     saveUninitialized: false,
     resave: false,
     cookie: {
@@ -40,7 +38,8 @@ app.use(
       autoRemove: "native",
       autoRemoveInterval: 10,
       crypto: {
-        secret: config.session.stores.mongodb.secret,
+        secret:
+          process.env.MONGODB_SESSION_SECRET || process.env.APP_SESSION_SECRET,
       },
     }),
   }),

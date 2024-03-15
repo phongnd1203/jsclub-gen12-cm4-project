@@ -10,43 +10,41 @@
       <nav>
         <a href="/">Trang chủ</a>
       </nav>
-      <main>
-        <h1>Đăng nhập</h1>
-        <div>
-          <% if (locals.errors) { %>
-          <ul>
-            <% locals.errors.forEach(error => { %>
-            <li><%= error.msg %></li>
-            <% }) %>
-          <% } %>
-        </div>
-        <form method="post">
-          <div>
-            <label for="email">Địa chỉ email</label>
-            <input
-              type="email"
-              id="email"
-              name="email"
-              required
-              autocomplete="email"
-            />
-          </div>
-          <div>
-            <label for="password">Mật khẩu</label>
-            <input
-              type="password"
-              id="password"
-              name="password"
-              required
-              autocomplete="current-password"
-            />
-          </div>
-          <button type="submit">Đăng nhập</button>
-        </form>
-        <div>
-          <a href="/register">Đăng ký</a>
-        </div>
-      </main>
     </header>
+    <main>
+      <h1>Đăng nhập</h1>
+      <div>
+        <% if (locals.errors) { %>
+        <ul>
+          <% locals.errors.forEach(error => { %>
+          <li><%= error.msg %></li>
+          <% }) %>
+        </ul>
+        <% } %>
+      </div>
+      <form method="post">
+        <div>
+          <label for="email">Địa chỉ email</label>
+          <input
+            type="email"
+            id="email"
+            name="email"
+            required
+            autocomplete="email"
+          />
+        </div>
+        <div>
+          <label for="password">Mật khẩu</label>
+          <input
+            type="password"
+            id="password"
+            name="password"
+            required
+            autocomplete="current-password"
+          />
+        </div>
+        <button type="submit">Đăng nhập</button>
+      </form>
+    </main>
   </body>
 </html>
