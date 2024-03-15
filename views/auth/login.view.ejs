@@ -3,50 +3,79 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Đăng nhập</title>
+    <title>Sign in</title>
+    <link rel="stylesheet" href="/styles/signup.css" />
+    <link
+      href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
+      rel="stylesheet"
+    />
   </head>
+
   <body>
-    <header>
-      <nav>
+    <header class="header">
+      <nav class="navbar">
         <a href="/">Trang chủ</a>
+        <a href="#">Dịch vụ</a>
+        <a href="#">Hướng dẫn</a>
+        <a href="#">Liên hệ</a>
       </nav>
-      <main>
-        <h1>Đăng nhập</h1>
-        <div>
-          <% if (locals.errors) { %>
-          <ul>
-            <% locals.errors.forEach(error => { %>
-            <li><%= error.msg %></li>
-            <% }) %>
-          <% } %>
-        </div>
-        <form method="post">
-          <div>
-            <label for="email">Địa chỉ email</label>
-            <input
-              type="email"
-              id="email"
-              name="email"
-              required
-              autocomplete="email"
-            />
-          </div>
-          <div>
-            <label for="password">Mật khẩu</label>
-            <input
-              type="password"
-              id="password"
-              name="password"
-              required
-              autocomplete="current-password"
-            />
-          </div>
-          <button type="submit">Đăng nhập</button>
-        </form>
-        <div>
-          <a href="/register">Đăng ký</a>
-        </div>
-      </main>
     </header>
+
+    <div class="background"></div>
+    <div class="container">
+      <div class="content">
+        <h2 class="logo"><i class="bx bxl-firebase"></i>Trohanoi.com</h2>
+
+        <div class="text-sci">
+          <h2>Welcome!<br /><span>To Our New Website.</span></h2>
+
+          <p>
+            Trohanoi.com - Trang thông tin tìm kiếm và cho thuê phòng trọ nhanh
+            chóng, tiện lợi với giá cả học sinh/sinh viên.
+          </p>
+
+          <div class="social-icons">
+            <a href="#"><i class="bx bxl-linkedin"></i></a>
+            <a href="#"><i class="bx bxl-facebook-circle"></i></a>
+            <a href="#"><i class="bx bxl-instagram"></i></a>
+            <a href="#"><i class="bx bxl-twitter"></i></a>
+          </div>
+        </div>
+      </div>
+
+      <div class="logreg-box">
+        <div class="form-box login">
+          <form action="#">
+            <h2>Đăng nhập</h2>
+
+            <div class="input-box">
+              <span class="icon"><i class="bx bxs-envelope"></i></span>
+              <input type="email" required />
+              <label>Email</label>
+            </div>
+
+            <div class="input-box">
+              <span class="icon"><i class="bx bxs-lock-alt"></i></span>
+              <input type="password" required />
+              <label>Mật khẩu</label>
+            </div>
+
+            <div class="remember-forgot">
+              <label><input type="checkbox" />Nhớ mật khẩu</label>
+              <a href="#">Quên mật khẩu?</a>
+            </div>
+
+            <button type="submit" class="btn">Đăng nhập</button>
+
+            <div class="login-register">
+              <p>
+                Chưa có tài khoản?
+                <a href="/register" class="register-link">Đăng ký</a>
+              </p>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
   </body>
 </html>

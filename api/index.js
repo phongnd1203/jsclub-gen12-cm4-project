@@ -1,5 +1,4 @@
 const path = require("path");
-const glob = require("glob");
 
 const express = require("express");
 const bodyParser = require("body-parser");
@@ -56,7 +55,7 @@ app.get("/home", (req, res) => {
 });
 
 app.get("/", (req, res) => {
-  res.redirect("home");
+  return res.send("Hello World");
 });
 
 app.on("close", async () => {
