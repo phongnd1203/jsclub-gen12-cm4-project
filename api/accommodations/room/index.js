@@ -54,7 +54,7 @@ roomRouter.post(
       createdBy: id,
     });
     await room.save();
-    res.redirect("/home");
+    res.redirect("/");
   },
 );
 
@@ -66,7 +66,7 @@ roomRouter.get(
     const validationErrors = validator.validationResult(req);
 
     if (!validationErrors.isEmpty()) {
-      return res.status(400).render("", {
+      return res.status(400).render("common/404", {
         errors: validationErrors.array(),
       });
     }
@@ -80,35 +80,61 @@ roomRouter.get(
 );
 
 // edit room
-// roomRouter.put(
-//     '/:id/edit',
-//     validator.body("name").notEmpty().withMessage("Vui lòng nhập tên"),
-//     validator.body("description").optional({ nullable: true }),
-//     validator.body("address").notEmpty(),
-//     validator.body("price").notEmpty().isFloat({ min: 0 }),
-//     validator.body("size").notEmpty().isFloat({ min: 0, max: 100 }),
 
-//     async (req, res) => {
-//         const validationErrors = validator.validationResult(req);
+roomRouter.get("/edit/:id", async (req, res) => {
+  const { id } = req.params;
+  roomModel
+    .findById(id)
+    .then((room) => {
+      res.render("accommodations/edit", {
+        room: room,
+      });
+    })
+    .catch((err) => console.log(err));
+});
+//edit
+roomRouter.post(
+  "/edit/:id",
+  validator.body("name").notEmpty().withMessage("Vui lòng nhập tên"),
+  validator.body("description").optional({ nullable: true }),
+  validator.body("address").notEmpty(),
+  validator.body("price").notEmpty().isFloat({ min: 0 }),
+  validator.body("size").notEmpty().isFloat({ min: 0 }),
 
-//         if (!validationErrors.isEmpty()) {
-//             return res.status(400).render("", {
-//                 errors: validationErrors.array(),
-//             });
-//         }
-//         const room = await roomModel.findById(id);
-//         res.render('accommodations/room/details', {
-//             room: room
-//         })
-//         room = req.body;
-//         room.save()
-//         .then(result => {
-//             const id = req.params.id;
-//             res.redirect(`/${id}`);
-//         })
-//         .catch(res.status(400).redirect('/'));
-//     }
+  async (req, res) => {
+    try {
+      const validationErrors = validator.validationResult(req);
 
-// )
+      if (!validationErrors.isEmpty()) {
+        return res.status(400).render("common/404", {
+          errors: validationErrors.array(),
+        });
+      }
+      const updatedRoom = await roomModel.findByIdAndUpdate(
+        req.params.id,
+        req.body,
+        { new: true },
+      );
+      res.status(304).redirect(`/room/${req.params.id}`);
+    } catch (err) {
+      res.status(404).json({
+        status: "fail",
+        message: err.message,
+      });
+    }
+  },
+);
+// delete
+roomRouter.get("/delete/:id", async (req, res) => {
+  await roomModel
+    .findByIdAndDelete(req.params.id)
+    .then((result) => {
+      res.redirect("/room");
+    })
+    .catch((err) => {
+      console.log(err);
+      res.status(400);
+    });
+});
 
 module.exports = roomRouter;
