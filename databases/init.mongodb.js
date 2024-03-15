@@ -1,8 +1,10 @@
 const mongoose = require("mongoose");
 
-const uri = process.env.MONGO_URI || "mongodb://localhost:27017";
+const mongodbConfig = require("../configs/mongodb.config.js");
 
-mongoose.connect(uri);
+const config = mongodbConfig();
+
+mongoose.connect(config.uri);
 
 const connection = mongoose.connection;
 
