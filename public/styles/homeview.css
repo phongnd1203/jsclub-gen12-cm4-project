@@ -412,7 +412,7 @@ html {
 #rcorners1 {
     border-radius: 25px;
     z-index: 1;
-    background-color: rgba(135, 179, 207, 0.1);
+    background-color: rgba(135, 179, 207, 0.1);;
     padding: 0px;
     width: 80%;
     height: 200px;
@@ -428,7 +428,9 @@ html {
 
 }
 
-
+#diachi{
+    border-radius: 8px 0px 0px 8px;
+}
 .wrapper>div {
     display: none;
     position: absolute;
@@ -450,9 +452,10 @@ html {
 .main-search>li {
     list-style: none;
     width: 100%;
-    text-align: center;
+    /* text-align: center; */
 
 }
+
 
 .radio {
     color: #070707;
@@ -469,14 +472,13 @@ html {
     width: 7px;
     cursor: pointer;
 }
-
 .custom-radio:checked {
     background-color: black;
 }
 
 p {
-    margin-top: 1px;
-    border: 0.5px solid;
+    padding: 8%;
+    border: 0px solid gainsboro;
     padding: 8px;
     cursor: pointer;
     border: 1px solid rgba(135, 179, 207, 0.1);
@@ -484,52 +486,43 @@ p {
 
 .main-search {
     display: flex;
-    /* justify-content: space-around; */
-    margin-right: 57px;
+    justify-content: center;
+    padding: 8%;
+    
 
 }
 
 .price>span,
 .dientich>span {
     display: block;
+    
 
 }
 
 .price,
 .dientich {
-
     position: relative;
     border: 1px solid transparent;
     width: 120px;
     padding: 10px;
     border-radius: 10px;
-    margin-top: -16px;
 
-}
-
-#search {
-    width: 925px;
-    height: 40px;
-    border-radius: 7px;
-    margin-top: 50px;
-    border: #090909;
-    margin-left: 40px;
-    margin-right: 40px;
 }
 
 .btn-search {
     border: 0;
     text-align: center;
     display: inline-block;
-    padding: 14px;
+    /* padding: 14px; */
     width: 150px;
-    margin: 7px;
+    /* margin: 7px; */
     color: #ffffff;
     background-color: #36a2eb;
-    border-radius: 8px;
+    border-radius: 0px 8px 8px 0px;
     font-family: "proxima-nova-soft", sans-serif;
     font-weight: 600;
     text-decoration: none;
     transition: box-shadow 200ms ease-out;
     cursor: pointer;
+    padding: 7%;
 }
