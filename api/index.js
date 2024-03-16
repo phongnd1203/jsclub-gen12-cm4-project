@@ -48,7 +48,7 @@ app.use("/login", require("./auth/login"));
 app.use("/register", require("./auth/register"));
 
 app.get("/", (req, res) => {
-  return res.render("common/home.view.ejs")
+  return res.render("pages/home.view.ejs");
 });
 
 app.on("close", async () => {

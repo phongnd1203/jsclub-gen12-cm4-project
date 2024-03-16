@@ -9,7 +9,7 @@ const UserModel = require("../../../models/users/user.model");
 const registerRouter = express.Router();
 
 registerRouter.get("/", async (req, res) => {
-  res.render("auth/register.view.ejs");
+  res.render("pages/auth/register.view.ejs");
 });
 
 registerRouter.post(
@@ -63,7 +63,7 @@ registerRouter.post(
     const validationErrors = validator.validationResult(req);
 
     if (!validationErrors.isEmpty()) {
-      return res.status(400).render("auth/register.view.ejs", {
+      return res.status(400).render("pages/auth/register.view.ejs", {
         errors: validationErrors.array(),
       });
     }
