@@ -14,7 +14,7 @@
         <%= user.name %>
       </h1>
       <h1>
-        Số điện thoại
+        Số điện thoại:
         <%= user.phone %>
       </h1>
       <h1>
@@ -26,7 +26,7 @@
       <form action="/user/edit/<%=user._id %>" class="inline">
         <button class="float-left submit-button">Sửa thông tin</button>
       </form>
-      <form action="/room/delete/<%=user._id %>" class="inline">
+      <form action="/user/delete/<%=user._id %>" class="inline">
         <button class="float-left submit-button">Xoá tài khoản</button>
       </form>
     </main>

@@ -53,7 +53,7 @@ roomRouter.post(
       createdBy: id,
     });
     await room.save();
-    res.redirect("/");
+    res.redirect("/home");
   },
 );
 

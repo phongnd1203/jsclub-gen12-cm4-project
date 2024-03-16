@@ -51,4 +51,17 @@ userRouter.post('/edit/:id',
   }
 );
 
+// delete
+userRouter.get("/delete/:id", async (req, res) => {
+  await userModel
+    .findByIdAndDelete(req.params.id)
+    .then((result) => {
+      res.redirect("/home");
+    })
+    .catch((err) => {
+      console.log(err);
+      res.status(400);
+    });
+});
+
 module.exports = userRouter;
