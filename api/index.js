@@ -44,19 +44,10 @@ app.use(
   }),
 );
 
-app.use("/login", require("./auth/login"));
-app.use("/register", require("./auth/register"));
-app.use("/room", require("./accommodations/room"));
-app.use("/user", require("./user"));
-
-
-app.get("/home", (req, res) => {
-  res.render("common/home");
-});
-
-app.get("/", (req, res) => {
-  return res.send("Hello World");
-});
+app.use("/", require("./home"));
+app.use("/", require("./auth"));
+app.use("/houses", require("./houses"));
+app.use("/users", require("./users"));
 
 app.on("close", async () => {
   await mongodbConnection.close();
