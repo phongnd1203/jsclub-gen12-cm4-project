@@ -14,7 +14,7 @@
   <body>
     <header class="header">
       <nav class="navbar">
-        <a href="/">Trang chủ</a>
+        <a href="/home">Trang chủ</a>
         <a href="#">Dịch vụ</a>
         <a href="#">Hướng dẫn</a>
         <a href="#">Liên hệ</a>
@@ -45,18 +45,18 @@
 
       <div class="logreg-box">
         <div class="form-box login">
-          <form action="#">
+          <form action="/login" method="post">
             <h2>Đăng nhập</h2>
 
             <div class="input-box">
               <span class="icon"><i class="bx bxs-envelope"></i></span>
-              <input type="email" required />
+              <input type="email" required name="email"/>
               <label>Email</label>
             </div>
 
             <div class="input-box">
               <span class="icon"><i class="bx bxs-lock-alt"></i></span>
-              <input type="password" required />
+              <input type="password" required name="password"/>
               <label>Mật khẩu</label>
             </div>
 
@@ -64,9 +64,9 @@
               <label><input type="checkbox" />Nhớ mật khẩu</label>
               <a href="#">Quên mật khẩu?</a>
             </div>
-
+            <form>
             <button type="submit" class="btn">Đăng nhập</button>
-
+            </form>
             <div class="login-register">
               <p>
                 Chưa có tài khoản?

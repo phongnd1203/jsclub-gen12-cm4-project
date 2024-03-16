@@ -52,17 +52,18 @@ registerRouter.post(
     .body("password")
     .isLength({ min: 8 })
     .withMessage("Mật khẩu phải chứa ít nhất 8 ký tự"),
-  validator.body("confirmPassword").custom((value, { req }) => {
-    console.log(value, req.body.password);
-    if (value !== req.body.password) {
-      throw new Error("Mật khẩu không khớp");
-    }
-    return true;
-  }),
+  // validator.body("confirmPassword").custom((value, { req }) => {
+  //   console.log(value, req.body.password);
+  //   if (value !== req.body.password) {
+  //     throw new Error("Mật khẩu không khớp");
+  //   }
+  //   return true;
+  // }),
   async (req, res) => {
     const validationErrors = validator.validationResult(req);
 
     if (!validationErrors.isEmpty()) {
+      console.log(validationErrors)
       return res.status(400).render("auth/register.view.ejs", {
         errors: validationErrors.array(),
       });
