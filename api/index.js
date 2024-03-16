@@ -44,12 +44,9 @@ app.use(
   }),
 );
 
+app.use("/home", require("./home"));
 app.use("/login", require("./auth/login"));
 app.use("/register", require("./auth/register"));
-
-app.get("/", (req, res) => {
-  return res.render("common/home.view.ejs")
-});
 
 app.on("close", async () => {
   await mongodbConnection.close();
