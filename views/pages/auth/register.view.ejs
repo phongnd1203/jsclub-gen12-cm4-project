@@ -1,100 +1,100 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Sign up</title>
-    <link rel="stylesheet" href="/styles/signup.css" />
-    <link
-      href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
-      rel="stylesheet"
-    />
-  </head>
-
+  <%- include('../../head.document.ejs', { title: 'Đăng nhập' }) %>
   <body>
-    <header class="header">
-      <nav class="navbar">
-        <a href="/">Trang chủ</a>
-        <a href="#">Dịch vụ</a>
-        <a href="#">Hướng dẫn</a>
-        <a href="#">Liên hệ</a>
-      </nav>
-
-      <form action="#" class="search-bar">
-        <input type="text" placeholder="Tìm kiếm..." />
-        <button type="submit"><i class="bx bx-search"></i></button>
-      </form>
-    </header>
-
-    <div class="background"></div>
-    <div class="container">
-      <div class="content">
-        <h2 class="logo"><i class="bx bxl-firebase"></i>Trohanoi.com</h2>
-
-        <div class="text-sci">
-          <h2>Welcome!<br /><span>To Our New Website.</span></h2>
-
-          <p>
-            Trohanoi.com - Trang thông tin tìm kiếm và cho thuê phòng trọ nhanh
-            chóng, tiện lợi với giá cả học sinh/sinh viên.
-          </p>
-
-          <div class="social-icons">
-            <a href="#"><i class="bx bxl-linkedin"></i></a>
-            <a href="#"><i class="bx bxl-facebook-circle"></i></a>
-            <a href="#"><i class="bx bxl-instagram"></i></a>
-            <a href="#"><i class="bx bxl-twitter"></i></a>
+    <main class="h-dvh w-full overscroll-none text-white">
+      <div class="relative contents">
+        <img
+          src="/images/background.jpg"
+          alt="background"
+          class="h-full w-full object-cover"
+        />
+        <div class="absolute inset-0 flex flex-row items-center">
+          <!-- Divide the screen into two parts horizontally -->
+          <div class="hidden h-full w-full flex-grow md:landscape:block">
+            <!-- Left panel -->
+          </div>
+          <div
+            class="h-full w-full flex-grow overflow-auto bg-black bg-opacity-30 py-16 backdrop-blur"
+          >
+            <div
+              class="flex min-h-full flex-col items-center justify-center gap-4"
+            >
+              <!-- Right panel -->
+              <h1 class="text-3xl font-bold">Đăng ký</h1>
+              <form
+                method="POST"
+                class="flex w-full max-w-xl flex-col gap-2 p-4"
+              >
+                <div class="flex flex-col gap-1">
+                  <label class="text-sm" for="name">Tên đăng nhập</label>
+                  <input
+                    type="text"
+                    id="name"
+                    name="name"
+                    autocomplete="name"
+                    autofocus
+                    class="w-full rounded-md border border-white bg-transparent p-2 px-3"
+                  />
+                </div>
+                <div class="flex flex-col gap-1">
+                  <label class="text-sm" for="email">Email</label>
+                  <input
+                    type="email"
+                    id="email"
+                    name="email"
+                    autocomplete="email"
+                    class="w-full rounded-md border border-white bg-transparent p-2 px-3"
+                  />
+                </div>
+                <div class="flex flex-col gap-1">
+                  <label class="text-sm" for="phone">Số điện thoại</label>
+                  <input
+                    type="tel"
+                    id="phone"
+                    name="phone"
+                    autocomplete="tel"
+                    class="w-full rounded-md border border-white bg-transparent p-2 px-3"
+                  />
+                </div>
+                <div class="flex flex-col gap-1">
+                  <label class="text-sm" for="password">Mật khẩu</label>
+                  <input
+                    type="password"
+                    id="password"
+                    name="password"
+                    autocomplete="new-password"
+                    class="w-full rounded-md border border-white bg-transparent p-2 px-3"
+                  />
+                </div>
+                <div class="flex flex-col gap-1">
+                  <label class="text-sm" for="confirmPassword"
+                    >Xác nhận mật khẩu</label
+                  >
+                  <input
+                    type="password"
+                    id="confirmPassword"
+                    name="confirmPassword"
+                    autocomplete="new-password"
+                    class="w-full rounded-md border border-white bg-transparent p-2 px-3"
+                  />
+                </div>
+                <div class="flex flex-col">
+                  <button
+                    type="submit"
+                    class="rounded-md border border-white p-2 px-3"
+                  >
+                    Đăng ký
+                  </button>
+                </div>
+              </form>
+              <div>
+                <a href="/login">Đăng nhập</a>
+              </div>
+            </div>
           </div>
         </div>
       </div>
-
-      <div class="logreg-box">
-        <div class="form-box register">
-          <form action="">
-            <h2>Đăng ký</h2>
-
-            <div class="input-box">
-              <span class="icon"><i class="bx bxs-user"></i></span>
-              <input type="text" name="name" required />
-              <label>Tên đăng nhập</label>
-            </div>
-
-            <div class="input-box">
-              <span class="icon"><i class="bx bxs-phone"></i></span>
-              <input type="tel" name="phone" required />
-              <label>Số điện thoại</label>
-            </div>
-
-            <div class="input-box">
-              <span class="icon"><i class="bx bxs-envelope"></i></span>
-              <input type="email" name="email" required />
-              <label>Email</label>
-            </div>
-
-            <div class="input-box">
-              <span class="icon"><i class="bx bxs-lock-alt"></i></span>
-              <input type="password" name="password" required />
-              <label>Mật khẩu</label>
-            </div>
-
-            <div class="remember-forgot">
-              <label
-                ><input type="checkbox" />Tôi đồng ý với chính sách & điều
-                kiện</label
-              >
-            </div>
-
-            <button type="submit" class="btn">Đăng ký</button>
-
-            <div class="login-register">
-              <p>
-                Đã có tài khoản?
-                <a href="/login" class="login-link">Đăng nhập</a>
-              </p>
-            </div>
-          </form>
-        </div>
-      </div>
-    </div>
+    </main>
   </body>
 </html>
