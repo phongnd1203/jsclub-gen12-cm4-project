@@ -5,6 +5,49 @@ const HouseModel = require("../../models/houses/house.model.js");
 
 const housesRouter = express.Router();
 
+housesRouter.get("/create", (req, res) => {
+  return res.render("house/create");
+});
+
+housesRouter.post(
+  "/create",
+  validator.body("name").isString(),
+  validator.body("description").isString(),
+  validator.body("address").isString(),
+  validator.body("districtCode").isString(),
+  validator.body("price").isNumeric(),
+  validator.body("area").isNumeric(),
+  async (req, res) => {
+    const errors = validator.validationResult(req);
+
+    if (!errors.isEmpty()) {
+      return res.status(400).render("house/create", {
+        errors: errors.array(),
+      });
+    }
+
+    const { name, description, address, districtCode, price, area } = req.body;
+
+    const currentUser = req.session.user;
+
+    const house = new HouseModel({
+      name,
+      description,
+      address: {
+        path: address,
+        districtCode,
+      },
+      price,
+      area,
+      createdBy: currentUser._id,
+    });
+
+    await house.save();
+
+    return res.status(201).redirect(`/house/${house._id}`);
+  },
+);
+
 housesRouter.get("/", async (req, res) => {
   const houses = await HouseModel.find().lean().exec();
 
@@ -26,54 +69,6 @@ housesRouter.get("/:id", async (req, res) => {
     house,
   });
 });
-
-housesRouter.get("/create", (req, res) => {
-  return res.render("house/create");
-});
-
-housesRouter.post(
-  "/create",
-  validator.body("name").isString(),
-  validator.body("description").isString(),
-  validator.body("address").isString(),
-  validator.body("districtCode").isString(),
-  validator.body("price").isNumeric(),
-  validator.body("area").isNumeric(),
-  validator.body("avalability").isBoolean(),
-  async (req, res) => {
-    const errors = validator.validationResult(req);
-
-    if (!errors.isEmpty()) {
-      return res.status(400).render("house/create", {
-        errors: errors.array(),
-      });
-    }
-
-    const {
-      name,
-      description,
-      address,
-      districtCode,
-      price,
-      area,
-      availability,
-    } = req.body;
-
-    const house = new HouseModel({
-      name,
-      description,
-      address,
-      districtCode,
-      price,
-      area,
-      availability,
-    });
-
-    await house.save();
-
-    return res.status(201).redirect(`/houses/${house._id}`);
-  },
-);
 
 housesRouter.get("/:id/edit", async (req, res) => {
   const { id } = req.params;
@@ -147,7 +142,7 @@ housesRouter.post(
 
     await house.save();
 
-    return res.status(200).redirect(`/houses/${house._id}`);
+    return res.status(200).redirect(`/house/${house._id}`);
   },
 );
 
@@ -168,7 +163,7 @@ housesRouter.post("/:id/delete", async (req, res) => {
 
   await house.remove();
 
-  return res.status(200).redirect("/houses");
+  return res.status(200).redirect("/house");
 });
 
 module.exports = housesRouter;

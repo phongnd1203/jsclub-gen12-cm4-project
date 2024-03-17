@@ -16,6 +16,7 @@ app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "../views"));
 
 app.use(express.static(path.join(__dirname, "../public")));
+app.use(express.static(path.join(__dirname, "../dist")));
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -45,9 +46,9 @@ app.use(
 );
 
 app.use("/", require("./home"));
-app.use("/", require("./auth"));
-app.use("/houses", require("./houses"));
-app.use("/users", require("./users"));
+app.use("/auth", require("./auth"));
+app.use("/house", require("./houses"));
+app.use("/user", require("./users"));
 
 app.on("close", async () => {
   await mongodbConnection.close();

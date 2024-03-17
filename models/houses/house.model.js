@@ -2,7 +2,7 @@ const mongoose = require("mongoose");
 
 const addressSchema = mongoose.Schema(
   {
-    address: {
+    path: {
       type: String,
       required: true,
     },

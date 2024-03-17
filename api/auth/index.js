@@ -9,11 +9,11 @@ const UserModel = require("../../models/users/user.model.js");
 const authRouter = express.Router();
 
 authRouter.get("/login", async (req, res) => {
-  res.render("auth/login.view.ejs");
+  res.render("pages/auth/login.view.ejs");
 });
 
 authRouter.post(
-  "/",
+  "/login",
   validator
     .body("email")
     .isEmail()
@@ -52,7 +52,7 @@ authRouter.post(
 );
 
 authRouter.get("/register", async (req, res) => {
-  res.render("auth/register.view.ejs");
+  res.render("pages/auth/register.view.ejs");
 });
 
 authRouter.post(

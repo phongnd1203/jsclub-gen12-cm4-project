@@ -3,7 +3,11 @@ const express = require("express");
 const homeRouter = express.Router();
 
 homeRouter.get("/", (req, res) => {
-  return res.render("common/home.view.ejs");
+  const currentUser = req.session.user;
+
+  return res.render("pages/home.view.ejs", {
+    user: currentUser,
+  });
 });
 
 module.exports = homeRouter;

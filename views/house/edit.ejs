@@ -3,15 +3,16 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>Edit room</title>
   </head>
   <body>
     <main>
-      <h1>Create Room</h1>
+      <h1>Edit Room</h1>
       <form method="post">
         <div>
           <label for="name">Tên trọ</label>
           <input
+            value="<%= locals.house.name %>"
             type="text"
             id="name"
             name="name"
@@ -22,6 +23,7 @@
         <div>
           <label for="description">Nhập mô tả</label>
           <input
+            value="<%= locals.house.description %>"
             type="description"
             id="description"
             name="description"
@@ -31,6 +33,7 @@
         <div>
           <label for="address">Địa chỉ</label>
           <input
+            value="<%= locals.house.address.path %>"
             type="tel"
             id="address"
             name="address"
@@ -41,6 +44,7 @@
         <div>
           <label for="price">Giá </label>
           <input
+            value="<%= locals.house.price %>"
             type="price"
             id="price"
             name="price"
@@ -49,23 +53,14 @@
           />
         </div>
         <div>
-          <label for="size">Kích thước(m2)</label>
+          <label for="area">Kích thước(m2)</label>
           <input
+            value="<%= locals.house.area %>"
             type=""
-            id="size"
-            name="size"
+            id="area"
+            name="area"
             required
             autocomplete="new-size"
-          />
-        </div>
-        <div>
-          <label for="capacity">Số người ở</label>
-          <input
-            type=""
-            id="capacity"
-            name="capacity"
-            required
-            autocomplete="new-capacity"
           />
         </div>
         <button type="submit">Xác nhận</button>

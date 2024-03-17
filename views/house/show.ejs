@@ -7,7 +7,7 @@
   </head>
   <body>
     <h1>Đây là toàn bộ nhà trọ:</h1>
-    <% if (data.length > 0) data.forEach(room => {%>
+    <% if (locals.house) house.forEach(room => {%>
     <a class="single" href="/room/<%= room._id %>">
       <h1 class="Name"><%= room.name %></h1>
       <p class="Price">Giá: <%= room.price %></p>

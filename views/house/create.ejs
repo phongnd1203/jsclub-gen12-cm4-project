@@ -3,16 +3,22 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Edit room</title>
+    <title>Document</title>
   </head>
   <body>
     <main>
-      <h1>Edit Room</h1>
+      <h1>Create Room</h1>
+      <% if (locals.errors) { %>
+      <ul>
+        <% for (let error of locals.errors) { %>
+        <li><%= JSON.stringify(error) %></li>
+        <% } %>
+      </ul>
+      <% } %>
       <form method="post">
         <div>
           <label for="name">Tên trọ</label>
           <input
-            value="<%=room.name %>"
             type="text"
             id="name"
             name="name"
@@ -23,7 +29,6 @@
         <div>
           <label for="description">Nhập mô tả</label>
           <input
-            value="<%= room.description %>"
             type="description"
             id="description"
             name="description"
@@ -33,7 +38,6 @@
         <div>
           <label for="address">Địa chỉ</label>
           <input
-            value="<%= room.address %>"
             type="tel"
             id="address"
             name="address"
@@ -42,10 +46,12 @@
           />
         </div>
         <div>
+          <input type="hidden" name="districtCode" value="1" />
+        </div>
+        <div>
           <label for="price">Giá </label>
           <input
-            value="<%= room.price %>"
-            type="price"
+            type="number"
             id="price"
             name="price"
             required
@@ -54,29 +60,10 @@
         </div>
         <div>
           <label for="size">Kích thước(m2)</label>
-          <input
-            value="<%= room.size %>"
-            type=""
-            id="size"
-            name="size"
-            required
-            autocomplete="new-size"
-          />
-        </div>
-        <div>
-          <label for="capacity">Số người ở</label>
-          <input
-            value="<%= room.capacity %>"
-            type=""
-            id="capacity"
-            name="capacity"
-            required
-            autocomplete="new-capacity"
-          />
+          <input type="number" id="area" name="area" required />
         </div>
         <button type="submit">Xác nhận</button>
       </form>
-      <div></div>
     </main>
   </body>
 </html>

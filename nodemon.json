@@ -1,5 +1,5 @@
 {
-  "watch": ["**/*.{js,ejs.css}"],
+  "watch": ["**/*.{js,ejs,css}"],
   "ignore": [".git", "node_modules", "public"],
   "events": {
     "restart": "clear"

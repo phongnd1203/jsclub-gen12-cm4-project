@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Details of Room</title>
+  </head>
+
+  <body>
+    <main>
+      <h1>Details of Room</h1>
+      <h1>Tên trọ: <%= locals.house.name %></h1>
+      <h1>Miêu tả <%= locals.house.description %></h1>
+      <h1>Địa chỉ: <%= locals.house.address.path %></h1>
+      <h1>Giá: <%= locals.house.price %></h1>
+      <h1>Diện tích: <%= locals.house.size %></h1>
+      <h1>Số người ở: <%= locals.house.capacity %></h1>
+      <div></div>
+
+      <form action="/house/<%=locals.house._id %>/edit" class="inline">
+        <button class="submit-button float-left">Sửa đổi</button>
+      </form>
+      <form action="/house/<%=locals.house._id %>/delete" class="inline">
+        <button class="submit-button float-left">Xoá trọ</button>
+      </form>
+    </main>
+  </body>
+</html>
