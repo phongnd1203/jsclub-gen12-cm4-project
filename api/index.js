@@ -46,8 +46,9 @@ app.use(
 );
 
 app.use("/", require("./home"));
-app.use("/login", require("./auth/login"));
-app.use("/register", require("./auth/register"));
+app.use("/auth", require("./auth"));
+app.use("/house", require("./houses"));
+app.use("/user", require("./users"));
 
 app.on("close", async () => {
   await mongodbConnection.close();

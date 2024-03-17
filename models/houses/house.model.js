@@ -2,7 +2,7 @@ const mongoose = require("mongoose");
 
 const addressSchema = mongoose.Schema(
   {
-    address: {
+    path: {
       type: String,
       required: true,
     },
@@ -40,7 +40,7 @@ const houseSchema = mongoose.Schema(
       default: 0,
       index: true,
     },
-    available: {
+    availability: {
       type: Boolean,
       default: true,
     },

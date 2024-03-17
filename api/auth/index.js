@@ -4,16 +4,59 @@ const validator = require("express-validator");
 
 const argon2 = require("argon2");
 
-const UserModel = require("../../../models/users/user.model.js");
+const UserModel = require("../../models/users/user.model.js");
 
-const registerRouter = express.Router();
+const authRouter = express.Router();
 
-registerRouter.get("/", async (req, res) => {
+authRouter.get("/login", async (req, res) => {
+  res.render("pages/auth/login.view.ejs");
+});
+
+authRouter.post(
+  "/login",
+  validator
+    .body("email")
+    .isEmail()
+    .withMessage("Địa chỉ email không hợp lệ")
+    .normalizeEmail(),
+  validator
+    .body("password")
+    .isLength({ min: 8 })
+    .withMessage("Mật khẩu phải chứa ít nhất 8 ký tự"),
+  async (req, res) => {
+    const validationErrors = validator.validationResult(req);
+
+    if (!validationErrors.isEmpty()) {
+      return res.status(400).render("auth/login.view.ejs", {
+        errors: validationErrors.array(),
+      });
+    }
+
+    const { email, password } = req.body;
+
+    const user = await UserModel.findOne({ email })
+      .select({ password: 1 })
+      .lean()
+      .exec();
+
+    if (!user || !(await argon2.verify(user.password, password))) {
+      return res.status(400).render("auth/login.view.ejs", {
+        errors: [{ msg: "Email hoặc mật khẩu không chính xác" }],
+      });
+    }
+
+    req.session.user = user;
+
+    res.redirect("/");
+  },
+);
+
+authRouter.get("/register", async (req, res) => {
   res.render("pages/auth/register.view.ejs");
 });
 
-registerRouter.post(
-  "/",
+authRouter.post(
+  "/register",
   validator
     .body("name")
     .notEmpty()
@@ -53,7 +96,6 @@ registerRouter.post(
     .isLength({ min: 8 })
     .withMessage("Mật khẩu phải chứa ít nhất 8 ký tự"),
   validator.body("confirmPassword").custom((value, { req }) => {
-    console.log(value, req.body.password);
     if (value !== req.body.password) {
       throw new Error("Mật khẩu không khớp");
     }
@@ -63,18 +105,19 @@ registerRouter.post(
     const validationErrors = validator.validationResult(req);
 
     if (!validationErrors.isEmpty()) {
-      return res.status(400).render("pages/auth/register.view.ejs", {
+      return res.status(400).render("auth/register.view.ejs", {
         errors: validationErrors.array(),
       });
     }
 
-    const { name, email, phone, password } = req.body;
+    const { name, phone, email, password } = req.body;
+
     const hashedPassword = await argon2.hash(password);
 
     const user = new UserModel({
       name,
-      email,
       phone,
+      email,
       password: hashedPassword,
     });
 
@@ -84,4 +127,9 @@ registerRouter.post(
   },
 );
 
-module.exports = registerRouter;
+authRouter.post("/logout", async (req, res) => {
+  req.session.destroy();
+  res.redirect("/");
+});
+
+module.exports = authRouter;
