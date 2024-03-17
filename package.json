@@ -9,8 +9,8 @@
     "lint": "eslint .",
     "format": "prettier --write .",
     "vercel:dev": "vercel dev",
-    "tailwind:build": "tailwindcss -i styles/tailwind.css -o public/style.css",
-    "tailwind:watch": "tailwindcss -i styles/tailwind.css -o public/style.css --watch"
+    "tailwind:build": "tailwindcss -i styles/tailwind.css -o dist/style.css",
+    "tailwind:watch": "tailwindcss -i styles/tailwind.css -o dist/style.css --watch"
   },
   "dependencies": {
     "argon2": "^0.40.1",

@@ -9,12 +9,17 @@ node_modules/
 .env.*
 !.env.example
 
+# Generated files
+dist/
+
 # Misc
 .DS_Store
 
 # Docker
 .docker/
 
+# Vercel
 .vercel
 
+# Visual Studio Code
 .vscode/
