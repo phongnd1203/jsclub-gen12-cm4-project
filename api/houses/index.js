@@ -5,16 +5,20 @@ const getHouseDetailController = require("../../controllers/houses/getHouseDetai
 const editHouseController = require("../../controllers/houses/editHouse.controller.js");
 const deleteHouseController = require("../../controllers/houses/deleteHouse.controller.js");
 
-const createHouseValidator = require("../../validators/houses/createHouse.validator.js");
-const editHouseValidator = require("../../validators/houses/editHouse.validator.js");
+const houseInputValidator = require("../../middlewares/validators/houses/houseInput.validator.js");
 
 const housesRouter = express.Router();
 
-housesRouter.get("/create", createHouseController.getCreateHousePage);
+housesRouter.get(
+  "/create",
+
+  createHouseController.getCreateHousePage,
+);
 
 housesRouter.post(
   "/create",
-  createHouseValidator,
+  houseInputValidator,
+
   createHouseController.postCreateHouse,
 );
 
@@ -28,16 +32,29 @@ housesRouter.get("/", async (req, res) => {
 
 housesRouter.get("/:id", getHouseDetailController.getHouseDetailPage);
 
-housesRouter.get("/:id/edit", editHouseController.getEditHousePage);
+housesRouter.get(
+  "/:id/edit",
+
+  editHouseController.getEditHousePage,
+);
 
 housesRouter.post(
   "/:id/edit",
-  editHouseValidator,
+  houseInputValidator,
+
   editHouseController.postEditHouse,
 );
 
-housesRouter.get("/:id/delete", deleteHouseController.getDeleteHousePage);
+housesRouter.get(
+  "/:id/delete",
 
-housesRouter.post("/:id/delete", deleteHouseController.postDeleteHouse);
+  deleteHouseController.getDeleteHousePage,
+);
+
+housesRouter.post(
+  "/:id/delete",
+
+  deleteHouseController.postDeleteHouse,
+);
 
 module.exports = housesRouter;

@@ -14,7 +14,7 @@ const getDeleteHousePage = async (req, res) => {
     return res.redirect("/auth/login");
   }
 
-  const house = await getHouseService(id);
+  const house = await getHouseService.getHouse(id);
 
   if (!house) {
     throw new HttpException(StatusCodes.NOT_FOUND, "Nhà không tồn tại");
@@ -41,7 +41,7 @@ const postDeleteHouse = async (req, res) => {
     return res.redirect("/auth/login");
   }
 
-  const house = await deleteHouseService(id, user);
+  const house = await deleteHouseService.deleteHouse(id, user);
 
   return res.redirect("/houses");
 };

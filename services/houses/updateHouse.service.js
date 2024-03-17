@@ -1,3 +1,5 @@
+const HouseModel = require("../../models/houses/house.model.js");
+
 const updateHouse = async (
   id,
   title,
@@ -27,4 +29,4 @@ const updateHouse = async (
   return house;
 };
 
-module.exports = updateHouse;
+module.exports = { updateHouse };

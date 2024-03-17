@@ -26,4 +26,4 @@ const createHouse = async (
   return newHouse;
 };
 
-module.exports = createHouse;
+module.exports = { createHouse };

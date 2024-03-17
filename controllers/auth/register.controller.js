@@ -22,7 +22,7 @@ const postRegister = async (req, res) => {
   const { name, phone, email, password } = req.body;
 
   try {
-    await registerService(name, phone, email, password);
+    await registerService.register(name, phone, email, password);
   } catch (error) {
     throw new HttpException(StatusCodes.BAD_REQUEST, error.message);
   }

@@ -37,7 +37,7 @@ const postCreateHouse = async (req, res) => {
 
   const { user } = req.session;
 
-  const house = await createHouseService(
+  const house = await createHouseService.createHouse(
     user,
     title,
     description,

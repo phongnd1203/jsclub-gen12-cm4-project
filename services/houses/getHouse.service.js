@@ -1,7 +1,7 @@
-const House = require("../../models/houses/house.model.js");
+const HouseModel = require("../../models/houses/house.model.js");
 
 const getHouse = async (id) => {
-  const house = await House.findById(id).populate("owner").lean().exec();
+  const house = await HouseModel.findById(id).populate("owner").lean().exec();
 
   if (!house) {
     throw new Error("Không tìm thấy nhà");
@@ -9,3 +9,5 @@ const getHouse = async (id) => {
 
   return house;
 };
+
+module.exports = { getHouse };

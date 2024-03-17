@@ -25,4 +25,4 @@ const register = async (name, phone, email, password) => {
   return user;
 };
 
-module.exports = register;
+module.exports = { register };

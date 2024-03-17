@@ -18,7 +18,7 @@ const getEditHousePage = async (req, res) => {
     return res.redirect("/auth/login");
   }
 
-  const house = await getHouseService(id);
+  const house = await getHouseService.getHouse(id);
 
   if (!house) {
     throw new HttpException(StatusCodes.NOT_FOUND, "Nhà không tồn tại");

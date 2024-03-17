@@ -1,6 +1,6 @@
 const validator = require("express-validator");
 
-const createHouseValidator = [
+const houseInputValidator = [
   validator.body("title").isString(),
   validator.body("description").isString(),
   validator.body("address").isString(),
@@ -10,4 +10,4 @@ const createHouseValidator = [
   validator.body("availability").isBoolean(),
 ];
 
-module.exports = createHouseValidator;
+module.exports = houseInputValidator;

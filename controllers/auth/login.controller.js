@@ -22,7 +22,7 @@ const postLogin = async (req, res) => {
   const { email, password } = req.body;
 
   try {
-    const user = await loginService(email, password);
+    const user = await loginService.login(email, password);
     req.session.user = user;
   } catch (error) {
     throw new HttpException(StatusCodes.BAD_REQUEST, error.message);

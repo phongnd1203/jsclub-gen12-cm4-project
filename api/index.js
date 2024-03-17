@@ -9,9 +9,12 @@ const session = require("express-session");
 const MongoStore = require("connect-mongo");
 const mongodbConnection = require("../databases/init.mongodb.js");
 
+const appConfig = require("../configs/app.config.js")();
+const mongodbConfig = require("../configs/mongodb.config.js")();
+
 const app = express();
 
-app.use(morgan("dev"));
+app.use(morgan(appConfig.logger.morgan.mode));
 app.use(helmet());
 
 app.set("view engine", "ejs");
@@ -26,22 +29,21 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(
   session({
     name: "sid",
-    secret: process.env.APP_SESSION_SECRET,
+    secret: appConfig.session.secret,
     saveUninitialized: false,
     resave: false,
     cookie: {
       maxAge: 1000 * 60 * 60 * 24 * 7,
       httpOnly: true,
     },
-    store: MongoStore.create({
+    store: new MongoStore({
       client: mongodbConnection.getClient(),
       collectionName: "sessions",
       ttl: 60 * 60 * 24 * 14,
       autoRemove: "native",
       autoRemoveInterval: 10,
       crypto: {
-        secret:
-          process.env.MONGODB_SESSION_SECRET || process.env.APP_SESSION_SECRET,
+        secret: mongodbConfig.session.storage.secret,
       },
     }),
   }),
