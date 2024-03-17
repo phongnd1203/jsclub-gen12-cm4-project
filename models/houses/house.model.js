@@ -44,10 +44,11 @@ const houseSchema = mongoose.Schema(
       type: Boolean,
       default: true,
     },
-    createdBy: {
+    owner: {
       type: mongoose.Schema.Types.ObjectId,
       ref: "User",
       required: true,
+      index: true,
     },
   },
   {
