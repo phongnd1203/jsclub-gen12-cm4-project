@@ -16,6 +16,7 @@ app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "../views"));
 
 app.use(express.static(path.join(__dirname, "../public")));
+app.use(express.static(path.join(__dirname, "../dist")));
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -44,7 +45,7 @@ app.use(
   }),
 );
 
-app.use("/home", require("./home"));
+app.use("/", require("./home"));
 app.use("/login", require("./auth/login"));
 app.use("/register", require("./auth/register"));
 

@@ -9,7 +9,7 @@ const UserModel = require("../../../models/users/user.model.js");
 const loginRouter = express.Router();
 
 loginRouter.get("/", async (req, res) => {
-  res.render("auth/login.view.ejs");
+  res.render("pages/auth/login.view.ejs");
 });
 
 loginRouter.post(
@@ -27,7 +27,7 @@ loginRouter.post(
     const validationErrors = validator.validationResult(req);
 
     if (!validationErrors.isEmpty()) {
-      return res.status(400).render("auth/login.view.ejs", {
+      return res.status(400).render("pages/auth/login.view.ejs", {
         errors: validationErrors.array(),
       });
     }
@@ -40,7 +40,7 @@ loginRouter.post(
       .exec();
 
     if (!user || !(await argon2.verify(user.password, password))) {
-      return res.status(400).render("auth/login.view.ejs", {
+      return res.status(400).render("pages/auth/login.view.ejs", {
         errors: [{ msg: "Email hoặc mật khẩu không chính xác" }],
       });
     }

@@ -1,0 +1,16 @@
+<!doctype html>
+<html lang="en">
+  <%- include('../head.document.ejs', { title: 'Trang chủ' }) %>
+  <body>
+    <header>
+      <%- include('../components/layouts/navbar.layout.ejs') %> <%-
+      include('../components/layouts/banner.layout.ejs') %>
+    </header>
+    <main>
+      <div class="flex items-center justify-center">
+        <%- include('../components/forms/filter.form.ejs', {addresses:
+        locals.addresses}) %>
+      </div>
+    </main>
+  </body>
+</html>
