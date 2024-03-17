@@ -4,7 +4,7 @@ const validator = require("express-validator");
 
 const argon2 = require("argon2");
 
-const UserModel = require("../../../models/users/user.model");
+const UserModel = require("../../../models/users/user.model.js");
 
 const registerRouter = express.Router();
 
