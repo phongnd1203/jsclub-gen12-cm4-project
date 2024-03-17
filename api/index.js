@@ -1,8 +1,9 @@
 const path = require("path");
 
 const express = require("express");
-const bodyParser = require("body-parser");
 const morgan = require("morgan");
+const helmet = require("helmet");
+const bodyParser = require("body-parser");
 const session = require("express-session");
 
 const MongoStore = require("connect-mongo");
@@ -11,6 +12,7 @@ const mongodbConnection = require("../databases/init.mongodb.js");
 const app = express();
 
 app.use(morgan("dev"));
+app.use(helmet());
 
 app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "../views"));
