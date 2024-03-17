@@ -1,6 +1,6 @@
 {
-  "watch": ["**/*.{js,ejs,css}"],
-  "ignore": [".git", "node_modules", "public"],
+  "ext": "js,ejs,css",
+  "ignore": [".git", "node_modules", "dist"],
   "events": {
     "restart": "clear"
   }

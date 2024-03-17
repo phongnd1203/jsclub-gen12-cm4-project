@@ -1,0 +1,24 @@
+<header>
+  <nav class="flex items-center justify-between p-4 font-bold lg:px-6">
+    <div>
+      <!-- logo -->
+    </div>
+    <div>
+      <% if (locals.user) { %>
+      <div>
+        <a href="/profile"> <%= locals.user.name %> </a>
+        <a href="/house/create"> Đăng tin </a>
+      </div>
+      <% } else { %>
+      <ul class="flex flex-row gap-4">
+        <li>
+          <a href="/login"><button class="uppercase">đăng nhập</button></a>
+        </li>
+        <li>
+          <a href="/register"><button class="uppercase">đăng ký</button></a>
+        </li>
+      </ul>
+      <% } %>
+    </div>
+  </nav>
+</header>

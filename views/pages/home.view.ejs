@@ -2,15 +2,13 @@
 <html lang="en">
   <%- include('../head.document.ejs', { title: 'Trang chủ' }) %>
   <body>
-    <header>
-      <%- include('../components/layouts/navbar.layout.ejs') %> <%-
-      include('../components/layouts/banner.layout.ejs') %>
-    </header>
-    <main>
-      <div class="flex items-center justify-center">
-        <%- include('../components/forms/filter.form.ejs', {addresses:
-        locals.addresses}) %>
-      </div>
+    <%- include('../components/layouts/header.layout.ejs') %>
+    <main class="flex flex-col items-center gap-6">
+      <%- include('../components/layouts/home/banner.layout.ejs') %> <%-
+      include('../components/forms/filter.form.ejs', {addresses:
+      locals.addresses}) %> <%-
+      include('../components/layouts/home/featured.layout.ejs', {houses:
+      locals.houses}) %>
     </main>
   </body>
 </html>
