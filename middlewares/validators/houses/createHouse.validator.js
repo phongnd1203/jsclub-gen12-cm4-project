@@ -7,7 +7,7 @@ const houseInputValidator = [
   validator.body("district").isString(),
   validator.body("price").isNumeric(),
   validator.body("area").isNumeric(),
-  validator.body("availability").optional().isString().equals("true"),
+  validator.body("visible").optional().isString().equals("true"),
 ];
 
 module.exports = houseInputValidator;

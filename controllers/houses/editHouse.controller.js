@@ -57,15 +57,8 @@ const postEditHouse = async (req, res, next) => {
 
   const { id } = req.params;
 
-  const {
-    title,
-    description,
-    address,
-    districtCode,
-    price,
-    area,
-    availability,
-  } = req.body;
+  const { title, description, address, districtCode, price, area, visible } =
+    req.body;
 
   const { user } = req.session;
 
@@ -77,7 +70,7 @@ const postEditHouse = async (req, res, next) => {
     districtCode,
     price,
     area,
-    availability,
+    visible,
   );
 
   return res.redirect(`/houses/${id}`);

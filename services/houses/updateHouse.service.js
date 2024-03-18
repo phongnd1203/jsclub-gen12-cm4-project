@@ -8,7 +8,7 @@ const updateHouse = async (
   districtCode,
   price,
   area,
-  availability,
+  visible,
 ) => {
   const house = await HouseModel.findById(id).lean().exec();
 
@@ -22,7 +22,7 @@ const updateHouse = async (
   house.districtCode = districtCode;
   house.price = price;
   house.area = area;
-  house.availability = availability;
+  house.visible = visible;
 
   await house.save();
 

@@ -29,7 +29,7 @@ const postCreateHouse = async (req, res, next) => {
       );
     }
 
-    const { title, description, address, district, price, area, availability } =
+    const { title, description, address, district, price, area, visible } =
       req.body;
 
     const { user } = req.session;
@@ -42,7 +42,7 @@ const postCreateHouse = async (req, res, next) => {
       district,
       price,
       area,
-      availability,
+      visible,
     );
 
     return res.redirect(`/houses/${house._id}`);

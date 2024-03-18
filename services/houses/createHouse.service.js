@@ -8,17 +8,19 @@ const createHouse = async (
   district,
   price,
   area,
-  availability,
+  visible,
 ) => {
   const newHouse = new HouseModel({
     title,
     description,
-    address,
-    district: district,
+    address: {
+      path: address,
+      district,
+    },
     price,
     area,
-    availability,
-    createdBy: user._id,
+    visible,
+    owner: user._id,
   });
 
   await newHouse.save();

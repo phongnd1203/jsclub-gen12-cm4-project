@@ -19,7 +19,7 @@ const addressSchema = mongoose.Schema(
 
 const houseSchema = mongoose.Schema(
   {
-    name: {
+    title: {
       type: String,
       required: true,
     },
@@ -40,7 +40,7 @@ const houseSchema = mongoose.Schema(
       default: 0,
       index: true,
     },
-    availability: {
+    visible: {
       type: Boolean,
       default: true,
     },

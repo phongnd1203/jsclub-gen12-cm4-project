@@ -2,7 +2,7 @@ const { StatusCodes } = require("http-status-codes");
 
 const HttpException = require("../../utils/httpException.js");
 
-const getUserService = require("../../services/users/getUser.service.js");
+const getUserService = require("../../services/users/getUsers.service.js");
 
 const userRoles = require("../../constants/enums/userRoles.enum.js");
 
