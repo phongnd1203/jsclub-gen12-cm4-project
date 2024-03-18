@@ -22,7 +22,7 @@ housesRouter.post(
   createHouseController.postCreateHouse,
 );
 
-housesRouter.get("/", async (req, res) => {
+housesRouter.get("/", async (req, res, next) => {
   const houses = await HouseModel.find().lean().exec();
 
   return res.status(200).render("pages/houses/list.view.ejs", {

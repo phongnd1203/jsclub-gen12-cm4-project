@@ -7,28 +7,38 @@ const HttpException = require("../../utils/httpException.js");
 const loginService = require("../../services/auth/login.service.js");
 
 const getLoginPage = (req, res) => {
+  if (req.session.user) {
+    return res.redirect("/");
+  }
+
   res.render("pages/auth/login.view.ejs");
 };
 
-const postLogin = async (req, res) => {
-  const validationErrors = validationResult(req);
-
-  if (!validationErrors.isEmpty()) {
-    return res.status(400).render("auth/login.view.ejs", {
-      errors: validationErrors.array(),
-    });
-  }
-
-  const { email, password } = req.body;
-
+const postLogin = async (req, res, next) => {
   try {
-    const user = await loginService.login(email, password);
-    req.session.user = user;
-  } catch (error) {
-    throw new HttpException(StatusCodes.BAD_REQUEST, error.message);
-  }
+    const validationErrors = validationResult(req);
 
-  return res.redirect("/");
+    if (!validationErrors.isEmpty()) {
+      throw new HttpException(
+        StatusCodes.BAD_REQUEST,
+        "Thông tin đã nhập không hợp lệ",
+        validationErrors.array(),
+      );
+    }
+
+    const { email, password } = req.body;
+
+    try {
+      const user = await loginService.login(email, password);
+      req.session.user = user;
+    } catch (error) {
+      throw new HttpException(StatusCodes.BAD_REQUEST, error.message);
+    }
+
+    return res.redirect("/");
+  } catch (error) {
+    return next(error);
+  }
 };
 
 module.exports = {

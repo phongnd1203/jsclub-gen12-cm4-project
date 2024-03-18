@@ -6,7 +6,7 @@ const addressSchema = mongoose.Schema(
       type: String,
       required: true,
     },
-    districtCode: {
+    district: {
       type: String,
       required: true,
       index: true,

@@ -1,20 +1,20 @@
-const House = require("../../models/houses/house.model.js");
+const HouseModel = require("../../models/houses/house.model.js");
 
 const createHouse = async (
   user,
   title,
   description,
   address,
-  districtCode,
+  district,
   price,
   area,
   availability,
 ) => {
-  const newHouse = new House({
+  const newHouse = new HouseModel({
     title,
     description,
     address,
-    districtCode,
+    district: district,
     price,
     area,
     availability,

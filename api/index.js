@@ -8,6 +8,7 @@ const session = require("express-session");
 
 const MongoStore = require("connect-mongo");
 const mongodbConnection = require("../databases/init.mongodb.js");
+const { error } = require("console");
 
 const appConfig = require("../configs/app.config.js")();
 const mongodbConfig = require("../configs/mongodb.config.js")();
@@ -15,7 +16,7 @@ const mongodbConfig = require("../configs/mongodb.config.js")();
 const app = express();
 
 app.use(morgan(appConfig.logger.morgan.mode));
-app.use(helmet());
+// app.use(helmet());
 
 app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "../views"));
@@ -49,10 +50,45 @@ app.use(
   }),
 );
 
+app.use(require("../middlewares/districts/loadDistricts.middleware.js"));
+
 app.use("/", require("./home"));
 app.use("/auth", require("./auth"));
 app.use("/house", require("./houses"));
 app.use("/user", require("./users"));
+
+// Test error handling
+app.get("/error", (req, res) => {
+  const { StatusCodes } = require("http-status-codes");
+  const HttpException = require("../utils/httpException.js");
+
+  throw new HttpException(
+    StatusCodes.BAD_REQUEST,
+    "Thông tin đã nhập không hợp lệ",
+    [
+      {
+        message: "Title is required",
+      },
+    ],
+  );
+});
+
+app.post("/error", (req, res) => {
+  const { StatusCodes } = require("http-status-codes");
+  const HttpException = require("../utils/httpException.js");
+
+  throw new HttpException(
+    StatusCodes.BAD_REQUEST,
+    "Thông tin đã nhập không hợp lệ",
+    [
+      {
+        message: "Title is required",
+      },
+    ],
+  );
+});
+
+app.use(require("../middlewares/errors/errorHandler.middleware.js"));
 
 app.on("close", async () => {
   await mongodbConnection.close();

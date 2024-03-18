@@ -1,0 +1,66 @@
+<!-- github profile page -->
+<!doctype html>
+<html lang="en">
+  <!-- css: taiwind -->
+  <%- include('../../head.document.ejs', { title: 'Trang cá nhân' }) %>
+  <body>
+    <%- include('../../components/layouts/header.layout.ejs') %>
+    <main class="h-screen w-full">
+      <div
+        class="grid w-full grid-cols-1 gap-4 p-4 sm:h-full sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5"
+      >
+        <div class="col-span-1">
+          <div
+            class="flex flex-row items-center gap-4 p-2 sm:flex-col sm:items-start"
+          >
+            <div>
+              <img
+                src="https://avatars.githubusercontent.com/u/95513902?v=4"
+                alt="avatar"
+                class="md:border-3 h-16 w-16 rounded-full border object-contain sm:h-full sm:w-full sm:border-2 lg:border-4"
+              />
+            </div>
+            <div class="flex flex-col gap-2">
+              <h1 class="text-2xl font-bold tracking-wide">
+                <%= locals.user.name %>
+              </h1>
+              <div class="flex flex-col gap-1 text-sm">
+                <a href="tel:<%= locals.user.phone %>">
+                  <i class="ti ti-phone"> </i>
+                  <span> <%= locals.user.phone %> </span>
+                </a>
+                <a href="mailto:<%= locals.user.email %>">
+                  <i class="ti ti-mail"></i>
+                  <span> <%= locals.user.email %> </span>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-span-1 sm:col-span-2 md:col-span-3 lg:col-span-4">
+          <div>
+            <div
+              class="flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between"
+            >
+              <h3 class="text-xl font-semibold">Tin của bạn</h3>
+              <a
+                href="/house/create"
+                class="w-full rounded-md border px-4 py-2 text-center sm:w-fit"
+                >Đăng tin</a
+              >
+            </div>
+            <div>
+              <% if (locals.houses) { %> <% locals.houses.forEach(house => { %>
+              <%- include('../../components/cards/house.card.ejs', { house }) %>
+              <% }) %> <% } else { %>
+              <div>
+                <p>Bạn chưa đăng tin nào</p>
+              </div>
+              <% } %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+  </body>
+</html>

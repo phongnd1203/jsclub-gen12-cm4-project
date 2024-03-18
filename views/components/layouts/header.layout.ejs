@@ -1,21 +1,32 @@
 <header>
-  <nav class="flex items-center justify-between p-4 font-bold lg:px-6">
+  <nav class="flex items-center justify-between p-2 lg:px-4">
     <div>
       <!-- logo -->
     </div>
     <div>
       <% if (locals.user) { %>
       <div>
-        <a href="/profile"> <%= locals.user.name %> </a>
-        <a href="/house/create"> Đăng tin </a>
+        <a
+          href="/user/profile"
+          class="flex flex-row-reverse items-center gap-2"
+        >
+          <img
+            src="https://avatars.githubusercontent.com/u/95513902?v=4"
+            alt="avatar"
+            class="h-8 w-8 rounded-full object-contain"
+          />
+          <span> <%= locals.user.name %> </span>
+        </a>
       </div>
       <% } else { %>
       <ul class="flex flex-row gap-4">
         <li>
-          <a href="/login"><button class="uppercase">đăng nhập</button></a>
+          <a href="/auth/login"><button class="uppercase">đăng nhập</button></a>
         </li>
         <li>
-          <a href="/register"><button class="uppercase">đăng ký</button></a>
+          <a href="/auth/register"
+            ><button class="uppercase">đăng ký</button></a
+          >
         </li>
       </ul>
       <% } %>

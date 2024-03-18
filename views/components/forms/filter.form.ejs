@@ -11,10 +11,25 @@
         >
           <option disabled selected value>Khu vực</option>
           <option value="all">Tất cả</option>
-          <% if (locals.addresses) { %> <% locals.addresses.forEach(address => {
-          %>
-          <option value="<%= address.code %>"><%= address.name %></option>
+          <% if (locals.districts) { %> <% locals.districts.forEach(district =>
+          { %>
+          <option value="<%= district.code %>"><%= district.name %></option>
           <% }) %> <% } %>
+        </select>
+      </div>
+      <div class="h-full w-full flex-grow">
+        <select
+          title="area"
+          name="area"
+          id="area"
+          class="h-full w-full rounded-md border p-2"
+        >
+          <option disabled selected value>Diện tích</option>
+          <option value="..30">Dưới 30m2</option>
+          <option value="30..50">30m2 - 50m2</option>
+          <option value="50..70">50m2 - 70m2</option>
+          <option value="70..100">70m2 - 100m2</option>
+          <option value="100..">Trên 100m2</option>
         </select>
       </div>
       <div class="h-full w-full flex-grow">
@@ -33,21 +48,7 @@
           <option value="5000000..">Trên 5 triệu</option>
         </select>
       </div>
-      <div class="h-full w-full flex-grow">
-        <select
-          title="area"
-          name="area"
-          id="area"
-          class="h-full w-full rounded-md border p-2"
-        >
-          <option disabled selected value>Diện tích</option>
-          <option value="..30">Dưới 30m2</option>
-          <option value="30..50">30m2 - 50m2</option>
-          <option value="50..70">50m2 - 70m2</option>
-          <option value="70..100">70m2 - 100m2</option>
-          <option value="100..">Trên 100m2</option>
-        </select>
-      </div>
+
       <div class="h-full w-full flex-grow">
         <button
           type="submit"

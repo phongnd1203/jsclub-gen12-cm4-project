@@ -7,59 +7,74 @@ const deleteUserService = require("../../services/users/deleteUser.service.js");
 
 const userRoles = require("../../constants/enums/userRoles.enum.js");
 
-const getDeleteCurrentUserPage = async (req, res) => {
-  const { user } = req.session;
+const getDeleteCurrentUserPage = async (req, res, next) => {
+  try {
+    const { user } = req.session;
 
-  res.render("pages/users/delete.view.ejs", {
-    user,
-  });
+    res.render("pages/users/delete.view.ejs", {
+      user,
+    });
+  } catch (error) {
+    return next(error);
+  }
 };
 
-const postDeleteCurrentUser = async (req, res) => {
-  const { user } = req.session;
+const postDeleteCurrentUser = async (req, res, next) => {
+  try {
+    const { user } = req.session;
 
-  await deleteUserService.deleteUser(user.id);
+    await deleteUserService.deleteUser(user.id);
+    req.session.destroy();
 
-  req.session.destroy();
-
-  res.redirect("/");
+    res.redirect("/");
+  } catch (error) {
+    return next(error);
+  }
 };
 
-const getDeleteUserPage = async (req, res) => {
-  const { id } = req.params;
+const getDeleteUserPage = async (req, res, next) => {
+  try {
+    const { id } = req.params;
 
-  const { user: currentUser } = req.session;
+    const { user: currentUser } = req.session;
 
-  if (currentUser.id === id) {
-    return res.redirect("/users/delete");
+    if (currentUser.id === id) {
+      return res.redirect("/users/delete");
+    }
+
+    if (userRoles[currentUser.role] > userRoles.admin) {
+      throw new HttpException(
+        StatusCodes.FORBIDDEN,
+        "Không có quyền truy cập trang này",
+      );
+    }
+
+    const user = await getUserService.getUser(id);
+
+    if (!user) {
+      throw new HttpException(StatusCodes.NOT_FOUND, "User not found");
+    }
+
+    res.render("pages/users/delete.view.ejs", {
+      user,
+    });
+  } catch (error) {
+    return next(error);
   }
-
-  if (userRoles[currentUser.role] > userRoles.admin) {
-    throw new HttpException(
-      StatusCodes.FORBIDDEN,
-      "Không có quyền truy cập trang này",
-    );
-  }
-
-  const user = await getUserService.getUser(id);
-
-  if (!user) {
-    throw new HttpException(StatusCodes.NOT_FOUND, "User not found");
-  }
-
-  res.render("pages/users/delete.view.ejs", {
-    user,
-  });
 };
 
-const postDeleteUser = async (req, res) => {
-  const { id } = req.params;
+const postDeleteUser = async (req, res, next) => {
+  try {
+    const { id } = req.params;
 
-  await deleteUserService.deleteUser(id);
+    await deleteUserService.deleteUser(id);
 
-  req.session.destroy();
+    req.session.destroy();
 
-  res.redirect("/");
+    res.redirect("/");
+  } catch (error) {
+    return next(error);
+  }
 };
 
 module.exports = {

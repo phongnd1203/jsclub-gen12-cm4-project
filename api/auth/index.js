@@ -21,6 +21,7 @@ authRouter.post(
   registerController.postRegister,
 );
 
+authRouter.get("/logout", logoutController.postLogout);
 authRouter.post("/logout", logoutController.postLogout);
 
 module.exports = authRouter;

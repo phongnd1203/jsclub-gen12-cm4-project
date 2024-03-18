@@ -4,44 +4,44 @@ const { StatusCodes } = require("http-status-codes");
 
 const HttpException = require("../../utils/httpException.js");
 
-const getHouseService = require("../../services/houses/getHouse.service.js");
+const getHousesService = require("../../services/houses/getHouses.service.js");
 const updateHouseService = require("../../services/houses/updateHouse.service.js");
 
 const userRoles = require("../../constants/enums/userRoles.enum.js");
 
-const getEditHousePage = async (req, res) => {
-  const { id } = req.params;
+const getEditHousePage = async (req, res, next) => {
+  try {
+    const { id } = req.params;
 
-  const { user } = req.session;
+    const { user } = req.session;
 
-  if (!user) {
-    return res.redirect("/auth/login");
+    if (!user) {
+      return res.redirect("/auth/login");
+    }
+
+    const house = await getHousesService.getHouseById(id);
+
+    if (!house) {
+      throw new HttpException(StatusCodes.NOT_FOUND, "Nhà không tồn tại");
+    }
+
+    if (
+      user._id.toString() !== house.owner.toString() ||
+      userRoles[user.role] > userRoles.admin
+    ) {
+      throw new HttpException(StatusCodes.FORBIDDEN, "Không có quyền truy cập");
+    }
+
+    return res.status(200).render("pages/houses/edit.view.ejs", {
+      house,
+    });
+  } catch (error) {
+    return next(error);
   }
-
-  const house = await getHouseService.getHouse(id);
-
-  if (!house) {
-    throw new HttpException(StatusCodes.NOT_FOUND, "Nhà không tồn tại");
-  }
-
-  if (
-    user._id.toString() !== house.owner.toString() ||
-    userRoles[user.role] > userRoles.admin
-  ) {
-    throw new HttpException(StatusCodes.FORBIDDEN, "Không có quyền truy cập");
-  }
-
-  return res.status(200).render("pages/houses/edit.view.ejs", {
-    house,
-  });
 };
 
-const postEditHouse = async (req, res) => {
+const postEditHouse = async (req, res, next) => {
   const validationErrors = validationResult(req);
-
-  if (!validationErrors.isEmpty()) {
-    return res.status(400).json({ errors: validationErrors.array() });
-  }
 
   if (!validationErrors.isEmpty()) {
     throw new HttpException(

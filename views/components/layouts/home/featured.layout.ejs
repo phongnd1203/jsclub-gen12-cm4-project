@@ -1,7 +1,9 @@
 <div class="w-full flex-grow space-y-2 p-4 lg:px-6">
   <h3 class="ml-2 text-xl font-semibold">Trọ nổi bật</h3>
   <% if (locals.featured) { %>
-  <div class="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
+  <div
+    class="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4"
+  >
     <% locals.featured.forEach(house => { %> <%-
     include('../../cards/house.card.ejs', {house: house}) %> <% }) %>
   </div>
