@@ -1,88 +1,125 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Details of house</title>
-    <style>
-      /* CSS để làm đẹp form, bạn có thể tùy chỉnh theo ý muốn */
-      body {
-          font-family: Arial, sans-serif;
-      }
-      form {
-          width: 50%;
-          margin: auto;
-      }
-      label {
-          display: block;
-          margin-bottom: 5px;
-      }
-      input, textarea {
-          width: 100%;
-          padding: 8px;
-          margin-bottom: 10px;
-          border: 1px solid #ccc;
-          border-radius: 4px;
-          box-sizing: border-box;
-      }
-      input[type="submit"] {
-          background-color: #4CAF50;
-          color: white;
-          border: none;
-          cursor: pointer;
-      }
-      input[type="submit"]:hover {
-          background-color: #45a049;
-      }
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Details of house</title>
+  <style>
+    /* CSS để làm đẹp form, bạn có thể tùy chỉnh theo ý muốn */
+    body {
+      font-family: Arial, sans-serif;
+    }
+
+    form {
+      width: 50%;
+      margin: auto;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 5px;
+    }
+
+    input,
+    textarea {
+      width: 100%;
+      padding: 8px;
+      margin-bottom: 10px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      box-sizing: border-box;
+    }
+
+    input[type="submit"] {
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      cursor: pointer;
+    }
+
+    input[type="submit"]:hover {
+      background-color: #45a049;
+    }
+
+    .comment-box {
+      width: 300px;
+      margin: 20px auto;
+    }
+
+    .comment {
+      background-color: #f0f0f0;
+      padding: 10px;
+      margin-bottom: 10px;
+    }
+
+    .delete-btn {
+      background-color: #ff0000;
+      color: #fff;
+      border: none;
+      padding: 5px 10px;
+      cursor: pointer;
+      float: right;
+    }
   </style>
-  </head>
+</head>
 
-  <body>
-    <main>
-      <h1>Details of house</h1>
-      <h1>
-        Tên trọ:
-        <%= house.title %>
-      </h1>
-      <h1>
-        Miêu tả
-        <%= house.description %>
-      </h1>
-      <h1>
-        Địa chỉ:
-        <%= house.address.path %>
-      </h1>
-      <h1>
-        Giá:
-        <%= house.price %>
-      </h1>
-      <h1>
-        Diện tích:
-        <%= house.area %>
-      </h1>
-      <div></div>
-      </form>
-
-      <h1>Comments</h1>
-      <% if (comments) { %>
-          <ul>
-              <% comments.forEach(comment => { %>
-                  <li>
-                      <strong><%= comment.owner.name %></strong> 
-                      <textarea cols="30" rows="10"><%= comment.comment %></textarea>
-                  </li>
-              <% }); %>
-          </ul>
-      <% } else { %>
-          <p>No comments available.</p>
-      <% } %>
-
-      <form method="post">    
-        <label for="comment">Bình luận:</label>
-        <textarea id="comment" name="comment" rows="4" required></textarea>
-    
-        <input type="submit" value="Gửi">
+<body>
+  <main>
+    <h1>Details of house</h1>
+    <h1>
+      Tên trọ:
+      <%= house.title %>
+    </h1>
+    <h1>
+      Miêu tả
+      <%= house.description %>
+    </h1>
+    <h1>
+      Địa chỉ:
+      <%= house.address.path %>
+    </h1>
+    <h1>
+      Giá:
+      <%= house.price %>
+    </h1>
+    <h1>
+      Diện tích:
+      <%= house.area %>
+    </h1>
+    <div></div>
     </form>
-    </main>
-  </body>
+
+    <h1>Comments</h1>
+    <% if (comments.length> 0) { %>
+      <ul>
+        <% comments.forEach(comment=> { %>
+          <div class="comment-box">
+            <div class="comment">
+              <p><strong>Author:</strong>
+                <%=comment.owner.name%>
+              </p>
+              <p>
+                <%= comment.comment %>
+              </p>
+              <a href="/house/delete/comment/<%=comment._id %>">
+                <button class="delete">Delete</button>
+              </a>
+            </div>
+          </div>
+          <% }); %>
+      </ul>
+      <% } else { %>
+        <p>No comments available.</p>
+        <% } %>
+
+          <form method="post">
+            <label for="comment">Bình luận:</label>
+            <textarea id="comment" name="comment" rows="4" required></textarea>
+
+            <input type="submit" value="Gửi">
+          </form>
+  </main>
+</body>
+
 </html>

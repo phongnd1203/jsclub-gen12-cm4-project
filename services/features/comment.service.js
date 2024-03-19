@@ -11,19 +11,18 @@ const createComment = async (house, owner, comment) => {
 }
 
 const getAllComment = async (house) => {
-    const comments = await CommentModel.find({house}).exec();
+    const comments = await CommentModel.find({house}).populate('owner', 'name').exec();
     return comments;
 }
 
 
-// const deleteComment = async (id) => {
-//     await commentModel.findByIdAndDelete(id).lean().exec();
-//     return;
-// }
+const deleteComment = async (id) => {
+    await CommentModel.findByIdAndDelete(id).lean().exec();
+}
 
 
 module.exports = {
     getAllComment,
     createComment,
-    // deleteComment
+    deleteComment
 };
