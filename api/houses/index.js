@@ -7,6 +7,8 @@ const deleteHouseController = require("../../controllers/houses/deleteHouse.cont
 
 const createHouseValidator = require("../../middlewares/validators/houses/createHouse.validator.js");
 
+const HouseModel = require('../../models/houses/house.model.js')
+
 const housesRouter = express.Router();
 
 housesRouter.get(
@@ -26,7 +28,7 @@ housesRouter.get("/", async (req, res, next) => {
   const houses = await HouseModel.find().lean().exec();
 
   return res.status(200).render("pages/houses/list.view.ejs", {
-    houses,
+    houses
   });
 });
 

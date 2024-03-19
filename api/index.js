@@ -53,6 +53,7 @@ app.use("/", require("./home"));
 app.use("/auth", require("./auth"));
 app.use("/house", require("./houses"));
 app.use("/user", require("./users"));
+app.use("/house", require('./feature/comment'));
 
 // Test error handling
 app.get("/error", (req, res) => {

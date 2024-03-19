@@ -45,7 +45,7 @@ const postCreateHouse = async (req, res, next) => {
       visible,
     );
 
-    return res.redirect(`/houses/${house._id}`);
+    return res.redirect(`/house/${house._id}`);
   } catch (error) {
     return next(error);
   }
