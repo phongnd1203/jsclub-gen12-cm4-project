@@ -2,6 +2,8 @@ const mongoose = require("mongoose");
 
 const userRoles = require("../../constants/enums/userRoles.enum.js");
 
+const ObjectId = require('mongodb').ObjectId;
+
 const userSchema = new mongoose.Schema(
   {
     name: {
@@ -31,6 +33,10 @@ const userSchema = new mongoose.Schema(
       enum: Object.keys(userRoles),
       default: "user",
     },
+    followers:[{type:ObjectId, ref:"User"}],
+    following:[{type:ObjectId, ref:"User"}]
+
+    ,
   },
   {
     timestamps: true,
