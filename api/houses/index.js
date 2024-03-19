@@ -1,58 +1,51 @@
 const express = require("express");
 
 const createHouseController = require("../../controllers/houses/createHouse.controller.js");
+const listHousesController = require("../../controllers/houses/listHouses.controller.js");
 const getHouseDetailController = require("../../controllers/houses/getHouseDetail.controller.js");
 const editHouseController = require("../../controllers/houses/editHouse.controller.js");
 const deleteHouseController = require("../../controllers/houses/deleteHouse.controller.js");
 
-const createHouseValidator = require("../../middlewares/validators/houses/createHouse.validator.js");
+const createHouseValidator = require("../../validators/houses/createHouse.validator.js");
+
+const uploadHandler = require("../../middlewares/files/uploadHandler.middleware.js");
 
 const housesRouter = express.Router();
 
-housesRouter.get(
-  "/create",
-
-  createHouseController.getCreateHousePage,
-);
+housesRouter.get("/house/create", createHouseController.getCreateHousePage);
 
 housesRouter.post(
-  "/create",
+  "/house/create",
   createHouseValidator,
-
+  uploadHandler().single("image"),
   createHouseController.postCreateHouse,
 );
 
-housesRouter.get("/", async (req, res, next) => {
-  const houses = await HouseModel.find().lean().exec();
+housesRouter.get("/houses", listHousesController.getListHousesPage);
 
-  return res.status(200).render("pages/houses/list.view.ejs", {
-    houses,
-  });
-});
-
-housesRouter.get("/:id", getHouseDetailController.getHouseDetailPage);
+housesRouter.get("/house/:id", getHouseDetailController.getHouseDetailPage);
 
 housesRouter.get(
-  "/:id/edit",
+  "/house/:id/edit",
 
   editHouseController.getEditHousePage,
 );
 
 housesRouter.post(
-  "/:id/edit",
+  "/house/:id/edit",
   createHouseValidator,
 
   editHouseController.postEditHouse,
 );
 
 housesRouter.get(
-  "/:id/delete",
+  "/house/:id/delete",
 
   deleteHouseController.getDeleteHousePage,
 );
 
 housesRouter.post(
-  "/:id/delete",
+  "/house/:id/delete",
 
   deleteHouseController.postDeleteHouse,
 );

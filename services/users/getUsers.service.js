@@ -1,13 +1,8 @@
 const UserModel = require("../../models/users/user.model.js");
 
-const getUser = async (id) => {
-  const user = await UserModel.findById(id).lean().exec();
-
-  if (!user) {
-    throw new Error("User not found");
-  }
-
+const getUserById = async (id) => {
+  const user = await UserModel.findById(id).exec();
   return user;
 };
 
-module.exports = { getUser };
+module.exports = { getUserById };

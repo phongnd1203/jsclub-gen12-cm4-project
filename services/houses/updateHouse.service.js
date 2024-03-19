@@ -10,7 +10,7 @@ const updateHouse = async (
   area,
   visible,
 ) => {
-  const house = await HouseModel.findById(id).lean().exec();
+  const house = await HouseModel.findById(id).exec();
 
   if (!house) {
     throw new Error("Không tìm thấy nhà");

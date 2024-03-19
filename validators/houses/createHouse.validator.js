@@ -5,8 +5,8 @@ const houseInputValidator = [
   validator.body("description").isString(),
   validator.body("address").isString(),
   validator.body("district").isString(),
-  validator.body("price").isNumeric(),
-  validator.body("area").isNumeric(),
+  validator.body("price").isInt({ min: 0 }),
+  validator.body("area").isInt({ min: 0 }),
   validator.body("visible").optional().isString().equals("true"),
 ];
 
