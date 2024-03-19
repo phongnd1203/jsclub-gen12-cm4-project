@@ -22,9 +22,7 @@ const postLogin = async (req, res, next) => {
       throw new HttpException(
         StatusCodes.BAD_REQUEST,
         "Thông tin đã nhập không hợp lệ",
-        {
-          errors: validationErrors.array(),
-        },
+        validationErrors.array(),
       );
     }
 

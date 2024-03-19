@@ -37,7 +37,7 @@ const getUserProfilePage = async (req, res, next) => {
       return res.redirect("/users/profile");
     }
 
-    const user = await getUserService.getUserById(id);
+    const user = await getUserService.getUser(id);
 
     if (!user) {
       throw new HttpException(StatusCodes.NOT_FOUND, "User not found");

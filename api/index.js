@@ -7,6 +7,7 @@ const session = require("express-session");
 
 const MongoStore = require("connect-mongo");
 const mongodbConnection = require("../databases/init.mongodb.js");
+const { error } = require("console");
 
 const { config } = require("../configs/app.config.js");
 
@@ -46,14 +47,43 @@ app.use(
   }),
 );
 
-app.use(require("../middlewares/loaders/dataLoader.middleware.js"));
+app.use(require("../middlewares/districts/loadDistricts.middleware.js"));
 
 app.use("/", require("./home"));
-app.use("/", require("./auth"));
-app.use("/", require("./user"));
-app.use("/", require("./users"));
-app.use("/", require("./admin"));
-app.use("/", require("./houses"));
+app.use("/auth", require("./auth"));
+app.use("/house", require("./houses"));
+app.use("/user", require("./users"));
+
+// Test error handling
+app.get("/error", (req, res) => {
+  const { StatusCodes } = require("http-status-codes");
+  const HttpException = require("../utils/httpException.js");
+
+  throw new HttpException(
+    StatusCodes.BAD_REQUEST,
+    "Thông tin đã nhập không hợp lệ",
+    [
+      {
+        message: "Title is required",
+      },
+    ],
+  );
+});
+
+app.post("/error", (req, res) => {
+  const { StatusCodes } = require("http-status-codes");
+  const HttpException = require("../utils/httpException.js");
+
+  throw new HttpException(
+    StatusCodes.BAD_REQUEST,
+    "Thông tin đã nhập không hợp lệ",
+    [
+      {
+        message: "Title is required",
+      },
+    ],
+  );
+});
 
 app.use(require("../middlewares/errors/errorHandler.middleware.js"));
 

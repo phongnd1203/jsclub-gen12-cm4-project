@@ -5,7 +5,7 @@ const UserModel = require("../../models/users/user.model.js");
 const login = async (email, password) => {
   const user = await UserModel.findOne({ email })
     .select("+password")
-
+    .lean()
     .exec();
 
   if (!user || !(await argon2.verify(user.password, password))) {

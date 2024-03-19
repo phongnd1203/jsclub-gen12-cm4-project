@@ -5,9 +5,9 @@ const registerController = require("../../controllers/auth/register.controller.j
 const forgotPasswordController = require("../../controllers/auth/forgotPassword.controller.js");
 const logoutController = require("../../controllers/auth/logout.controller.js");
 
-const loginValidator = require("../../validators/auth/login.validators.js");
-const registerValidator = require("../../validators/auth/register.validators.js");
-const forgotPasswordValidator = require("../../validators/auth/forgotPassword.validators.js");
+const loginValidator = require("../../middlewares/validators/auth/login.validators.js");
+const registerValidator = require("../../middlewares/validators/auth/register.validators.js");
+const forgotPasswordValidator = require("../../middlewares/validators/auth/forgotPassword.validators.js");
 
 const authRouter = express.Router();
 
