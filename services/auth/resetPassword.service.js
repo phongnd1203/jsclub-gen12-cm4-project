@@ -5,7 +5,7 @@ const UsersModel = require("../../models/users/user.model.js");
 const jwt = require("../../utils/jwt.js");
 
 const createResetPasswordToken = async (email) => {
-  const user = await UsersModel.findOne({ email }).select("_id").lean().exec();
+  const user = await UsersModel.findOne({ email }).select("_id").exec();
 
   if (!user) {
     throw new Error("Tài khoản không tồn tại");
@@ -35,7 +35,7 @@ const resetPassword = async (token, password) => {
       _id: 1,
       password: 1,
     })
-    .lean()
+
     .exec();
 
   if (!user || (user && !user.password)) {

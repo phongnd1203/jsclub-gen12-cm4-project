@@ -44,6 +44,12 @@ const houseSchema = mongoose.Schema(
       type: Boolean,
       default: true,
     },
+    images: [
+      {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "File",
+      },
+    ],
     owner: {
       type: mongoose.Schema.Types.ObjectId,
       ref: "User",

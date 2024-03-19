@@ -22,6 +22,10 @@ const userSchema = new mongoose.Schema(
       type: String,
       select: false,
     },
+    avatar: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "File",
+    },
     role: {
       type: String,
       enum: Object.keys(userRoles),
