@@ -6,7 +6,7 @@ const dashboardController = require("../../controllers/admin/dashboard.controlle
 
 const checkAdmin = require("../../middlewares/auth/checkAdmin.middleware.js");
 
-adminRouter.use(checkAdmin());
+// adminRouter.use(checkAdmin());
 
 adminRouter.get("/admin", (req, res) => {
   res.redirect(301, "/admin/dashboard");

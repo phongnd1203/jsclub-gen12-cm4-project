@@ -5,4 +5,9 @@ const getUserById = async (id) => {
   return user;
 };
 
-module.exports = { getUserById };
+const getUsers = async () => {
+  const user = await UserModel.find().exec();
+  return user;
+};
+
+module.exports = {getUserById , getUsers};

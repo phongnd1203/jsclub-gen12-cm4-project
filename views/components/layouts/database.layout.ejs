@@ -1,0 +1,44 @@
+<div class="page-body">
+    <div class="container-xl">
+      <div class="card">
+        <div class="card-body">
+          <div id="table-default" class="table-responsive">
+            <table class="table">
+              <thead>
+                <tr>
+                  <th><button class="table-sort" data-sort="sort-name">Name</button></th>
+                  <th><button class="table-sort" data-sort="sort-email">Email</button></th>
+                  <th><button class="table-sort" data-sort="sort-phone">Phone number</button></th>
+                  <th><button class="table-sort" data-sort="sort-role">Role</button></th>
+                  <th><button class="table-sort" data-sort="sort-created-date">Created date</button></th>
+                </tr>
+              </thead>
+              <tbody class="table-tbody">
+                <% locals.users.forEach(element => { %>
+                <tr>
+                  <td class="sort-name">
+                    <%= locals.user.name %>
+                  </td>
+                  <td class="sort-email">
+                    <%= locals.user.email %>
+                  </td>
+                  <td class="sort-phone">
+                    <%= locals.user.phone %>
+                  </td>
+                  <td class="sort-role" data-date="1628071164">
+                    <%= locals.user.role %>
+                  </td>
+                  <td class="sort-created-date">
+                    <%= locals.user.createdAt %>
+                  </td>
+                </tr>
+            <%}) %> 
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
