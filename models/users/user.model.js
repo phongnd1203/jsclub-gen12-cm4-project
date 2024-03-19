@@ -27,10 +27,11 @@ const userSchema = new mongoose.Schema(
       enum: Object.keys(userRoles),
       default: "user",
     },
+  
+    following:[{type:mongoose.Schema.Types.ObjectId, ref:"User"}],
+    followers:[{type:mongoose.Schema.Types.ObjectId, ref:"User"}]
+  
   },
-  following:[{type:mongoose.Schema.Types.ObjectId}, ref:"User"],
-  followers:[{type:mongoose.Schema.Types.ObjectId}, ref:"User"]
-  ,
   {
     timestamps: true,
   },
