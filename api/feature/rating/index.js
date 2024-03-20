@@ -1,12 +1,10 @@
-const express = require('express');
+const express = require("express");
 const ratingRouter = express.Router();
-const UserModel = require('../../../models/users/user.model');
-const ratingService = require('../../../services/features/rating.service');
+const UserModel = require("../../../models/users/user.model");
+const ratingController = require("../../../controllers/features/rating.controller");
 
-ratingRouter.post('/rate/create', ratingService.addRating);
+ratingRouter.post("/:houseId/rate/create", ratingController.createRatingPage);
 
-ratingRouter.post('/rate/update', ratingService.updateRating);
-
-ratingRouter.post('/rate/delete', ratingService.deleteRating);
+ratingRouter.get('/:houseId/rate/delete', ratingController.deleteRatingPage);
 
 module.exports = ratingRouter;

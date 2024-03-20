@@ -1,74 +1,57 @@
-const HouseModel = require('./path/to/HouseModel'); // Import your House model
- 
+const RatingModel = require('../../models/feature/rating.model');
+
 // CREATE: Thêm một đánh giá mới
-const addRating = async (houseId, userId, stars) => {
+const addRating = async (house, user, score) => {
   try {
-    const house = await HouseModel.findById(houseId);
-    if (!house) {
-      throw new Error("House not found");
+    const newRate = new RatingModel({
+      house,
+      user,
+      score
+    });
+    const rate = await RatingModel.findOne({ house, user }).exec();
+    if (rate) { //update
+      rate.score = score;
+      await rate.save();
+    } else {
+      await newRate.save();
     }
-
-    house.ratings.push({ user: userId, stars });
-    await house.save();
-    return house;
+    return newRate;
   } catch (error) {
     throw error;
   }
 };
 
-// READ: Lấy tất cả đánh giá của một căn nhà
-const getRatings = async (houseId) => {
+
+// READ: Lấy trung binh cong đánh giá của một căn nhà
+const getAverageRatings = async (houseId) => {
   try {
-    const house = await HouseModel.findById(houseId);
-    if (!house) {
-      throw new Error("House not found");
+    const rates = await RatingModel.find({ house: houseId }).exec();
+
+    if (!rates) return 0;
+    else {
+      let sum = 0;
+      for (let i = 0; i < rates.length; i++)
+        sum += rates[i].score;
+      return sum / rates.length;
     }
-    return house.ratings;
   } catch (error) {
     throw error;
   }
 };
 
-// UPDATE: Cập nhật đánh giá của một người dùng
-const updateRating = async (houseId, userId, stars) => {
+
+// // DELETE: Xóa đánh giá của một người dùng
+const deleteRating = async (house, user) => {
   try {
-    const house = await HouseModel.findById(houseId);
-    if (!house) {
-      throw new Error("House not found");
-    }
-
-    const rating = house.ratings.find(rating => rating.user.equals(userId));
-    if (!rating) {
-      throw new Error("Rating not found");
-    }
-
-    rating.stars = stars;
-    await house.save();
-    return house;
+    // const rate = await RatingModel.findOne({ house, user }).exec();
+    await RatingModel.deleteOne({ house, user }).exec();
   } catch (error) {
     throw error;
   }
 };
 
-// DELETE: Xóa đánh giá của một người dùng
-const deleteRating = async (houseId, userId) => {
-  try {
-    const house = await HouseModel.findById(houseId);
-    if (!house) {
-      throw new Error("House not found");
-    }
-
-    house.ratings = house.ratings.filter(rating => !rating.user.equals(userId));
-    await house.save();
-    return house;
-  } catch (error) {
-    throw error;
-  }
-};
-
-module.exports = { 
-  addRating, 
-  getRatings, 
-  updateRating, 
-  deleteRating 
+module.exports = {
+  addRating,
+  getAverageRatings,
+  deleteRating
 };

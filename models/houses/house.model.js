@@ -40,21 +40,6 @@ const houseSchema = mongoose.Schema(
       default: 0,
       index: true,
     },
-    ratings: {
-      type: [{
-        user: {
-          type: mongoose.Schema.Types.ObjectId,
-          ref: "User",
-          required: true
-        },
-        stars: {
-          type: Number,
-          enum: [1, 2, 3, 4, 5],
-          required: true
-        }
-      }],
-      default: []
-    },
     visible: {
       type: Boolean,
       default: true,

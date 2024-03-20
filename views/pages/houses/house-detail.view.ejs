@@ -32,14 +32,14 @@
     }
 
     input[type="submit"] {
-      background-color: #4CAF50;
-      color: white;
+      background-rating: #4CAF50;
+      rating: white;
       border: none;
       cursor: pointer;
     }
 
     input[type="submit"]:hover {
-      background-color: #45a049;
+      background-rating: #45a049;
     }
 
     .comment-box {
@@ -48,51 +48,21 @@
     }
 
     .comment {
-      background-color: #f0f0f0;
+      background-rating: #f0f0f0;
       padding: 10px;
       margin-bottom: 10px;
     }
 
     .delete-btn {
-      background-color: #ff0000;
-      color: #fff;
+      background-rating: #ff0000;
+      rating: #fff;
       border: none;
       padding: 5px 10px;
       cursor: pointer;
       float: right;
     }
 
-    .rating {
-      display: inline-block;
-    }
-
-    .rating input {
-      display: none;
-    }
-
-    .rating label {
-      cursor: pointer;
-      width: 30px;
-      height: 30px;
-      margin: 0 2px;
-      background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRyk4FpIm61QvXYX86YnTFPCT-U1XIkOnMzGw&usqp=CAU');
-      background-size: cover;
-    }
-
-    /* Set default star appearance */
-    .rating label:before {
-      content: "\2605";
-      /* Unicode character for a star (★) */
-      position: absolute;
-      opacity: 0;
-    }
-
-    /* Set star color when checked */
-    .rating input:checked~label:before {
-      opacity: 1;
-      color: #ffcc00;
-      /* Your chosen star color */
-    }
+  
   </style>
 </head>
 
@@ -123,18 +93,28 @@
     </form>
 
 
-    <!-- <div class="rating">
-      <input type="radio" id="star5" name="rating" value="5">
-      <label for="star5"></label>
-      <input type="radio" id="star4" name="rating" value="4">
-      <label for="star4"></label>
-      <input type="radio" id="star3" name="rating" value="3">
-      <label for="star3"></label>
-      <input type="radio" id="star2" name="rating" value="2">
-      <label for="star2"></label>
-      <input type="radio" id="star1" name="rating" value="1">
-      <label for="star1"></label>
-    </div> -->
+    <div class="rating"> 
+      <div class="average">
+        <h1>Đánh giá trung bình: <%= averageRating %></h1> 
+       
+      </div>
+      <br> <br>
+      <div class="make-rate">
+        <form action="/house/<%= house._id %>/rate/create" method="post">
+          <label for="rating"><h1>Đánh giá của bạn:</h1></label>
+          <input type="radio" name="rating" value="1" /> Rất tệ
+          <input type="radio" name="rating" value="2" /> Tệ	
+          <input type="radio" name="rating" value="3" /> Trung bình
+          <input type="radio" name="rating" value="4"  /> Tốt	
+          <input type="radio" name="rating" value="5" /> Tuyệt vời
+          <input type="submit" value="Gửi">
+        </form>
+      </div>
+    </div>
+
+    <a href="/house/<%= house._id %>/rate/delete">
+      <button class="delete">Xóa đánh giá của bạn</button>
+    </a>
 
 
 
