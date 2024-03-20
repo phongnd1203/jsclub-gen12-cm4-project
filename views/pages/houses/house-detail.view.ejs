@@ -61,6 +61,38 @@
       cursor: pointer;
       float: right;
     }
+
+    .rating {
+      display: inline-block;
+    }
+
+    .rating input {
+      display: none;
+    }
+
+    .rating label {
+      cursor: pointer;
+      width: 30px;
+      height: 30px;
+      margin: 0 2px;
+      background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRyk4FpIm61QvXYX86YnTFPCT-U1XIkOnMzGw&usqp=CAU');
+      background-size: cover;
+    }
+
+    /* Set default star appearance */
+    .rating label:before {
+      content: "\2605";
+      /* Unicode character for a star (★) */
+      position: absolute;
+      opacity: 0;
+    }
+
+    /* Set star color when checked */
+    .rating input:checked~label:before {
+      opacity: 1;
+      color: #ffcc00;
+      /* Your chosen star color */
+    }
   </style>
 </head>
 
@@ -89,6 +121,22 @@
     </h1>
     <div></div>
     </form>
+
+
+    <!-- <div class="rating">
+      <input type="radio" id="star5" name="rating" value="5">
+      <label for="star5"></label>
+      <input type="radio" id="star4" name="rating" value="4">
+      <label for="star4"></label>
+      <input type="radio" id="star3" name="rating" value="3">
+      <label for="star3"></label>
+      <input type="radio" id="star2" name="rating" value="2">
+      <label for="star2"></label>
+      <input type="radio" id="star1" name="rating" value="1">
+      <label for="star1"></label>
+    </div> -->
+
+
 
     <h1>Comments</h1>
     <% if (comments.length> 0) { %>
