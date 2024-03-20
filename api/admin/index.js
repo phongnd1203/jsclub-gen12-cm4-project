@@ -5,6 +5,9 @@ const adminRouter = express.Router();
 const dashboardController = require("../../controllers/admin/dashboard.controller.js");
 const usersDataController = require("../../controllers/admin/usersData.controller.js");
 
+const deleteCommentController = require("../../controllers/admin/deleteComment.controller.js");
+const listCommentController = require("../../controllers/admin/listComment.controller.js");
+
 const checkAuth = require("../../middlewares/checkAuth.middleware.js");
 const userRoles = require("../../enums/userRoles.enum.js");
 
