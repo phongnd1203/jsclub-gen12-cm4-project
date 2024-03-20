@@ -6,9 +6,19 @@ const isProduction = nodeEnv === "production";
 const appConfig = () => ({
   app: {
     env: nodeEnv,
+    isProduction,
+    secret:
+      process.env.APP_SECRET ||
+      (isProduction
+        ? undefined
+        : crypto
+            .generateKeySync("aes", { length: 256 })
+            .export()
+            .toString("base64url")),
     session: {
       secret:
         process.env.SESSION_SECRET ||
+        process.env.APP_SECRET ||
         (isProduction
           ? undefined
           : crypto
@@ -17,6 +27,15 @@ const appConfig = () => ({
               .toString("base64url")),
     },
   },
+  firebase: {
+    apiKey: process.env.FIREBASE_API_KEY,
+    authDomain: process.env.FIREBASE_AUTH_DOMAIN,
+    databaseURL: process.env.FIREBASE_DATABASE_URL,
+    projectId: process.env.FIREBASE_PROJECT_ID,
+    storageBucket: process.env.FIREBASE_STORAGE_BUCKET,
+    messagingSenderId: process.env.FIREBASE_MESSAGING_SENDER_ID,
+    appId: process.env.FIREBASE_APP_ID,
+  },
   jwt: {
     encryption: {
       useAsymmetric: parseInt(process.env.JWT_USE_ASYMMETRIC, 10) || 0,
@@ -24,6 +43,7 @@ const appConfig = () => ({
         algorithm: process.env.JWT_SYMMETRIC_ALGORITHM || "HS256",
         secret:
           process.env.JWT_SYMMETRIC_SECRET ||
+          process.env.APP_SECRET ||
           (isProduction
             ? undefined
             : crypto
@@ -33,20 +53,18 @@ const appConfig = () => ({
       },
       asymmetric: {
         algorithm: process.env.JWT_ASYMMETRIC_ALGORITHM || "RS256",
+        passphrase: process.env.JWT_ASYMMETRIC_PASSPHRASE,
         keyPair: (() => {
           const keyPair = {
             privateKey: process.env.JWT_ASYMMETRIC_PRIVATE_KEY,
             publicKey: process.env.JWT_ASYMMETRIC_PUBLIC_KEY,
           };
-
           if (keyPair.privateKey && keyPair.publicKey) {
             return keyPair;
           }
-
           if (isProduction) {
             return undefined;
           }
-
           return crypto.generateKeyPairSync("rsa", {
             modulusLength: 2048,
             publicKeyEncoding: { type: "spki", format: "pem" },
@@ -68,6 +86,8 @@ const appConfig = () => ({
       storage: {
         secret:
           process.env.MONGODB_SESSION_STORAGE_SECRET ||
+          process.env.SESSION_SECRET ||
+          process.env.APP_SECRET ||
           (isProduction
             ? undefined
             : crypto
@@ -81,8 +101,4 @@ const appConfig = () => ({
     format: process.env.MORGAN_FORMAT || (isProduction ? "combined" : "dev"),
   },
 });
-
-module.exports = {
-  appConfig,
-  config: appConfig(),
-};
+module.exports = { appConfig, config: appConfig() };

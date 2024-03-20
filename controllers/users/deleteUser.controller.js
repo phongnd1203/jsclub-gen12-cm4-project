@@ -11,7 +11,7 @@ const getDeleteCurrentUserPage = async (req, res, next) => {
   try {
     const { user } = req.session;
 
-    res.render("pages/users/delete.view.ejs", {
+    return res.render("users/delete.ejs", {
       user,
     });
   } catch (error) {
@@ -55,7 +55,7 @@ const getDeleteUserPage = async (req, res, next) => {
       throw new HttpException(StatusCodes.NOT_FOUND, "User not found");
     }
 
-    res.render("pages/users/delete.view.ejs", {
+    return res.render("users/delete.ejs", {
       user,
     });
   } catch (error) {

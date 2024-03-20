@@ -1,10 +1,10 @@
 const getHomePage = async (req, res, next) => {
   try {
-    const { user } = req.session;
+    const metadata = {
+      title: "Trang chủ",
+    };
 
-    return res.render("pages/home.view.ejs", {
-      user,
-    });
+    return res.render("home", { metadata });
   } catch (error) {
     return next(error);
   }

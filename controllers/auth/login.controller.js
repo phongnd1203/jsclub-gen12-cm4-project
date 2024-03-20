@@ -7,11 +7,15 @@ const HttpException = require("../../utils/httpException.js");
 const loginService = require("../../services/auth/login.service.js");
 
 const getLoginPage = (req, res) => {
-  if (req.session.user) {
+  if (req.session.userId) {
     return res.redirect("/");
   }
 
-  res.render("pages/auth/login.view.ejs");
+  const metadata = {
+    title: "Đăng nhập",
+  };
+
+  return res.render("auth/login.ejs", { metadata });
 };
 
 const postLogin = async (req, res, next) => {
@@ -30,7 +34,7 @@ const postLogin = async (req, res, next) => {
 
     try {
       const user = await loginService.login(email, password);
-      req.session.user = user;
+      req.session.userId = user._id;
     } catch (error) {
       throw new HttpException(StatusCodes.BAD_REQUEST, error.message);
     }

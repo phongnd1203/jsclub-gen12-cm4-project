@@ -1,13 +1,16 @@
 const path = require("path");
 
 const express = require("express");
-const morgan = require("morgan");
-const bodyParser = require("body-parser");
-const session = require("express-session");
 
+const bodyParser = require("body-parser");
+
+const timeout = require("connect-timeout");
+
+const morgan = require("morgan");
+
+const session = require("express-session");
 const MongoStore = require("connect-mongo");
 const mongodbConnection = require("../databases/init.mongodb.js");
-const { error } = require("console");
 
 const { config } = require("../configs/app.config.js");
 
@@ -16,10 +19,13 @@ const app = express();
 app.use(morgan(config.morgan.format));
 
 app.set("view engine", "ejs");
-app.set("views", path.join(__dirname, "../views"));
+app.set("views", path.join(__dirname, "../views/pages"));
 
-app.use(express.static(path.join(__dirname, "../public")));
-app.use(express.static(path.join(__dirname, "../dist")));
+app.use(
+  express.static(path.join(__dirname, "../public"), {
+    maxAge: config.app.isProduction ? 1000 * 60 * 60 * 24 * 7 : 0,
+  }),
+);
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -47,43 +53,15 @@ app.use(
   }),
 );
 
-app.use(require("../middlewares/districts/loadDistricts.middleware.js"));
+app.use(timeout("5s"));
+
+app.use(require("../middlewares/loaders/dataLoader.middleware.js"));
 
 app.use("/", require("./home"));
 app.use("/auth", require("./auth"));
-app.use("/house", require("./houses"));
-app.use("/user", require("./users"));
-
-// Test error handling
-app.get("/error", (req, res) => {
-  const { StatusCodes } = require("http-status-codes");
-  const HttpException = require("../utils/httpException.js");
-
-  throw new HttpException(
-    StatusCodes.BAD_REQUEST,
-    "Thông tin đã nhập không hợp lệ",
-    [
-      {
-        message: "Title is required",
-      },
-    ],
-  );
-});
-
-app.post("/error", (req, res) => {
-  const { StatusCodes } = require("http-status-codes");
-  const HttpException = require("../utils/httpException.js");
-
-  throw new HttpException(
-    StatusCodes.BAD_REQUEST,
-    "Thông tin đã nhập không hợp lệ",
-    [
-      {
-        message: "Title is required",
-      },
-    ],
-  );
-});
+app.use("/user", require("./user"));
+app.use("/users", require("./users"));
+app.use("/houses", require("./houses"));
 
 app.use(require("../middlewares/errors/errorHandler.middleware.js"));
 

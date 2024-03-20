@@ -6,7 +6,15 @@ const { validationResult } = require("express-validator");
 const resetPasswordService = require("../../services/auth/resetPassword.service.js");
 
 const getForgotPasswordPage = (req, res) => {
-  return res.render("pages/auth/forgot-password.view.ejs");
+  if (req.session.userId) {
+    return res.redirect("/");
+  }
+
+  const metadata = {
+    title: "Quên mật khẩu",
+  };
+
+  return res.render("auth/forgot-password.ejs", { metadata });
 };
 
 const postForgotPassword = async (req, res, next) => {

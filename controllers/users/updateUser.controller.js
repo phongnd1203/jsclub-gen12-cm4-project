@@ -11,7 +11,7 @@ const getUpdateCurrentUserPage = async (req, res, next) => {
   try {
     const { user } = req.session;
 
-    res.render("pages/users/edit.view.ejs", {
+    return res.render("users/edit.ejs", {
       user,
     });
   } catch (error) {
@@ -61,7 +61,7 @@ const getUpdateUserPage = async (req, res, next) => {
       throw new HttpException(StatusCodes.NOT_FOUND, "User not found");
     }
 
-    res.render("pages/users/edit.view.ejs", {
+    return res.render("users/edit.ejs", {
       user,
     });
   } catch (error) {

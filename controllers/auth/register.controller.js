@@ -7,11 +7,15 @@ const HttpException = require("../../utils/httpException.js");
 const registerService = require("../../services/auth/register.service.js");
 
 const getRegisterPage = (req, res) => {
-  if (req.session.user) {
+  if (req.session.userId) {
     return res.redirect("/");
   }
 
-  res.render("pages/auth/register.view.ejs");
+  const metadata = {
+    title: "Đăng ký",
+  };
+
+  return res.render("auth/register.ejs", { metadata });
 };
 
 const postRegister = async (req, res, next) => {
@@ -19,9 +23,13 @@ const postRegister = async (req, res, next) => {
     const validationErrors = validationResult(req);
 
     if (!validationErrors.isEmpty()) {
-      return res.status(400).render("auth/register.view.ejs", {
-        errors: validationErrors.array(),
-      });
+      throw new HttpException(
+        StatusCodes.BAD_REQUEST,
+        "Dữ liệu đầu vào không hợp lệ",
+        {
+          errors: validationErrors.array(),
+        },
+      );
     }
 
     const { name, phone, email, password } = req.body;

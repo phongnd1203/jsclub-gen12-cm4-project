@@ -7,13 +7,12 @@ const HttpException = require("../../utils/httpException.js");
 const createHouseService = require("../../services/houses/createHouse.service.js");
 
 const getCreateHousePage = (req, res) => {
-  const { user } = req.session;
-  res.render("pages/houses/create.view.ejs", {
-    user,
-  });
+  return res.render("houses/create.ejs");
 };
 
 const postCreateHouse = async (req, res, next) => {
+  console.log(req.body);
+
   try {
     const validationErrors = validationResult(req);
 
@@ -29,21 +28,9 @@ const postCreateHouse = async (req, res, next) => {
       );
     }
 
-    const { title, description, address, district, price, area, visible } =
-      req.body;
+    const { userId } = req.session;
 
-    const { user } = req.session;
-
-    const house = await createHouseService.createHouse(
-      user,
-      title,
-      description,
-      address,
-      district,
-      price,
-      area,
-      visible,
-    );
+    const house = await createHouseService.createHouse(userId, req.body);
 
     return res.redirect(`/houses/${house._id}`);
   } catch (error) {

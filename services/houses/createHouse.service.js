@@ -1,26 +1,20 @@
 const HouseModel = require("../../models/houses/house.model.js");
 
 const createHouse = async (
-  user,
-  title,
-  description,
-  address,
-  district,
-  price,
-  area,
-  visible,
+  userId,
+  { title, description, location: { address, district }, price, area, status },
 ) => {
   const newHouse = new HouseModel({
     title,
     description,
-    address: {
-      path: address,
+    location: {
+      address,
       district,
     },
     price,
     area,
-    visible,
-    owner: user._id,
+    status,
+    owner: userId,
   });
 
   await newHouse.save();

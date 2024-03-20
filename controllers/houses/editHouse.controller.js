@@ -32,7 +32,7 @@ const getEditHousePage = async (req, res, next) => {
       throw new HttpException(StatusCodes.FORBIDDEN, "Không có quyền truy cập");
     }
 
-    return res.status(200).render("pages/houses/edit.view.ejs", {
+    return res.status(200).render("houses/edit.ejs", {
       house,
     });
   } catch (error) {

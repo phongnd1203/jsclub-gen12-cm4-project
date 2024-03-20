@@ -7,7 +7,14 @@ const sign = (payload, options) => {
   let signingAlgorithm;
 
   if (config.jwt.encryption.useAsymmetric) {
-    signingKey = config.jwt.encryption.asymmetric.keyPair.privateKey;
+    if (!config.jwt.encryption.asymmetric.passphrase) {
+      signingKey = {
+        key: config.jwt.encryption.asymmetric.keyPair.privateKey,
+        passphrase: config.jwt.encryption.asymmetric.passphrase,
+      };
+    } else {
+      signingKey = config.jwt.encryption.asymmetric.keyPair.privateKey;
+    }
     signingAlgorithm = config.jwt.encryption.asymmetric.algorithm;
   } else {
     signingKey = config.jwt.encryption.symmetric.secret;

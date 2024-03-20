@@ -12,7 +12,7 @@ const getResetPasswordPage = (req, res) => {
     return res.redirect("/auth/forgot-password");
   }
 
-  return res.render("pages/users/reset-password.view.ejs", { token });
+  return res.render("users/reset-password.ejs", { token });
 };
 
 const postResetPassword = async (req, res, next) => {
