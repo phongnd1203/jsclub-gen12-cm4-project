@@ -43,4 +43,6 @@ const postResetPassword = async (req, res, next) => {
 module.exports = {
   getForgotPasswordPage,
   postForgotPassword,
+  getResetPasswordPage,
+  postResetPassword,
 };
