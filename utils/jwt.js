@@ -1,6 +1,6 @@
 const jwt = require("jsonwebtoken");
 
-const { config } = require("../configs/app.config.js");
+const { config } = require("../configs/appConfig.js");
 
 let signingKey;
 let verifyingKey;

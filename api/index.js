@@ -10,9 +10,9 @@ const morgan = require("morgan");
 
 const session = require("express-session");
 const MongoStore = require("connect-mongo");
-const mongodbConnection = require("../databases/init.mongodb.js");
+const mongodbConnection = require("../databases/mongodb.js");
 
-const { config } = require("../configs/app.config.js");
+const { config } = require("../configs/appConfig.js");
 
 const app = express();
 
@@ -55,7 +55,7 @@ app.use(
 
 app.use(timeout("5s"));
 
-app.use(require("../middlewares/dataLoader.middleware.js"));
+app.use(require("../middlewares/dataLoader.js"));
 
 app.use("/", require("./home"));
 app.use("/auth", require("./auth"));
@@ -63,7 +63,7 @@ app.use("/user", require("./user"));
 app.use("/users", require("./users"));
 app.use("/houses", require("./houses"));
 
-app.use(require("../middlewares/errorHandler.middleware.js"));
+app.use(require("../middlewares/errorHandler.js"));
 
 app.on("close", async () => {
   await mongodbConnection.close();

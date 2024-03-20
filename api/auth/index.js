@@ -1,20 +1,25 @@
 const express = require("express");
 
-const loginController = require("../../controllers/auth/login.controller.js");
-const registerController = require("../../controllers/auth/register.controller.js");
-const forgotPasswordController = require("../../controllers/auth/forgotPassword.controller.js");
-const logoutController = require("../../controllers/auth/logout.controller.js");
+const loginController = require("../../controllers/auth/login.js");
+const registerController = require("../../controllers/auth/register.js");
+const forgotPasswordController = require("../../controllers/auth/forgotPassword.js");
+const logoutController = require("../../controllers/auth/logout.js");
 
-const loginValidator = require("../../validators/auth/login.validators.js");
-const registerValidator = require("../../validators/auth/register.validators.js");
-const forgotPasswordValidator = require("../../validators/auth/forgotPassword.validators.js");
-const resetPasswordValidator = require("../../validators/auth/resetPassword.validators.js");
+const validateData = require("../../middlewares/validateRequest.js");
+const loginValidator = require("../../validators/auth/login.js");
+const registerValidator = require("../../validators/auth/register.js");
+const forgotPasswordValidator = require("../../validators/auth/forgotPassword.js");
+const resetPasswordValidator = require("../../validators/auth/resetPassword.js");
 
 const authRouter = express.Router();
 
 authRouter.get("/login", loginController.getLoginPage);
 
-authRouter.post("/login", loginValidator, loginController.postLogin);
+authRouter.post(
+  "/login",
+  validateData(loginValidator),
+  loginController.postLogin,
+);
 
 authRouter.get("/register", registerController.getRegisterPage);
 
