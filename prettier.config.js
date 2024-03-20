@@ -8,7 +8,7 @@ const config = {
   tabWidth: 2,
   endOfLine: "auto",
   arrowParens: "always",
-  plugins: ["prettier-plugin-ejs", "prettier-plugin-tailwindcss"],
+  plugins: ["prettier-plugin-ejs"],
 };
 
 module.exports = config;
