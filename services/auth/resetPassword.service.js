@@ -1,6 +1,7 @@
 const argon2 = require("argon2");
 
 const UsersModel = require("../../models/users/user.model.js");
+const RevokedTokenModel = require("../../models/tokens/revokedToken.model.js");
 
 const jwt = require("../../utils/jwt.js");
 
@@ -11,45 +12,35 @@ const createResetPasswordToken = async (email) => {
     throw new Error("Tài khoản không tồn tại");
   }
 
-  delete user.password;
-
-  await user.save();
-
-  const resetPasswordToken = jwt.sign(
-    {},
-    {
-      subject: user._id,
-      expiresIn: "15m",
-    },
-  );
+  const resetPasswordToken = jwt.sign({
+    sub: user._id,
+    action: "reset-password",
+  });
 
   return resetPasswordToken;
 };
 
 const resetPassword = async (token, password) => {
-  const { sub: userId } = jwt.verify(token);
+  const payload = jwt.verify(token);
 
-  const user = await getUsersService
-    .getUser({ _id: userId })
-    .select({
-      _id: 1,
-      password: 1,
-    })
-    .lean()
-    .exec();
+  if (payload.action !== "reset-password") {
+    throw new Error("Token không hợp lệ");
+  }
 
-  if (!user || (user && !user.password)) {
-    throw new Error("Yêu cầu không hợp lệ");
+  if (await RevokedTokenModel.exists({ token })) {
+    throw new Error("Token đã bị thu hồi");
   }
 
   const hashedPassword = await argon2.hash(password);
 
   await UsersModel.updateOne(
-    { _id: userId },
-    {
-      password: hashedPassword,
-    },
-  ).exec();
+    { _id: payload.sub },
+    { password: hashedPassword },
+  );
+
+  await RevokedTokenModel.create({ token, expiresAt: payload.exp });
+
+  return true;
 };
 
 module.exports = {

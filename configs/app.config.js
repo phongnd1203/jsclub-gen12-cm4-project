@@ -73,8 +73,13 @@ const appConfig = () => ({
         })(),
       },
       options: {
-        expiresIn: process.env.JWT_EXPIRES_IN || "10m",
-        notBefore: process.env.JWT_NOT_BEFORE || "0s",
+        sign: {
+          expiresIn: process.env.JWT_EXPIRES_IN || "10m",
+          notBefore: process.env.JWT_NOT_BEFORE || "0s",
+        },
+        verify: {
+          maxAge: process.env.JWT_MAX_AGE || "7d",
+        },
       },
     },
   },

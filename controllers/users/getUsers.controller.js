@@ -4,7 +4,7 @@ const HttpException = require("../../utils/httpException.js");
 
 const getUserService = require("../../services/users/getUsers.service.js");
 
-const userRoles = require("../../constants/enums/userRoles.enum.js");
+const userRoles = require("../../enums/userRoles.enum.js");
 
 const getCurrentUserProfilePage = async (req, res, next) => {
   try {

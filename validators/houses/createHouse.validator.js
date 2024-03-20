@@ -1,6 +1,6 @@
 const validator = require("express-validator");
 
-const houseStatus = require("../../../constants/enums/houseStatus.enum.js");
+const houseStatus = require("../../../enums/houseStatus.enum.js");
 
 const houseInputValidator = [
   validator.body("title").notEmpty().withMessage("Tiêu đề không được để trống"),

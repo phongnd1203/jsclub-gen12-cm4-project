@@ -5,7 +5,7 @@ const HttpException = require("../../utils/httpException.js");
 const getUserService = require("../../services/users/getUsers.service.js");
 const updateUserService = require("../../services/users/updateUser.service.js");
 
-const userRoles = require("../../constants/enums/userRoles.enum.js");
+const userRoles = require("../../enums/userRoles.enum.js");
 
 const getUpdateCurrentUserPage = async (req, res, next) => {
   try {

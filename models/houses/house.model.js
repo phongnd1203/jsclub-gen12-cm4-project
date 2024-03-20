@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 
-const houseStatus = require("../../constants/enums/houseStatus.enum.js");
+const houseStatus = require("../../enums/houseStatus.enum.js");
 
 const locationSchema = mongoose.Schema(
   {

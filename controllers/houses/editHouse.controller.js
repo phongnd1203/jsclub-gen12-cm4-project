@@ -7,7 +7,7 @@ const HttpException = require("../../utils/httpException.js");
 const getHousesService = require("../../services/houses/getHouses.service.js");
 const updateHouseService = require("../../services/houses/updateHouse.service.js");
 
-const userRoles = require("../../constants/enums/userRoles.enum.js");
+const userRoles = require("../../enums/userRoles.enum.js");
 
 const getEditHousePage = async (req, res, next) => {
   try {

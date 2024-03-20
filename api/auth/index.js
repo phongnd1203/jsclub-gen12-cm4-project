@@ -5,9 +5,10 @@ const registerController = require("../../controllers/auth/register.controller.j
 const forgotPasswordController = require("../../controllers/auth/forgotPassword.controller.js");
 const logoutController = require("../../controllers/auth/logout.controller.js");
 
-const loginValidator = require("../../middlewares/validators/auth/login.validators.js");
-const registerValidator = require("../../middlewares/validators/auth/register.validators.js");
-const forgotPasswordValidator = require("../../middlewares/validators/auth/forgotPassword.validators.js");
+const loginValidator = require("../../validators/auth/login.validators.js");
+const registerValidator = require("../../validators/auth/register.validators.js");
+const forgotPasswordValidator = require("../../validators/auth/forgotPassword.validators.js");
+const resetPasswordValidator = require("../../validators/auth/resetPassword.validators.js");
 
 const authRouter = express.Router();
 
@@ -32,6 +33,16 @@ authRouter.post(
   "/forgot-password",
   forgotPasswordValidator,
   forgotPasswordController.postForgotPassword,
+);
+
+authRouter.get(
+  "/reset-password",
+  forgotPasswordController.getResetPasswordPage,
+);
+authRouter.post(
+  "/reset-password",
+  resetPasswordValidator,
+  forgotPasswordController.postResetPassword,
 );
 
 authRouter.get("/logout", logoutController.postLogout);

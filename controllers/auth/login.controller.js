@@ -20,16 +20,6 @@ const getLoginPage = (req, res) => {
 
 const postLogin = async (req, res, next) => {
   try {
-    const validationErrors = validationResult(req);
-
-    if (!validationErrors.isEmpty()) {
-      throw new HttpException(
-        StatusCodes.BAD_REQUEST,
-        "Thông tin đã nhập không hợp lệ",
-        validationErrors.array(),
-      );
-    }
-
     const { email, password } = req.body;
 
     try {

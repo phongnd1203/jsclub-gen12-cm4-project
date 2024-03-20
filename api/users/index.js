@@ -5,8 +5,8 @@ const updateUserController = require("../../controllers/users/updateUser.control
 const deleteUserController = require("../../controllers/users/deleteUser.controller.js");
 const resetPasswordController = require("../../controllers/users/resetPassword.controller.js");
 
-const updateUserValidator = require("../../middlewares/validators/users/updateUser.validator.js");
-const resetPasswordValidator = require("../../middlewares/validators/users/resetPassword.validator.js");
+const updateUserValidator = require("../../validators/users/updateUser.validator.js");
+const resetPasswordValidator = require("../../validators/users/resetPassword.validator.js");
 
 const usersRouter = express.Router();
 

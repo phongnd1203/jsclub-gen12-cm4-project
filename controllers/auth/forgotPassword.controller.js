@@ -1,15 +1,6 @@
-const { StatusCodes } = require("http-status-codes");
-const HttpException = require("../../utils/httpException.js");
-
-const { validationResult } = require("express-validator");
-
 const resetPasswordService = require("../../services/auth/resetPassword.service.js");
 
 const getForgotPasswordPage = (req, res) => {
-  if (req.session.userId) {
-    return res.redirect("/");
-  }
-
   const metadata = {
     title: "Quên mật khẩu",
   };
@@ -19,27 +10,31 @@ const getForgotPasswordPage = (req, res) => {
 
 const postForgotPassword = async (req, res, next) => {
   try {
-    const validationErrors = validationResult(req);
-
-    if (!validationErrors.isEmpty()) {
-      throw new HttpException(
-        StatusCodes.BAD_REQUEST,
-        "Thông tin đã nhập không hợp lệ",
-        validationErrors.array(),
-      );
-    }
-
     const { email } = req.body;
 
-    try {
-      const resetPasswordToken =
-        await resetPasswordService.createResetPasswordToken(email);
-      req.session.resetPasswordToken = resetPasswordToken;
-    } catch (error) {
-      throw new HttpException(StatusCodes.BAD_REQUEST, error.message);
-    }
+    const resetPasswordToken =
+      await resetPasswordService.createResetPasswordToken(email);
+
+    // TODO: Send reset password email
 
     return res.redirect("/auth/login");
+  } catch (error) {
+    return next(error);
+  }
+};
+
+const getResetPasswordPage = (req, res) => {
+  const metadata = {
+    title: "Đặt lại mật khẩu",
+  };
+
+  const { token } = req.query;
+
+  return res.render("auth/reset-password.ejs", { metadata, token });
+};
+
+const postResetPassword = async (req, res, next) => {
+  try {
   } catch (error) {
     return next(error);
   }

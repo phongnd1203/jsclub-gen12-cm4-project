@@ -5,7 +5,7 @@ const HttpException = require("../../utils/httpException.js");
 const getUserService = require("../../services/users/getUsers.service.js");
 const deleteUserService = require("../../services/users/deleteUser.service.js");
 
-const userRoles = require("../../constants/enums/userRoles.enum.js");
+const userRoles = require("../../enums/userRoles.enum.js");
 
 const getDeleteCurrentUserPage = async (req, res, next) => {
   try {

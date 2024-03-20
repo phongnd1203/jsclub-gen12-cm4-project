@@ -1,8 +1,3 @@
-const { StatusCodes } = require("http-status-codes");
-const HttpException = require("../../utils/httpException.js");
-
-const { validationResult } = require("express-validator");
-
 const updateUserService = require("../../services/users/updateUser.service.js");
 
 const getUpdateUserProfilePage = (req, res) => {

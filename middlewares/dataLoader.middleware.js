@@ -1,7 +1,7 @@
-const getUsersService = require("../../services/users/getUsers.service.js");
-const getDistrictsService = require("../../services/districts/getDistricts.service.js");
+const getUsersService = require("../services/users/getUsers.service.js");
+const getDistrictsService = require("../services/districts/getDistricts.service.js");
 
-const houseStatus = require("../../constants/enums/houseStatus.enum.js");
+const houseStatus = require("../enums/houseStatus.enum.js");
 
 const dataLoader = async (req, res, next) => {
   console.log("dataLoader");
