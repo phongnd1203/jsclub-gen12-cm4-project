@@ -25,7 +25,7 @@ authRouter.get("/register", registerController.getRegisterPage);
 
 authRouter.post(
   "/register",
-  registerValidator,
+  validateData(registerValidator),
   registerController.postRegister,
 );
 
@@ -36,7 +36,7 @@ authRouter.get(
 
 authRouter.post(
   "/forgot-password",
-  forgotPasswordValidator,
+  validateData(forgotPasswordValidator),
   forgotPasswordController.postForgotPassword,
 );
 
@@ -46,7 +46,7 @@ authRouter.get(
 );
 authRouter.post(
   "/reset-password",
-  resetPasswordValidator,
+  validateData(resetPasswordValidator),
   forgotPasswordController.postResetPassword,
 );
 
