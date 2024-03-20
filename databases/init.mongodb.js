@@ -1,8 +1,10 @@
 const mongoose = require("mongoose");
 
-const { config } = require("../configs/app.config.js");
+const mongodbConfig = require("../configs/mongodb.config.js");
 
-mongoose.connect(config.mongodb.uri);
+const config = mongodbConfig();
+
+mongoose.connect(config.uri);
 
 const connection = mongoose.connection;
 
