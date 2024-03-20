@@ -20,11 +20,13 @@ commentRouter.post('/:id', async (req, res) => {
     }
 })
 
-commentRouter.get('/delete/comment/:commentId', async (req, res) => {
+//delete
+commentRouter.get('/:houseId/delete/comment/:commentId', async (req, res) => {
     try {
-        const {commentId} = req.params;
+        const houseId = req.params.houseId;
+        const commentId = req.params.commentId;
         commentService.deleteComment(commentId);
-        res.redirect('/house');
+        res.redirect(`/house/${houseId}`);
     } catch (err) {
         res.status(500).json({ message: err.message });
     }

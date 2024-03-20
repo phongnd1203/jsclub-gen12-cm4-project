@@ -102,7 +102,7 @@
               <p>
                 <%= comment.comment %>
               </p>
-              <a href="/house/delete/comment/<%=comment._id %>">
+              <a href="/house/<%= house._id %>/delete/comment/<%=comment._id %>">
                 <button class="delete">Delete</button>
               </a>
             </div>
