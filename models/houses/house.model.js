@@ -1,8 +1,6 @@
 const mongoose = require("mongoose");
 
-const houseStatus = require("../../enums/houseStatus.enum.js");
-
-const locationSchema = mongoose.Schema(
+const addressSchema = mongoose.Schema(
   {
     address: {
       type: String,

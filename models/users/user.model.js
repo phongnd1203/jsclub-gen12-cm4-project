@@ -1,7 +1,5 @@
 const mongoose = require("mongoose");
 
-const userRoles = require("../../enums/userRoles.enum.js");
-
 const userSchema = new mongoose.Schema(
   {
     name: {
