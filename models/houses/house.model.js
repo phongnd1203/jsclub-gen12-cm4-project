@@ -1,12 +1,14 @@
 const mongoose = require("mongoose");
 
-const addressSchema = mongoose.Schema(
+const houseStatus = require("../../constants/enums/houseStatus.enum.js");
+
+const locationSchema = mongoose.Schema(
   {
     address: {
       type: String,
       required: true,
     },
-    districtCode: {
+    district: {
       type: String,
       required: true,
       index: true,
@@ -19,15 +21,15 @@ const addressSchema = mongoose.Schema(
 
 const houseSchema = mongoose.Schema(
   {
-    name: {
+    title: {
       type: String,
       required: true,
     },
     description: {
       type: String,
     },
-    address: {
-      type: addressSchema,
+    location: {
+      type: locationSchema,
       required: true,
     },
     price: {
@@ -40,14 +42,24 @@ const houseSchema = mongoose.Schema(
       default: 0,
       index: true,
     },
-    available: {
-      type: Boolean,
+    status: {
+      type: String,
+      enum: Object.keys(houseStatus),
       default: true,
     },
-    createdBy: {
+    isVerified: {
+      type: Boolean,
+      default: false,
+    },
+    isFeatured: {
+      type: Boolean,
+      default: false,
+    },
+    owner: {
       type: mongoose.Schema.Types.ObjectId,
       ref: "User",
       required: true,
+      index: true,
     },
   },
   {

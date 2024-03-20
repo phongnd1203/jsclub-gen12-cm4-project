@@ -1,0 +1,35 @@
+<div class="card d-flex flex-column">
+  <a href="<%= `/houses/${house.id}` %>">
+    <img
+      class="card-img-top"
+      src="<%= house.images[0] %>"
+      alt="<%= house.title %>"
+    />
+  </a>
+  <div class="card-body d-flex flex-column">
+    <h3 class="card-title">
+      <a href="<%= `/houses/${house.id}` %>"> <%= house.title %> </a>
+    </h3>
+    <div class="list-inline list-inline-dots text-secondary">
+      <div class="list-inline-item">
+        <%- include('../../partials/icons/location.ejs') %>
+        <span>
+          <%= house.location.district %>
+        </span>
+      </div>
+    </div>
+    <div class="d-flex align-items-center pt-4 mt-auto">
+      <span class="avatar" style="background-image: url(...)"></span>
+      <div class="ms-3">
+        <a href="#" class="text-body"> <%= house.owner.name %> </a>
+        <div class="text-secondary"><%= house.createdAt %></div>
+      </div>
+      <div class="ms-auto">
+        <a href="#" class="icon d-none d-md-inline-block ms-3 text-secondary">
+          <!-- SVG icon from http://tabler-icons.io/i/heart -->
+          <svg>...</svg>
+        </a>
+      </div>
+    </div>
+  </div>
+</div>

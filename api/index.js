@@ -1,22 +1,31 @@
 const path = require("path");
 
 const express = require("express");
-const bodyParser = require("body-parser");
-const morgan = require("morgan");
-const session = require("express-session");
 
+const bodyParser = require("body-parser");
+
+const timeout = require("connect-timeout");
+
+const morgan = require("morgan");
+
+const session = require("express-session");
 const MongoStore = require("connect-mongo");
 const mongodbConnection = require("../databases/init.mongodb.js");
 
+const { config } = require("../configs/app.config.js");
+
 const app = express();
 
-app.use(morgan("dev"));
+app.use(morgan(config.morgan.format));
 
 app.set("view engine", "ejs");
-app.set("views", path.join(__dirname, "../views"));
+app.set("views", path.join(__dirname, "../views/pages"));
 
-app.use(express.static(path.join(__dirname, "../public")));
-app.use(express.static(path.join(__dirname, "../dist")));
+app.use(
+  express.static(path.join(__dirname, "../public"), {
+    maxAge: config.app.isProduction ? 1000 * 60 * 60 * 24 * 7 : 0,
+  }),
+);
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -24,30 +33,37 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(
   session({
     name: "sid",
-    secret: process.env.APP_SESSION_SECRET,
+    secret: config.app.session.secret,
     saveUninitialized: false,
     resave: false,
     cookie: {
       maxAge: 1000 * 60 * 60 * 24 * 7,
       httpOnly: true,
     },
-    store: MongoStore.create({
+    store: new MongoStore({
       client: mongodbConnection.getClient(),
       collectionName: "sessions",
       ttl: 60 * 60 * 24 * 14,
       autoRemove: "native",
       autoRemoveInterval: 10,
       crypto: {
-        secret:
-          process.env.MONGODB_SESSION_SECRET || process.env.APP_SESSION_SECRET,
+        secret: config.mongodb.session.storage.secret,
       },
     }),
   }),
 );
 
+app.use(timeout("5s"));
+
+app.use(require("../middlewares/loaders/dataLoader.middleware.js"));
+
 app.use("/", require("./home"));
-app.use("/login", require("./auth/login"));
-app.use("/register", require("./auth/register"));
+app.use("/auth", require("./auth"));
+app.use("/user", require("./user"));
+app.use("/users", require("./users"));
+app.use("/houses", require("./houses"));
+
+app.use(require("../middlewares/errors/errorHandler.middleware.js"));
 
 app.on("close", async () => {
   await mongodbConnection.close();
