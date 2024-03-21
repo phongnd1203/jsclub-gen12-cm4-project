@@ -18,7 +18,7 @@ const getHomePage = async (req, res, next) => {
       createdAt: "desc",
     });
 
-    return res.render("home", {
+    return res.render("pages/home", {
       metadata,
       ownedHouses,
       featuredHouses,

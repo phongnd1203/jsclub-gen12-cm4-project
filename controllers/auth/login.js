@@ -15,7 +15,7 @@ const getLoginPage = (req, res) => {
     title: "Đăng nhập",
   };
 
-  return res.render("auth/login.ejs", { metadata });
+  return res.render("pages/auth/login.ejs", { metadata });
 };
 
 const postLogin = async (req, res, next) => {

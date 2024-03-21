@@ -14,7 +14,7 @@ const getHouseDetailPage = async (req, res, next) => {
       throw new HttpException(StatusCodes.NOT_FOUND, "Không tìm thấy nhà");
     }
 
-    return res.render("houses/detail.ejs", { house });
+    return res.render("pages/houses/detail.ejs", { house });
   } catch (err) {
     return next(err);
   }
