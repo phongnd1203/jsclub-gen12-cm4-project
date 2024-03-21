@@ -6,6 +6,7 @@ const HttpException = require("../../utils/httpException.js");
 
 const getHousesService = require("../../services/houses/getHouses.service.js");
 const updateHouseService = require("../../services/houses/updateHouse.service.js");
+const getUserService = require('../../services/users/getUsers.service.js');
 
 const userRoles = require("../../enums/userRoles.enum.js");
 
@@ -13,9 +14,10 @@ const getEditHousePage = async (req, res, next) => {
   try {
     const { id } = req.params;
 
-    const { user } = req.session;
-
-    if (!user) {
+    const { userId } = req.session;
+    const user = await getUserService.getUserById(userId);
+    
+    if (!userId) {
       return res.redirect("/auth/login");
     }
 
@@ -25,15 +27,14 @@ const getEditHousePage = async (req, res, next) => {
       throw new HttpException(StatusCodes.NOT_FOUND, "Nhà không tồn tại");
     }
 
-    if (
-      user._id.toString() !== house.owner.toString() ||
-      userRoles[user.role] > userRoles.admin
-    ) {
+    if ( userId != house.owner._id ) 
       throw new HttpException(StatusCodes.FORBIDDEN, "Không có quyền truy cập");
-    }
+    
 
+    // res.json(house);
     return res.status(200).render("houses/edit.ejs", {
       house,
+      user
     });
   } catch (error) {
     return next(error);

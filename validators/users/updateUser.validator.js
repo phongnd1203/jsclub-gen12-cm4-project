@@ -1,6 +1,6 @@
 const validator = require("express-validator");
 
-const userRoles = require("../../../enums/userRoles.enum.js");
+const userRoles = require("../../enums/userRoles.enum.js");
 
 const userInputValidator = [
   validator

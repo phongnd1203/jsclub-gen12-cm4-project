@@ -3,7 +3,7 @@ const updateUserService = require("../../services/users/updateUser.service.js");
 const getUpdateUserProfilePage = (req, res) => {
   const metadata = { title: "Cập nhật thông tin cá nhân" };
 
-  res.render("user/update-profile", { metadata });
+  res.render("user/editProfile.ejs");
 };
 
 const postUpdateUserProfile = async (req, res, next) => {
@@ -18,12 +18,18 @@ const postUpdateUserProfile = async (req, res, next) => {
     }
 
     const { userId } = req.session;
-    const {} = req.body;
+    const { name, phone, email, password } = req.body;
 
-    const user = await updateUserService(id);
+    const user = await updateUserService(userId, name, phone, email, password, 'user');
 
     res.status(StatusCodes.OK).json(user);
+    res.redirect('user/profile');
   } catch (error) {
     return next(error);
   }
 };
+
+module.exports = {
+  getUpdateUserProfilePage,
+  postUpdateUserProfile
+}

@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="vi">
+<%- include('../../partials/head.ejs') %>
+
+    <body>
+        <%- include('../../partials/layouts/header.ejs') %>
+            <main>
+                <div class="container">
+                    <h1>Edit Houses</h1>
+                    <hr>
+                    <div class="row">
+                        <!-- left column -->
+                        <div class="col-md-3">
+                            <div class="text-center">
+                                <img src="//placehold.it/100" class="avatar img-circle" alt="HouseImg">
+                                <h6>Upload a different photo...</h6>
+                                <input type="file" class="form-control">
+                            </div>
+                        </div>
+                        <!-- edit form column -->
+                        <div class="col-md-9 personal-info">
+                            <div class="alert alert-info alert-dismissable">
+                                <a class="panel-close close" data-dismiss="alert">×</a>
+                                <i class="fa fa-coffee"></i> Hãy nhập thông tin của nhà
+                            </div>
+                            <h3>Thông tin</h3>
+                            <form class="form-horizontal" role="form">
+                                <div class="form-group">
+                                    <label class="col-lg-3 control-label">Tên trọ:</label>
+                                    <div class="col-lg-8">
+                                        <input name="title" class="form-control" type="text" value="<%= house.title %>">
+                                    </div>
+                                </div>
+
+                                <div class="form-group ">
+                                    <label class="control-label "> Mô tả </label>
+                                    <div class="col-lg-8">
+                                        <textarea id="description" name="description" class="form-control">
+                                            <%= house.description %>
+                                        </textarea>
+                                    </div>
+
+                                </div>
+
+
+
+                                <div class="form-group">
+                                    <label class="col-md-3 control-label">Vị trí:</label>
+                                    <div class="col-md-8">
+                                        <input name="price" class="form-control" type="text" value="<%= house.price %>">
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="col-md-3 control-label">Diện tích:</label>
+                                    <div class="col-md-8">
+                                        <input name="area" class="form-control" type="text" value="<%= house.are %>">
+                                    </div>
+                                </div>
+
+
+                                <div class="form-group">
+                                    <label class="col-md-3 control-label"> Trạng thái </label>
+                                    <div class="col-md-8">
+                                        <select id="status" name="status" class="form-select">
+                                            <option  value="house.status" disabled>Chọn trạng thái</option>
+                                            <% locals.enums.houseStatus.forEach(status=> { %>
+                                                <option value="<%= status.key %>">
+                                                    <%= status.value %>
+                                                </option>
+                                                <% }) %>
+                                        </select>
+                                    </div>
+
+                                </div>
+
+
+                                <div class="form-group">
+                                    <label class="col-md-3 control-label"></label>
+                                    <div class="col-md-8">
+                                        <button type="submit" class="btn btn-primary w-100">
+                                            Lưu thông tin
+                                        </button>
+                                        <!-- <input type="button" class="btn btn-primary" value="Save Changes"> -->
+                                        <span></span>
+                                        <!-- <input type="reset" class="btn btn-default" value="Cancel"> -->
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <hr>
+            </main>
+    </body>
+
+</html>

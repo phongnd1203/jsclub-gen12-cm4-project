@@ -24,6 +24,7 @@ const postLogin = async (req, res, next) => {
 
     try {
       const user = await loginService.login(email, password);
+      req.session.user = user;
       req.session.userId = user._id;
     } catch (error) {
       throw new HttpException(StatusCodes.BAD_REQUEST, error.message);

@@ -10,7 +10,7 @@ const dataLoader = async (req, res, next) => {
     try {
       const user = await getUsersService.getUserById(req.session.userId);
 
-      console.log("user", user);
+      // console.log("user", user);
 
       req.app.locals.user = user;
     } catch (error) {

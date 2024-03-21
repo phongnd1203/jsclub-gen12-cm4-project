@@ -9,6 +9,8 @@ const createHouseValidator = require("../../validators/houses/createHouse.valida
 
 const housesRouter = express.Router();
 
+const HouseModel = require("../../models/houses/house.model.js");
+
 housesRouter.get("/create", createHouseController.getCreateHousePage);
 
 housesRouter.post(
