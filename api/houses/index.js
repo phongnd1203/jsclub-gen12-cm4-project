@@ -29,8 +29,6 @@ housesRouter.post(
   editHouseController.postEditHouse,
 );
 
-housesRouter.get("/:id/delete", deleteHouseController.getDeleteHousePage);
-
 housesRouter.post("/:id/delete", deleteHouseController.postDeleteHouse);
 
 module.exports = housesRouter;

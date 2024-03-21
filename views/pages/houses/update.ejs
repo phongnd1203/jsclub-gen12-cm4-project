@@ -47,9 +47,13 @@
                 >
                   <option disabled>Chọn khu vực</option>
                   <% locals.enums.districts.forEach(district => { %>
-                  <option value="<%= district.code %>" <%= house.location.district === district.code ? "selected" : "" %>>
+                  <option
+                    value="<%= district.code %>"
+                    selected="<%= house.location.district === district.code ? 'selected' : '' %>"
+                  >
                     <%= district.name %>
                   </option>
+
                   <% }) %>
                 </select>
               </div>
@@ -98,8 +102,11 @@
                 <label class="form-label"> Trạng thái </label>
                 <select id="status" name="status" class="form-select">
                   <option disabled>Chọn trạng thái</option>
-                  <% locals.enums.houseStatus.forEach(status => { %>
-                  <option value="<%= status.key %>" <%= house.status === status.key ? "selected" : "" %>>
+                  <% locals.enums.houseStatus.forEach(status=> { %>
+                  <option
+                    value="<%= status.key %>"
+                    selected="<%=house.status===status.key ? 'selected' : '' %>"
+                  >
                     <%= status.value %>
                   </option>
                   <% }) %>
@@ -111,8 +118,8 @@
                 </button>
               </div>
             </form>
-            </div>
-                    </div>
+          </div>
+        </div>
       </div>
     </main>
     <%- include('../../partials/scripts/post-scripts.ejs') %>

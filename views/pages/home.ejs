@@ -1,9 +1,143 @@
 <!doctype html>
 <html lang="vi">
   <%- include('../partials/head.ejs') %>
+
   <body>
     <%- include('../partials/scripts/pre-scripts.ejs') %>
     <%- include('../partials/layouts/header.ejs') %>
+    <main>
+      <div
+        id="slider"
+        style="
+          background-image: url(&quot;https://tromoi.com/frontend/home/images/bg_head.jpg&quot;);
+          height: 400px;
+          background-size: cover;
+        "
+      >
+        <div class="text-content">
+          <h1 class="text-heading">
+            TÌM NHANH, KIẾM DỄ<br />
+            TRỌ HÀ NỘI
+          </h1>
+          <div class="text-description">
+            <p>
+              Trohanoi.com - Trang thông tin tìm và cho thuê phòng trọ nhanh
+              chóng, hiệu <br />quả số với hơn 500 tin đăng mới và 30.000 lượt
+              xem mỗi ngày.
+            </p>
+          </div>
+        </div>
+      </div>
+      <% if (locals.user) { %>
+
+      <div class="page-wrapper">
+        <div class="page-header d-print-none">
+          <div class="container-xl">
+            <div class="row g-2 align-items-center">
+              <div class="col">
+                <h1 class="page-title">Trọ của bạn</h1>
+                <div class="text-secondary mt-1">1-6 của 241 ảnh</div>
+              </div>
+              <!-- Page title actions -->
+              <div class="col-auto ms-auto d-print-none">
+                <div class="d-flex">
+                  <a href="/houses/create" class="btn btn-primary">
+                    <%- include('../partials/icons/home-plus.ejs') %>
+                    <span>Đăng tin</span>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="page-body">
+          <div class="container-xl">
+            <div class="row row-cards">
+              <% if (ownedHouses) { %> <% ownedHouses.forEach((house) => { %>
+              <div class="col-sm-6 col-lg-4">
+                <a class="card card-sm" href="<%= `/houses/${house._id}` %>">
+                  <div class="d-block"><img class="card-img-top" /></div>
+                  <div class="card-body">
+                    <h3 class="card-title"><%= house.title %></h3>
+                    <p class="text-secondary">
+                      <span> <%= house.price %> </span>
+                    </p>
+                    <p class="text-secondary"><%= house.location.address %></p>
+                  </div>
+                </a>
+              </div>
+              <% }) %>
+              <% } %>
+            </div>
+          </div>
+        </div>
+      </div>
+      <% } %>
+      <div class="page-wrapper">
+        <div class="page-header d-print-none">
+          <div class="container-xl">
+            <div class="row g-2 align-items-center">
+              <div class="col">
+                <h1 class="page-title">Trọ nổi bật</h1>
+                <div class="text-secondary mt-1">1-6 của 241 ảnh</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="page-body">
+          <div class="container-xl">
+            <div class="row row-cards">
+              <% featuredHouses.forEach((house) => { %>
+              <div class="col-sm-6 col-lg-4">
+                <a class="card card-sm" href="<%= `/houses/${house._id}` %>">
+                  <div class="d-block"><img class="card-img-top" /></div>
+                  <div class="card-body">
+                    <h3 class="card-title"><%= house.title %></h3>
+                    <p class="text-secondary">
+                      <span> <%= house.price %> </span>
+                    </p>
+                    <p class="text-secondary"><%= house.location.address %></p>
+                  </div>
+                </a>
+              </div>
+              <% }) %>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="page-wrapper">
+        <div class="page-header d-print-none">
+          <div class="container-xl">
+            <div class="row g-2 align-items-center">
+              <div class="col">
+                <h1 class="page-title">Trọ gần đây</h1>
+                <div class="text-secondary mt-1">1-6 của 241 ảnh</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="page-body">
+          <div class="container-xl">
+            <div class="row row-cards">
+              <% latestHouses.forEach((house) => { %>
+              <div class="col-sm-6 col-lg-4">
+                <a class="card card-sm" href="<%= `/houses/${house._id}` %>">
+                  <div class="d-block"><img class="card-img-top" /></div>
+                  <div class="card-body">
+                    <h3 class="card-title"><%= house.title %></h3>
+                    <p class="text-secondary">
+                      <span> <%= house.price %> </span>
+                    </p>
+                    <p class="text-secondary"><%= house.location.address %></p>
+                  </div>
+                </a>
+              </div>
+              <% }) %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
     <%- include('../partials/scripts/post-scripts.ejs') %>
   </body>
 </html>

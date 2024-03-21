@@ -24,8 +24,9 @@ const dataLoader = async (req, res, next) => {
     req.app.locals.enums = {
       districts,
       houseStatus: listHouseStatus,
-      maps: { apiKey: config.google.maps.apiKey },
     };
+
+    req.app.locals.maps = { apiKey: config.google.maps.apiKey };
 
     return next();
   } catch (err) {
