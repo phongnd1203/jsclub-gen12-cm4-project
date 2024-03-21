@@ -1,0 +1,27 @@
+#slider .text-content {
+  align-items: center;
+  position: absolute;
+  bottom: 50%;
+  left: 10%;
+  width: 80%;
+  text-align: center;
+}
+
+#slider .text-heading {
+  width: 100%;
+  font-weight: 700;
+  font-size: 50px;
+  color: #fff;
+  text-align: justify;
+  align-items: center;
+  line-height: 55px;
+}
+
+#slider .text-description {
+  width: 100%;
+  font-size: 15px;
+  margin-top: 25px;
+  text-align: justify;
+  color: #fff;
+  line-height: 21px;
+}
