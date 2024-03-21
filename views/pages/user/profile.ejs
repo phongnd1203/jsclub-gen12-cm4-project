@@ -2,6 +2,7 @@
 <html lang="vi">
   <%- include('../../partials/head.ejs') %>
   <body>
+    <%- include('../../partials/scripts/pre-scripts.ejs') %>
     <%- include('../../partials/layouts/header.ejs') %>
     <main>
       <div class="page-wrapper">
@@ -42,20 +43,17 @@
                   </a>
                   <% if (locals.user) { %>
                   <a href="/user/edit" class="btn btn-primary">
-                    <!-- Download SVG icon from http://tabler-icons.io/i/edit -->
                     <%- include('../../partials/icons/edit.ejs') %>
                     <span> Chỉnh sửa </span>
                   </a>
                   <% } else { %>
                   <% if (locals.user.following.includes(locals.user._id)) { %>
                   <a href="#" class="btn btn-primary">
-                    <!-- Download SVG icon from http://tabler-icons.io/i/check -->
                     <%- include('../../partials/icons/check.ejs') %>
                     <span> Following </span>
                   </a>
                   <% } else { %>
                   <a href="#" class="btn btn-primary">
-                    <!-- Download SVG icon from http://tabler-icons.io/i/user-plus -->
                     <%- include('../../partials/icons/user-plus.ejs') %>
                     <span> Follow </span>
                   </a>
@@ -79,5 +77,6 @@
         </div>
       </div>
     </main>
+    <%- include('../../partials/scripts/post-scripts.ejs') %>
   </body>
 </html>

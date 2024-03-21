@@ -1,0 +1,25 @@
+<html lang="en">
+  <%- include('../partials/head.ejs') %>
+  <body class="border-top-wide border-primary d-flex flex-column">
+    <%- include('../partials/scripts/pre-scripts.ejs') %>
+    <div class="page page-center">
+      <div class="container-tight py-4">
+        <div class="empty">
+          <div class="empty-header"><%= error?.status %></div>
+          <p class="empty-title"><%= error?.reason %></p>
+          <p class="empty-subtitle text-secondary"><%= error?.message %></p>
+          <div class="empty-action">
+            <a
+              href="<%= error?.data?.redirect || 'javascript:history.back()' %>"
+              class="btn btn-primary"
+            >
+              <%- include('../partials/icons/arrow-left.ejs') %>
+              Quay lại
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <%- include('../partials/scripts/post-scripts.ejs') %>
+  </body>
+</html>

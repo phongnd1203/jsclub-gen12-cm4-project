@@ -2,6 +2,72 @@
 <html lang="en">
   <%- include('../../partials/head.ejs') %>
   <body>
+    <%- include('../../partials/scripts/pre-scripts.ejs') %>
     <%- include('../../partials/layouts/header.ejs') %>
+    <main class="page-wrapper">
+      <div class="page-header d-print-none">
+        <div class="container-xl">
+          <div class="row g-2 align-items-center">
+            <div class="col">
+              <h2 class="page-title"><%= house.title %></h2>
+              <div class="text-secondary mt-1">
+                <%- house.location.address %>
+              </div>
+            </div>
+            <div class="col-auto ms-auto d-print-none">
+              <form
+                action="<%= `/houses/${house._id}/favorite` %>"
+                method="post"
+                class="d-flex"
+              >
+                <button
+                  type="submit"
+                  name="favorite"
+                  value="true"
+                  class="btn btn-primary"
+                >
+                  <%- include('../../partials/icons/heart.ejs') %>
+                  <span> Favorite </span>
+                </button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="page-body">
+        <div class="container-xl">
+          <div class="row row-card g-3">
+            <div class="col">
+              <div class="card mb-3">
+                <div class="card-header">
+                  <h3 class="card-title">Mô tả</h3>
+                </div>
+                <div class="card-body">
+                  <p class="card-text"><%= house.description %></p>
+                </div>
+              </div>
+              <div class="card">
+                <div class="card-header">
+                  <h3 class="card-title">Comments</h3>
+                </div>
+                <div class="card-body">
+                  <div class="comment">
+                    <div class="comment-author">
+                      <h5>Author Name</h5>
+                    </div>
+                    <div class="comment-body">
+                      <p>Comment text goes here...</p>
+                    </div>
+                  </div>
+                  <!-- Repeat the 'comment' div for each comment -->
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-5"></div>
+          </div>
+        </div>
+      </div>
+    </main>
+    <%- include('../../partials/scripts/post-scripts.ejs') %>
   </body>
 </html>

@@ -1,17 +1,16 @@
 const { StatusCodes, getReasonPhrase } = require("http-status-codes");
 
 class HttpException extends Error {
-  constructor(
-    statusCode = StatusCodes.INTERNAL_SERVER_ERROR,
-    message = getReasonPhrase(StatusCodes.INTERNAL_SERVER_ERROR),
-    errors = [],
-    data = {},
-  ) {
-    super(message || getReasonPhrase(statusCode));
-    this.statusCode = statusCode;
-    this.message = message;
-    this.errors = errors;
-    this.data = data;
+  constructor(status, message, errors, context) {
+    super(
+      message || getReasonPhrase(status || StatusCodes.INTERNAL_SERVER_ERROR),
+    );
+
+    this.status = status || StatusCodes.INTERNAL_SERVER_ERROR;
+    this.reason = getReasonPhrase(this.status);
+    this.message = message || this.reason;
+    this.errors = errors || [];
+    this.context = context || {};
 
     Error.captureStackTrace(this, this.constructor);
   }

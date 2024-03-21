@@ -2,11 +2,11 @@ const express = require("express");
 
 const adminRouter = express.Router();
 
-const dashboardController = require("../../controllers/admin/dashboard.controller.js");
-const usersDataController = require("../../controllers/admin/usersData.controller.js");
+const dashboardController = require("../../controllers/admin/dashboard.js");
+const usersDataController = require("../../controllers/admin/usersData.js");
 
-const checkAuth = require("../../middlewares/checkAuth.middleware.js");
-const userRoles = require("../../enums/userRoles.enum.js");
+const checkAuth = require("../../middlewares/checkAuth.js");
+const userRoles = require("../../enums/userRoles.js");
 
 adminRouter.use(checkAuth(userRoles.admin));
 

@@ -10,9 +10,17 @@
   <link rel="stylesheet" href="/styles/tabler-payments.min.css" />
   <link rel="stylesheet" href="/styles/tabler-vendors.min.css" />
 
-  <script src="/scripts/app.min.js"></script>
-  <script src="/scripts/app-theme.min.js"></script>
-  <script src="/scripts/tabler.min.js"></script>
+  <style>
+    @import url("https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap");
+
+    :root {
+      --tblr-font-sans-serif: Inter, -apple-system, BlinkMacSystemFont,
+        San Francisco, Segoe UI, Roboto, Helvetica Neue, sans-serif;
+    }
+    body {
+      font-feature-settings: "cv03", "cv04", "cv11";
+    }
+  </style>
 
   <title><%= locals.metadata?.title %></title>
   <meta name="description" content="<%= locals.metadata?.description %>" />

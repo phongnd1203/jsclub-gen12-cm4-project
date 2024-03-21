@@ -1,6 +1,6 @@
 const jwt = require("jsonwebtoken");
 
-const { config } = require("../configs/app.config.js");
+const { config } = require("../configs/appConfig.js");
 
 let signingKey;
 let verifyingKey;
@@ -32,14 +32,17 @@ const sign = (payload, options) => {
 };
 
 const verify = (token) => {
-  return jwt.verify(token, verifyingKey, {
-    ...config.jwt.options.verify,
-    algorithms: [signingAlgorithm],
-  });
+  try {
+    return jwt.verify(token, verifyingKey, {
+      ...config.jwt.options.verify,
+      algorithms: [signingAlgorithm],
+    });
+  } catch (error) {
+    return null;
+  }
 };
 
 module.exports = {
-  ...jwt,
   sign,
   verify,
 };

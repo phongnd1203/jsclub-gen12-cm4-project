@@ -1,6 +1,6 @@
 const express = require("express");
 
-const homeController = require("../../controllers/home/home.controller.js");
+const homeController = require("../../controllers/home/home.js");
 
 const homeRouter = express.Router();
 
