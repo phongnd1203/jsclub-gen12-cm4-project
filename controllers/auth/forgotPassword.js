@@ -10,7 +10,7 @@ const getForgotPasswordPage = (req, res) => {
     title: "Quên mật khẩu",
   };
 
-  return res.render("auth/forgot-password.ejs", { metadata });
+  return res.render("pages/auth/forgot-password.ejs", { metadata });
 };
 
 const postForgotPassword = async (req, res, next) => {
@@ -48,7 +48,7 @@ const getResetPasswordPage = async (req, res, next) => {
 
     try {
       await resetPasswordService.verifyResetPasswordToken(token);
-      return res.render("auth/reset-password.ejs", { metadata, token });
+      return res.render("pages/auth/reset-password.ejs", { metadata, token });
     } catch (err) {
       throw new HttpException(StatusCodes.BAD_REQUEST, err.message);
     }

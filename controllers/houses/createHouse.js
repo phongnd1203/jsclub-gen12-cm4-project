@@ -7,7 +7,10 @@ const HttpException = require("../../utils/httpException.js");
 const createHouseService = require("../../services/houses/createHouse.js");
 
 const getCreateHousePage = (req, res) => {
-  return res.render("houses/create.ejs");
+  return res.render("pages/houses/create.ejs", {
+    title: "Tạo nhà mới",
+    house: {},
+  });
 };
 
 const postCreateHouse = async (req, res, next) => {

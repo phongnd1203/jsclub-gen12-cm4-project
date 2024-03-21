@@ -15,7 +15,7 @@ const getLoginPage = (req, res) => {
     title: "Đăng nhập",
   };
 
-  return res.render("auth/login.ejs", { metadata });
+  return res.render("pages/auth/login.ejs", { metadata });
 };
 
 const postLogin = async (req, res, next) => {
@@ -24,9 +24,10 @@ const postLogin = async (req, res, next) => {
 
     try {
       const user = await loginService.login(email, password);
+      req.session.user = user;
       req.session.userId = user._id;
     } catch (err) {
-      throw new HttpException(StatusCodes.BAD_REQUEST, error.message);
+      throw new HttpException(StatusCodes.BAD_REQUEST, err.message);
     }
 
     return res.redirect("/");

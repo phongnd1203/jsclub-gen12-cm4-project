@@ -3,7 +3,7 @@ const updateUserService = require("../../services/users/updateUser.js");
 const getUpdateUserProfilePage = (req, res) => {
   const metadata = { title: "Cập nhật thông tin cá nhân" };
 
-  res.render("user/update-profile", { metadata });
+  res.render("pages/user/update-profile", { metadata });
 };
 
 const postUpdateUserProfile = async (req, res, next) => {
@@ -26,4 +26,9 @@ const postUpdateUserProfile = async (req, res, next) => {
   } catch (err) {
     return next(err);
   }
+};
+
+module.exports = {
+  getUpdateUserProfilePage,
+  postUpdateUserProfile,
 };

@@ -8,7 +8,7 @@ const getUsersDataPage = async (req, res, next) => {
       title: "User Data",
     };
 
-    return res.render("admin/users", {
+    return res.render("pages/admin/users", {
       page: pageMetadata,
       users,
     });

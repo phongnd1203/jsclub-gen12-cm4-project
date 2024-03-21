@@ -15,7 +15,7 @@ const getRegisterPage = (req, res) => {
     title: "Đăng ký",
   };
 
-  return res.render("auth/register.ejs", { metadata });
+  return res.render("pages/auth/register.ejs", { metadata });
 };
 
 const postRegister = async (req, res, next) => {

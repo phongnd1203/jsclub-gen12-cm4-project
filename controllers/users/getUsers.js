@@ -26,7 +26,7 @@ const getUserProfilePage = async (req, res, next) => {
       throw new HttpException(StatusCodes.NOT_FOUND, "User not found");
     }
 
-    return res.render("users/profile.ejs", {
+    return res.render("pages/users/profile.ejs", {
       user,
       isAdmin: userRoles[currentUser.role] <= userRoles.admin,
     });

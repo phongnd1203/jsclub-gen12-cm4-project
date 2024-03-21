@@ -3,7 +3,7 @@ const getDashboardPage = (req, res) => {
     title: "Dashboard",
   };
 
-  return res.render("admin/dashboard", {
+  return res.render("pages/admin/dashboard", {
     page: pageMetadata,
   });
 };

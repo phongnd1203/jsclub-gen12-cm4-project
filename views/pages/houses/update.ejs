@@ -1,0 +1,127 @@
+<!doctype html>
+<html lang="vi">
+  <%- include('../../partials/head.ejs') %>
+  <body>
+    <%- include('../../partials/scripts/pre-scripts.ejs') %>
+    <%- include('../../partials/layouts/header.ejs') %>
+    <main class="page-wrapper">
+      <div class="page-header d-print-none">
+        <div class="container-xl">
+          <div class="row g-2 align-items-center">
+            <div class="col">
+              <h2 class="page-title">Đăng tin</h2>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="page-body">
+        <div class="container-xl">
+          <div class="card">
+            <form method="post" class="card-body">
+              <div class="mb-3">
+                <label class="form-label"> Tiêu đề </label>
+                <input
+                  type="text"
+                  id="title"
+                  name="title"
+                  class="form-control"
+                  value="<%= house.title %>"
+                />
+              </div>
+              <div class="mb-3">
+                <label class="form-label"> Mô tả </label>
+                <textarea
+                  id="description"
+                  name="description"
+                  class="form-control"
+                >
+                  <%= house.description %>
+                </textarea>
+              </div>
+              <div class="mb-3">
+                <label class="form-label"> Khu vực </label>
+                <select
+                  id="location[district]"
+                  name="location[district]"
+                  class="form-select"
+                >
+                  <option disabled>Chọn khu vực</option>
+                  <% locals.enums.districts.forEach(district => { %>
+                  <option
+                    value="<%= district.code %>"
+                    selected="<%= house.location.district === district.code ? 'selected' : '' %>"
+                  >
+                    <%= district.name %>
+                  </option>
+
+                  <% }) %>
+                </select>
+              </div>
+              <div class="mb-3">
+                <label class="form-label"> Địa chỉ </label>
+                <input
+                  type="text"
+                  id="location[address]"
+                  name="location[address]"
+                  class="form-control"
+                  value="<%= house.location.address %>"
+                />
+              </div>
+              <div class="mb-3">
+                <label class="form-label"> Diện tích </label>
+                <input
+                  type="number"
+                  id="area"
+                  name="area"
+                  class="form-control"
+                  value="<%= house.area %>"
+                />
+              </div>
+              <div class="mb-3">
+                <label class="form-label"> Giá </label>
+                <input
+                  type="number"
+                  id="price"
+                  name="price"
+                  class="form-control"
+                  value="<%= house.price %>"
+                />
+              </div>
+              <div class="mb-3">
+                <label class="form-label"> Hình ảnh </label>
+                <input
+                  type="file"
+                  id="images"
+                  name="images"
+                  class="form-control"
+                  multiple
+                  value=""
+                />
+              </div>
+              <div class="mb-3">
+                <label class="form-label"> Trạng thái </label>
+                <select id="status" name="status" class="form-select">
+                  <option disabled>Chọn trạng thái</option>
+                  <% locals.enums.houseStatus.forEach(status=> { %>
+                  <option
+                    value="<%= status.key %>"
+                    selected="<%=house.status===status.key ? 'selected' : '' %>"
+                  >
+                    <%= status.value %>
+                  </option>
+                  <% }) %>
+                </select>
+              </div>
+              <div class="form-footer">
+                <button type="submit" class="btn btn-primary w-100">
+                  Đăng tin
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </main>
+    <%- include('../../partials/scripts/post-scripts.ejs') %>
+  </body>
+</html>
