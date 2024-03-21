@@ -1,3 +1,5 @@
+const { config } = require("../configs/appConfig.js");
+
 const getUsersService = require("../services/users/getUsers.js");
 const getDistrictsService = require("../services/districts/getDistricts.js");
 
@@ -22,6 +24,7 @@ const dataLoader = async (req, res, next) => {
     req.app.locals.enums = {
       districts,
       houseStatus: listHouseStatus,
+      maps: { apiKey: config.google.maps.apiKey },
     };
 
     return next();

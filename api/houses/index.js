@@ -5,7 +5,9 @@ const getHouseDetailController = require("../../controllers/houses/getHouseDetai
 const editHouseController = require("../../controllers/houses/editHouse.js");
 const deleteHouseController = require("../../controllers/houses/deleteHouse.js");
 
+const validateData = require("../../middlewares/validateRequest.js");
 const createHouseValidator = require("../../validators/houses/createHouse.js");
+const updateHouseValidator = require("../../validators/houses/updateHouse.js");
 
 const housesRouter = express.Router();
 
@@ -13,7 +15,7 @@ housesRouter.get("/create", createHouseController.getCreateHousePage);
 
 housesRouter.post(
   "/create",
-  createHouseValidator,
+  validateData(createHouseValidator),
   createHouseController.postCreateHouse,
 );
 
@@ -23,7 +25,7 @@ housesRouter.get("/:id/edit", editHouseController.getEditHousePage);
 
 housesRouter.post(
   "/:id/edit",
-  createHouseValidator,
+  validateData(updateHouseValidator),
   editHouseController.postEditHouse,
 );
 

@@ -14,7 +14,22 @@
                 <%- house.location.address %>
               </div>
             </div>
+            <% if (locals.user) { %>
             <div class="col-auto ms-auto d-print-none">
+              <% if ( locals.user._id.toString() === house.owner._id.toString())
+              { %>
+              <div class="d-flex">
+                <a
+                  href="
+                  <%= `/houses/${house._id}/edit` %>
+                "
+                  class="btn btn-primary"
+                >
+                  <%- include('../../partials/icons/edit.ejs') %>
+                  <span> Chỉnh sửa </span>
+                </a>
+              </div>
+              <% } else { %>
               <form
                 action="<%= `/houses/${house._id}/favorite` %>"
                 method="post"
@@ -27,10 +42,12 @@
                   class="btn btn-primary"
                 >
                   <%- include('../../partials/icons/heart.ejs') %>
-                  <span> Favorite </span>
+                  <span> Yêu thích </span>
                 </button>
               </form>
+              <% } %>
             </div>
+            <% } %>
           </div>
         </div>
       </div>
@@ -59,11 +76,39 @@
                       <p>Comment text goes here...</p>
                     </div>
                   </div>
+                  <div class="comment">
+                    <div class="comment-author">
+                      <h5>Author Name</h5>
+                    </div>
+                    <div class="comment-body">
+                      <p>Comment text goes here...</p>
+                    </div>
+                  </div>
                   <!-- Repeat the 'comment' div for each comment -->
                 </div>
               </div>
+              <div class="card mb-3">
+                <div class="card-header">
+                  <h3 class="card-title">Bản đồ</h3>
+                </div>
+                <div class="card-body">
+                  <div class="ratio ratio-16x9">
+                    <iframe
+                      style="border: 0"
+                      loading="lazy"
+                      allowfullscreen
+                      referrerpolicy="no-referrer-when-downgrade"
+                      src="
+                      https://www.google.com/maps/embed/v1/place?key=<%= locals.maps.apiKey %>&q=<%= `${house.name}, ${house.location.address}` %>
+                      "
+                    >
+                    </iframe>
+                  </div>
+                </div>
+              </div>
+              <div class="mb-3 card"></div>
             </div>
-            <div class="col-lg-5"></div>
+            <div class="col-lg-4"></div>
           </div>
         </div>
       </div>
