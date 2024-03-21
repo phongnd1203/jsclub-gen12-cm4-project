@@ -6,7 +6,7 @@ const RevokedTokenModel = require("../../models/tokens/revokedToken.js");
 const jwt = require("../../utils/jwt.js");
 
 const createResetPasswordToken = async (email) => {
-  const user = await UsersModel.findOne({ email }).select("_id").lean().exec();
+  const user = await UsersModel.findOne({ email }).select("_id").exec();
 
   if (!user) {
     throw new Error("Tài khoản không tồn tại");
@@ -48,8 +48,8 @@ const resetPassword = async (token, password) => {
     await RevokedTokenModel.create({ token, expiresAt: payload.exp });
 
     return true;
-  } catch (err) {
-    throw new Error(err.message);
+  } catch (error) {
+    throw new Error(error.message);
   }
 };
 

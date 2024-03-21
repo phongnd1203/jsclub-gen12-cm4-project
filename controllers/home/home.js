@@ -8,15 +8,14 @@ const getHomePage = async (req, res, next) => {
 
     const ownedHouses = await getHousesService.getHousesByOwner(
       req.session.userId,
-      6,
-      0,
+      { limit: 6 },
     );
 
-    const featuredHouses = await getHousesService.getFeaturedHouses(6, 0);
-
-    const latestHouses = await getHousesService.getHouses(6, 0, {
-      createdAt: "desc",
+    const featuredHouses = await getHousesService.getFeaturedHouses({
+      limit: 6,
     });
+
+    const latestHouses = await getHousesService.getHouses({ limit: 6 });
 
     return res.render("pages/home", {
       metadata,
@@ -24,8 +23,8 @@ const getHomePage = async (req, res, next) => {
       featuredHouses,
       latestHouses,
     });
-  } catch (err) {
-    return next(err);
+  } catch (error) {
+    return next(error);
   }
 };
 

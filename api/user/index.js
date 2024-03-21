@@ -9,9 +9,6 @@ userRouter.get("/profile", getUserProfileController.getUserProfilePage);
 
 userRouter.get("/edit", updateUserProfileController.getUpdateUserProfilePage);
 
-userRouter.post(
-  "/edit/save",
-  updateUserProfileController.postUpdateUserProfile,
-);
+userRouter.post("/edit", updateUserProfileController.postUpdateUserProfile);
 
 module.exports = userRouter;

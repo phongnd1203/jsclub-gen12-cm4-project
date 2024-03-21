@@ -3,7 +3,7 @@ const updateUserService = require("../../services/users/updateUser.js");
 const getUpdateUserProfilePage = (req, res) => {
   const metadata = { title: "Cập nhật thông tin cá nhân" };
 
-  res.render("pages/user/update-profile", { metadata });
+  res.render("pages/user/update.ejs", { metadata });
 };
 
 const postUpdateUserProfile = async (req, res, next) => {
@@ -23,8 +23,8 @@ const postUpdateUserProfile = async (req, res, next) => {
     const user = await updateUserService(id);
 
     res.status(StatusCodes.OK).json(user);
-  } catch (err) {
-    return next(err);
+  } catch (error) {
+    return next(error);
   }
 };
 

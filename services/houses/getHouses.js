@@ -1,73 +1,56 @@
 const HouseModel = require("../../models/houses/house.js");
 
-const getHouses = async (pageLimit, pageNumber, sort, populate) => {
-  const limit = Math.min(30, Math.max(0, pageLimit));
-  const skip = (Math.max(1, pageNumber) - 1) * limit;
+const defaultOptions = {
+  limit: 30,
+  page: 1,
+  sort: { createdAt: -1 },
+  populate: "",
+};
 
-  let query = HouseModel.find().skip(skip).limit(limit);
+const getHouses = async (options = defaultOptions) => {
+  const limit = Math.min(30, Math.max(0, options.limit));
+  const skip = (Math.max(1, options.page) - 1) * limit;
 
-  if (sort) {
-    query = query.sort(sort);
-  }
-
-  if (populate) {
-    query = query.populate(populate);
-  }
-
-  const houses = await query.exec();
+  const houses = HouseModel.find()
+    .skip(skip)
+    .limit(limit)
+    .sort(options.sort)
+    .populate(options.populate)
+    .exec();
 
   return houses;
 };
 
-const getFeaturedHouses = async (pageLimit, pageNumber, sort, populate) => {
-  const limit = Math.min(30, Math.max(1, pageLimit));
-  const skip = (Math.max(1, pageNumber) - 1) * limit;
-  let query = HouseModel.find({ isFeatured: true }).skip(skip).limit(limit);
-  if (sort) {
-    query = query.sort(sort);
-  }
-  if (populate) {
-    query = query.populate(populate);
-  }
-  const houses = await query.exec();
-  return houses;
-};
+const getFeaturedHouses = async (options = defaultOptions) => {
+  const limit = Math.min(30, Math.max(0, options.limit));
+  const skip = (Math.max(1, options.page) - 1) * limit;
 
-const getHousesByOwner = async (
-  ownerId,
-  pageLimit,
-  pageNumber,
-  sort,
-  populate,
-) => {
-  const limit = Math.min(30, Math.max(0, pageLimit));
-  const skip = (Math.max(1, pageNumber) - 1) * limit;
-
-  let query = HouseModel.find({ owner: ownerId }).skip(skip).limit(limit);
-
-  if (sort) {
-    query = query.sort(sort);
-  }
-
-  if (populate) {
-    query = query.populate(populate);
-  }
-
-  const houses = await query.exec();
+  const houses = HouseModel.find({ isFeatured: true })
+    .skip(skip)
+    .limit(limit)
+    .sort(options.sort)
+    .populate(options.populate)
+    .exec();
 
   return houses;
 };
 
-const getHouseById = async (houseId, populate) => {
-  let query = HouseModel.findById(houseId);
-  if (populate) {
-    query = query.populate(populate);
-  }
-  const house = await query.lean().exec();
+const getHousesByOwner = async (ownerId, options = defaultOptions) => {
+  const limit = Math.min(30, Math.max(0, options.limit));
+  const skip = (Math.max(1, options.page) - 1) * limit;
 
-  if (!house) {
-    throw new Error("Không tìm thấy nhà");
-  }
+  const houses = HouseModel.find({ owner: ownerId })
+    .skip(skip)
+    .limit(limit)
+    .sort(options.sort)
+    .populate(options.populate)
+    .exec();
+
+  return houses;
+};
+
+const getHouseById = async (houseId, populate = "") => {
+  const house = HouseModel.findById(houseId).populate(populate).exec();
 
   return house;
 };

@@ -10,8 +10,8 @@ connection.on("connected", () => {
   console.log("MongoDB connected");
 });
 
-connection.on("error", (err) => {
-  console.error("MongoDB connection error", err);
+connection.on("error", (error) => {
+  console.error("MongoDB connection error", error);
 });
 
 module.exports = connection;

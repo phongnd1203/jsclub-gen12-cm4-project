@@ -14,8 +14,8 @@ const getDeleteCurrentUserPage = async (req, res, next) => {
     return res.render("pages/users/delete.ejs", {
       user,
     });
-  } catch (err) {
-    return next(err);
+  } catch (error) {
+    return next(error);
   }
 };
 
@@ -27,8 +27,8 @@ const postDeleteCurrentUser = async (req, res, next) => {
     req.session.destroy();
 
     res.redirect("/");
-  } catch (err) {
-    return next(err);
+  } catch (error) {
+    return next(error);
   }
 };
 
@@ -58,8 +58,8 @@ const getDeleteUserPage = async (req, res, next) => {
     return res.render("pages/users/delete.ejs", {
       user,
     });
-  } catch (err) {
-    return next(err);
+  } catch (error) {
+    return next(error);
   }
 };
 
@@ -72,8 +72,8 @@ const postDeleteUser = async (req, res, next) => {
     req.session.destroy();
 
     res.redirect("/");
-  } catch (err) {
-    return next(err);
+  } catch (error) {
+    return next(error);
   }
 };
 

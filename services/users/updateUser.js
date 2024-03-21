@@ -13,7 +13,7 @@ const updateUser = async (id, name, phone, email, password, role) => {
       },
       { new: true },
     );
-  } catch (err) {
+  } catch (error) {
     throw new Error(error);
   }
 };
