@@ -53,7 +53,7 @@ app.use(
   }),
 );
 
-app.use(timeout("5s"));
+app.use(timeout(config.app.isProduction ? "5s" : "1m"));
 
 app.use(require("../middlewares/dataLoader.js"));
 

@@ -32,14 +32,17 @@ const sign = (payload, options) => {
 };
 
 const verify = (token) => {
-  return jwt.verify(token, verifyingKey, {
-    ...config.jwt.options.verify,
-    algorithms: [signingAlgorithm],
-  });
+  try {
+    return jwt.verify(token, verifyingKey, {
+      ...config.jwt.options.verify,
+      algorithms: [signingAlgorithm],
+    });
+  } catch (error) {
+    return null;
+  }
 };
 
 module.exports = {
-  ...jwt,
   sign,
   verify,
 };

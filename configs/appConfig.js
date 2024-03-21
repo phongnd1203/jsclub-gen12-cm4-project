@@ -72,14 +72,14 @@ const appConfig = () => ({
           });
         })(),
       },
-      options: {
-        sign: {
-          expiresIn: process.env.JWT_EXPIRES_IN || "10m",
-          notBefore: process.env.JWT_NOT_BEFORE || "0s",
-        },
-        verify: {
-          maxAge: process.env.JWT_MAX_AGE || "7d",
-        },
+    },
+    options: {
+      sign: {
+        expiresIn: process.env.JWT_EXPIRES_IN || "10m",
+        notBefore: process.env.JWT_NOT_BEFORE || "0s",
+      },
+      verify: {
+        maxAge: process.env.JWT_MAX_AGE || "7d",
       },
     },
   },
@@ -104,6 +104,15 @@ const appConfig = () => ({
   },
   morgan: {
     format: process.env.MORGAN_FORMAT || (isProduction ? "combined" : "dev"),
+  },
+  nodemailer: {
+    host: process.env.NODEMAILER_HOST,
+    port: process.env.NODEMAILER_PORT,
+    secure: parseInt(process.env.NODEMAILER_SECURE, 10) || 0,
+    auth: {
+      user: process.env.NODEMAILER_USER,
+      pass: process.env.NODEMAILER_PASS,
+    },
   },
 });
 module.exports = { appConfig, config: appConfig() };

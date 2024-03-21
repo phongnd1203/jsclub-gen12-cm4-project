@@ -20,30 +20,41 @@ const createResetPasswordToken = async (email) => {
   return resetPasswordToken;
 };
 
-const resetPassword = async (token, password) => {
+const verifyResetPasswordToken = async (token) => {
   const payload = jwt.verify(token);
 
-  if (payload.action !== "reset-password") {
+  if (
+    !payload ||
+    payload.action !== "reset-password" ||
+    (await RevokedTokenModel.exists({ token }))
+  ) {
     throw new Error("Token không hợp lệ");
   }
 
-  if (await RevokedTokenModel.exists({ token })) {
-    throw new Error("Token đã bị thu hồi");
+  return payload;
+};
+
+const resetPassword = async (token, password) => {
+  try {
+    const payload = await verifyResetPasswordToken(token);
+
+    const hashedPassword = await argon2.hash(password);
+
+    await UsersModel.updateOne(
+      { _id: payload.sub },
+      { password: hashedPassword },
+    );
+
+    await RevokedTokenModel.create({ token, expiresAt: payload.exp });
+
+    return true;
+  } catch (err) {
+    throw new Error(err.message);
   }
-
-  const hashedPassword = await argon2.hash(password);
-
-  await UsersModel.updateOne(
-    { _id: payload.sub },
-    { password: hashedPassword },
-  );
-
-  await RevokedTokenModel.create({ token, expiresAt: payload.exp });
-
-  return true;
 };
 
 module.exports = {
   createResetPasswordToken,
+  verifyResetPasswordToken,
   resetPassword,
 };
