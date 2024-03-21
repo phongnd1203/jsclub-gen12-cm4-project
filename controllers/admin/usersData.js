@@ -12,8 +12,8 @@ const getUsersDataPage = async (req, res, next) => {
       page: pageMetadata,
       users,
     });
-  } catch (err) {
-    return next(err);
+  } catch (error) {
+    return next(error);
   }
 };
 

@@ -6,7 +6,7 @@ const postLogout = (req, res) => {
   try {
     req.session.destroy();
     return res.redirect("/");
-  } catch (err) {
+  } catch (error) {
     throw new HttpException(StatusCodes.INTERNAL_SERVER_ERROR, error.message);
   }
 };

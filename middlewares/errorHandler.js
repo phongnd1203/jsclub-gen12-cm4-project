@@ -2,16 +2,16 @@ const { StatusCodes, getReasonPhrase } = require("http-status-codes");
 
 const { config } = require("../configs/appConfig.js");
 
-const errorHandler = async (err, req, res, next) => {
-  console.error(err);
+const errorHandler = async (error, req, res, next) => {
+  console.error(error);
 
-  const status = err.status || StatusCodes.INTERNAL_SERVER_ERROR;
-  const reason = err.reason || getReasonPhrase(status);
-  const message = err.message || reason;
+  const status = error.status || StatusCodes.INTERNAL_SERVER_ERROR;
+  const reason = error.reason || getReasonPhrase(status);
+  const message = error.message || reason;
 
   res
-    .status(err.status || StatusCodes.INTERNAL_SERVER_ERROR)
-    .render(`error.ejs`, {
+    .status(error.status || StatusCodes.INTERNAL_SERVER_ERROR)
+    .render(`pages/error.ejs`, {
       metadata: {
         title: reason,
         description: `Error ${status} (${reason}): ${message}`,

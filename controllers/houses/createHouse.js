@@ -34,8 +34,8 @@ const postCreateHouse = async (req, res, next) => {
     const house = await createHouseService.createHouse(userId, req.body);
 
     return res.redirect(`/houses/${house._id}`);
-  } catch (err) {
-    return next(err);
+  } catch (error) {
+    return next(error);
   }
 };
 

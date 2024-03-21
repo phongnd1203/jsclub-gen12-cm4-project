@@ -30,8 +30,8 @@ const getUserProfilePage = async (req, res, next) => {
       user,
       isAdmin: userRoles[currentUser.role] <= userRoles.admin,
     });
-  } catch (err) {
-    return next(err);
+  } catch (error) {
+    return next(error);
   }
 };
 

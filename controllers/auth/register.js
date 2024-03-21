@@ -36,13 +36,13 @@ const postRegister = async (req, res, next) => {
 
     try {
       await registerService.register(name, phone, email, password);
-    } catch (err) {
+    } catch (error) {
       throw new HttpException(StatusCodes.BAD_REQUEST, error.message);
     }
 
     return res.redirect("/auth/login");
-  } catch (err) {
-    return next(err);
+  } catch (error) {
+    return next(error);
   }
 };
 

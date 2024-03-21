@@ -54,18 +54,7 @@
           <div class="container-xl">
             <div class="row row-cards">
               <% if (ownedHouses) { %> <% ownedHouses.forEach((house) => { %>
-              <div class="col-sm-6 col-lg-4">
-                <a class="card card-sm" href="<%= `/houses/${house._id}` %>">
-                  <div class="d-block"><img class="card-img-top" /></div>
-                  <div class="card-body">
-                    <h3 class="card-title"><%= house.title %></h3>
-                    <p class="text-secondary">
-                      <span> <%= house.price %> </span>
-                    </p>
-                    <p class="text-secondary"><%= house.location.address %></p>
-                  </div>
-                </a>
-              </div>
+              <%- include('../partials/cards/house.ejs', { house }) %>
               <% }) %>
               <% } %>
             </div>
@@ -88,18 +77,7 @@
           <div class="container-xl">
             <div class="row row-cards">
               <% featuredHouses.forEach((house) => { %>
-              <div class="col-sm-6 col-lg-4">
-                <a class="card card-sm" href="<%= `/houses/${house._id}` %>">
-                  <div class="d-block"><img class="card-img-top" /></div>
-                  <div class="card-body">
-                    <h3 class="card-title"><%= house.title %></h3>
-                    <p class="text-secondary">
-                      <span> <%= house.price %> </span>
-                    </p>
-                    <p class="text-secondary"><%= house.location.address %></p>
-                  </div>
-                </a>
-              </div>
+              <%- include('../partials/cards/house.ejs', { house }) %>
               <% }) %>
             </div>
           </div>
@@ -120,18 +98,8 @@
           <div class="container-xl">
             <div class="row row-cards">
               <% latestHouses.forEach((house) => { %>
-              <div class="col-sm-6 col-lg-4">
-                <a class="card card-sm" href="<%= `/houses/${house._id}` %>">
-                  <div class="d-block"><img class="card-img-top" /></div>
-                  <div class="card-body">
-                    <h3 class="card-title"><%= house.title %></h3>
-                    <p class="text-secondary">
-                      <span> <%= house.price %> </span>
-                    </p>
-                    <p class="text-secondary"><%= house.location.address %></p>
-                  </div>
-                </a>
-              </div>
+              <%- include('../partials/cards/house.ejs', { house }) %>
+
               <% }) %>
             </div>
           </div>

@@ -18,8 +18,8 @@ const validateRequest = (validators) => [
       }
 
       return next();
-    } catch (err) {
-      return next(err);
+    } catch (error) {
+      return next(error);
     }
   },
 ];

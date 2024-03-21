@@ -15,8 +15,8 @@ const getHouseDetailPage = async (req, res, next) => {
     }
 
     return res.render("pages/houses/detail.ejs", { house });
-  } catch (err) {
-    return next(err);
+  } catch (error) {
+    return next(error);
   }
 };
 

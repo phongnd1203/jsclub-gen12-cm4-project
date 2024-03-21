@@ -1,6 +1,7 @@
 const express = require("express");
 
 const createHouseController = require("../../controllers/houses/createHouse.js");
+const getHousesController = require("../../controllers/houses/getHouses.js");
 const getHouseDetailController = require("../../controllers/houses/getHouseDetail.js");
 const editHouseController = require("../../controllers/houses/editHouse.js");
 const deleteHouseController = require("../../controllers/houses/deleteHouse.js");
@@ -18,6 +19,8 @@ housesRouter.post(
   validateData(createHouseValidator),
   createHouseController.postCreateHouse,
 );
+
+housesRouter.get("/", getHousesController.getHousesPage);
 
 housesRouter.get("/:id", getHouseDetailController.getHouseDetailPage);
 

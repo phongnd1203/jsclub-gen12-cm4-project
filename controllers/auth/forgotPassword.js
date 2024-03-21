@@ -33,8 +33,8 @@ const postForgotPassword = async (req, res, next) => {
     });
 
     return res.redirect("/auth/login");
-  } catch (err) {
-    return next(err);
+  } catch (error) {
+    return next(error);
   }
 };
 
@@ -49,11 +49,11 @@ const getResetPasswordPage = async (req, res, next) => {
     try {
       await resetPasswordService.verifyResetPasswordToken(token);
       return res.render("pages/auth/reset-password.ejs", { metadata, token });
-    } catch (err) {
-      throw new HttpException(StatusCodes.BAD_REQUEST, err.message);
+    } catch (error) {
+      throw new HttpException(StatusCodes.BAD_REQUEST, error.message);
     }
-  } catch (err) {
-    return next(err);
+  } catch (error) {
+    return next(error);
   }
 };
 
@@ -64,8 +64,8 @@ const postResetPassword = async (req, res, next) => {
     await resetPasswordService.resetPassword(token, password);
 
     return res.redirect("/auth/login");
-  } catch (err) {
-    return next(err);
+  } catch (error) {
+    return next(error);
   }
 };
 

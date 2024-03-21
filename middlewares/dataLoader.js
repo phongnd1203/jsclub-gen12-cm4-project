@@ -7,13 +7,9 @@ const houseStatus = require("../enums/houseStatus.js");
 
 const dataLoader = async (req, res, next) => {
   try {
-    try {
-      const user = await getUsersService.getUserById(req.session.userId);
-
-      req.app.locals.user = user;
-    } catch (err) {
-      req.app.locals.user = null;
-    }
+    const user = await getUsersService.getUserById(req.session.userId);
+    req.user = user;
+    req.app.locals.user = user;
 
     const districts = await getDistrictsService.getDistricts();
     const listHouseStatus = Object.keys(houseStatus).map((key) => ({
@@ -29,8 +25,8 @@ const dataLoader = async (req, res, next) => {
     req.app.locals.maps = { apiKey: config.google.maps.apiKey };
 
     return next();
-  } catch (err) {
-    return next(err);
+  } catch (error) {
+    return next(error);
   }
 };
 

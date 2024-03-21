@@ -13,12 +13,6 @@ const getEditHousePage = async (req, res, next) => {
   try {
     const { id } = req.params;
 
-    const { user } = req.session;
-
-    if (!user) {
-      return res.redirect("/auth/login");
-    }
-
     const house = await getHousesService.getHouseById(id);
 
     if (!house) {
@@ -26,17 +20,20 @@ const getEditHousePage = async (req, res, next) => {
     }
 
     if (
-      user._id.toString() !== house.owner.toString() ||
-      userRoles[user.role] > userRoles.admin
+      req.user._id.toString() !== house.owner._id.toString() ||
+      userRoles[req.user.role] <= userRoles.admin
     ) {
-      throw new HttpException(StatusCodes.FORBIDDEN, "Không có quyền truy cập");
+      throw new HttpException(
+        StatusCodes.FORBIDDEN,
+        "Bạn không có quyền chỉnh sửa nhà này",
+      );
     }
 
-    return res.status(200).render("pages/houses/edit.ejs", {
+    return res.status(StatusCodes.OK).render("pages/houses/edit.ejs", {
       house,
     });
-  } catch (err) {
-    return next(err);
+  } catch (error) {
+    return next(error);
   }
 };
 
