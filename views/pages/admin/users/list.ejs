@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="en">
+  <%- include('../../head.document.ejs') %>
+  <body>
+    <%- include('../../components/layouts/header.layout.ejs') %>
+    <main><%- include('../../components/layouts/database.layout.ejs') %></main>
+    <div class="page-wrapper">
+      <!-- Page header -->
+      <div class="page-header d-print-none">
+        <div class="container-xl">
+          <div class="row g-2 align-items-center">
+            <div class="col">
+              <h2 class="page-title">Người dùng</h2>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Page body -->
+      <div class="page-body">
+        <div class="container-xl">
+          <div class="card">
+            <div class="card-body">
+              <div id="table-default" class="table-responsive">
+                <table class="table">
+                  <thead>
+                    <tr>
+                      <th>
+                        <button class="table-sort" data-sort="sort-name">
+                          Tên người dùng
+                        </button>
+                      </th>
+                      <th>
+                        <button class="table-sort" data-sort="sort-city">
+                          Email
+                        </button>
+                      </th>
+                      <th>
+                        <button class="table-sort" data-sort="sort-type">
+                          Số điện thoại
+                        </button>
+                      </th>
+                      <th>
+                        <button class="table-sort" data-sort="sort-date">
+                          Ngày tạo tài khoản
+                        </button>
+                      </th>
+                    </tr>
+                  </thead>
+                  <tbody class="table-tbody">
+                    <tr>
+                      <td class="sort-name">Outlaw Run</td>
+                      <td class="sort-city">khanh123@gmail.com</td>
+                      <td class="sort-type">09123456789</td>
+                      <td class="sort-date" data-date="1559333540">
+                        23/3/2024
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

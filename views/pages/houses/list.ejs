@@ -1,8 +1,8 @@
 <!doctype html>
 <html lang="vi">
   <%- include('../../partials/head.ejs') %>
-
   <body>
+    <%- include('../../partials/scripts/pre-scripts.ejs') %>
     <%- include('../../partials/layouts/header.ejs') %>
     <main>
       <div class="page-wrapper">
@@ -11,6 +11,7 @@
             <div class="row g-2 align-items-center">
               <div class="col">
                 <h1 class="page-title">Danh sách trọ</h1>
+                <!-- TODO: Sửa hiển thị trang -->
                 <div class="text-secondary mt-1">1-6 của 241 ảnh</div>
               </div>
               <!-- Page title actions -->
@@ -43,23 +44,8 @@
                   class="page-link"
                   href="/houses/page/<%= Math.max(1, page - 1)%>"
                 >
-                  <!-- Download SVG icon from http://tabler-icons.io/i/chevron-left -->
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    class="icon"
-                    width="24"
-                    height="24"
-                    viewBox="0 0 24 24"
-                    stroke-width="2"
-                    stroke="currentColor"
-                    fill="none"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                  >
-                    <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-                    <path d="M15 6l-6 6l6 6"></path>
-                  </svg>
-                  prev
+                  <%- include('../../partials/icons/chevron-left.ejs') %>
+                  <span> Trở lại </span>
                 </a>
               </li>
               <li class="page-item <%= (page == 1 ? 'active' : '') %>">
@@ -82,29 +68,15 @@
                   class="page-link"
                   href="/houses/page/<%= Math.min(5, page + 1)%>"
                 >
-                  next
-                  <!-- Download SVG icon from http://tabler-icons.io/i/chevron-right -->
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    class="icon"
-                    width="24"
-                    height="24"
-                    viewBox="0 0 24 24"
-                    stroke-width="2"
-                    stroke="currentColor"
-                    fill="none"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                  >
-                    <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-                    <path d="M9 6l6 6l-6 6"></path>
-                  </svg>
+                  <span> Tiếp theo </span>
+                  <%- include('../../partials/icons/chevron-right.ejs') %>
                 </a>
               </li>
             </ul>
           </div>
         </div>
       </div>
+      <%- include('../../partials/scripts/post-scripts.ejs') %>
     </main>
   </body>
 </html>
