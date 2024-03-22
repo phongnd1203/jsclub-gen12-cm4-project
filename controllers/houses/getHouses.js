@@ -7,12 +7,24 @@ const getHousesPage = async (req, res, next) => {
   try {
     const { page } = req.query;
 
+    const limit = 30;
+
+    const maxPage = Math.floor((await getHousesService.countHouses()) / limit);
+
+    const _page = Math.max(1, Math.min(maxPage, parseInt(page, 10) || 1));
+
     try {
-      const houses = await getHousesService.getHouses({ page });
+      const houses = await getHousesService.getHouses({
+        page: _page,
+        limit,
+      });
+
+      console.log("page", page, "maxPage", maxPage);
 
       return res.render("pages/houses/list.ejs", {
         houses,
-        page: parseInt(page, 10),
+        page: _page,
+        maxPage,
       });
     } catch (error) {
       throw new HttpException(StatusCodes.NOT_FOUND, error.message);
