@@ -55,9 +55,15 @@ const getHouseById = async (houseId, populate = "") => {
   return house;
 };
 
+const countHouses = async () => {
+  const count = HouseModel.countDocuments().exec();
+  return count;
+};
+
 module.exports = {
   getHouses,
   getHousesByOwner,
   getFeaturedHouses,
   getHouseById,
+  countHouses,
 };
