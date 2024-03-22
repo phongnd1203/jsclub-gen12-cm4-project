@@ -1,32 +1,15 @@
 const HouseModel = require("../../models/houses/house.js");
 
-const updateHouse = async (
-  id,
-  title,
-  description,
-  address,
-  districtCode,
-  price,
-  area,
-  visible,
-) => {
-  const house = await HouseModel.findById(id).exec();
-
-  if (!house) {
-    throw new Error("Không tìm thấy nhà");
+async function updateHouse(houseId, updatedData) {
+  try {
+    const house = await HouseModel.findByIdAndUpdate(houseId, updatedData, {
+      new: true,
+      omitUndefined: true,
+    });
+    return house;
+  } catch (error) {
+    throw new Error(`Failed to update house: ${error.message}`);
   }
-
-  house.title = title;
-  house.description = description;
-  house.address = address;
-  house.districtCode = districtCode;
-  house.price = price;
-  house.area = area;
-  house.visible = visible;
-
-  await house.save();
-
-  return house;
-};
+}
 
 module.exports = { updateHouse };

@@ -9,7 +9,6 @@ const createHouseService = require("../../services/houses/createHouse.js");
 const getCreateHousePage = (req, res) => {
   return res.render("pages/houses/create.ejs", {
     title: "Tạo nhà mới",
-    house: {},
   });
 };
 
@@ -31,9 +30,9 @@ const postCreateHouse = async (req, res, next) => {
 
     const { userId } = req.session;
 
-    const house = await createHouseService.createHouse(userId, req.body);
+    await createHouseService.createHouse(userId, req.body);
 
-    return res.redirect(`/houses/${house._id}`);
+    return res.redirect(`/house/${house._id}`);
   } catch (error) {
     return next(error);
   }

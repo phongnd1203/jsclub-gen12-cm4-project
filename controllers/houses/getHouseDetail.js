@@ -6,9 +6,9 @@ const getHousesService = require("../../services/houses/getHouses.js");
 
 const getHouseDetailPage = async (req, res, next) => {
   try {
-    const { id } = req.params;
+    const { houseId } = req.params;
 
-    const house = await getHousesService.getHouseById(id);
+    const house = await getHousesService.getHouseById(houseId);
 
     if (!house) {
       throw new HttpException(StatusCodes.NOT_FOUND, "Không tìm thấy nhà");

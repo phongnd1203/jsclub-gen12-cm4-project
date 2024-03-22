@@ -12,7 +12,7 @@ const getHousesPage = async (req, res, next) => {
 
       return res.render("pages/houses/list.ejs", {
         houses,
-        page,
+        page: parseInt(page, 10),
       });
     } catch (error) {
       throw new HttpException(StatusCodes.NOT_FOUND, error.message);

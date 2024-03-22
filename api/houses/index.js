@@ -22,16 +22,18 @@ housesRouter.post(
 
 housesRouter.get("/", getHousesController.getHousesPage);
 
-housesRouter.get("/:id", getHouseDetailController.getHouseDetailPage);
+housesRouter.get("/:houseId", getHouseDetailController.getHouseDetailPage);
 
-housesRouter.get("/:id/edit", editHouseController.getEditHousePage);
+housesRouter.get("/:houseId/edit", editHouseController.getEditHousePage);
 
 housesRouter.post(
-  "/:id/edit",
+  "/:houseId/edit",
   validateData(updateHouseValidator),
   editHouseController.postEditHouse,
 );
 
-housesRouter.post("/:id/delete", deleteHouseController.postDeleteHouse);
+housesRouter.post("/:houseId/delete", deleteHouseController.postDeleteHouse);
+
+housesRouter.use("/:houseId/comments", require("./comments"));
 
 module.exports = housesRouter;
