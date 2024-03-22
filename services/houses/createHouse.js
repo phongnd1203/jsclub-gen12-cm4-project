@@ -1,25 +1,12 @@
 const HouseModel = require("../../models/houses/house.js");
 
-const createHouse = async (
-  userId,
-  { title, description, location: { address, district }, price, area, status },
-) => {
-  const newHouse = new HouseModel({
-    title,
-    description,
-    location: {
-      address,
-      district,
-    },
-    price,
-    area,
-    status,
-    owner: userId,
-  });
-
-  await newHouse.save();
-
-  return newHouse;
-};
+async function createHouse(houseData) {
+  try {
+    const newHouse = await HouseModel.create(houseData);
+    return newHouse;
+  } catch (error) {
+    throw new Error(`Failed to create house: ${error.message}`);
+  }
+}
 
 module.exports = { createHouse };

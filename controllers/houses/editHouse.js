@@ -11,9 +11,9 @@ const userRoles = require("../../enums/userRoles.js");
 
 const getEditHousePage = async (req, res, next) => {
   try {
-    const { id } = req.params;
+    const { houseId } = req.params;
 
-    const house = await getHousesService.getHouseById(id);
+    const house = await getHousesService.getHouseById(houseId);
 
     if (!house) {
       throw new HttpException(StatusCodes.NOT_FOUND, "Nhà không tồn tại");
@@ -38,39 +38,33 @@ const getEditHousePage = async (req, res, next) => {
 };
 
 const postEditHouse = async (req, res, next) => {
-  const validationErrors = validationResult(req);
+  try {
+    const validationErrors = validationResult(req);
 
-  if (!validationErrors.isEmpty()) {
-    throw new HttpException(
-      StatusCodes.BAD_REQUEST,
-      "Thông tin đã nhập không hợp lệ",
-      validationErrors.array(),
-      {
-        path: req.originalUrl,
-        body: req.body,
-      },
-    );
+    if (!validationErrors.isEmpty()) {
+      throw new HttpException(
+        StatusCodes.BAD_REQUEST,
+        "Thông tin đã nhập không hợp lệ",
+        validationErrors.array(),
+        {
+          path: req.originalUrl,
+          body: req.body,
+        },
+      );
+    }
+
+    const { houseId } = req.params;
+
+    const house = await updateHouseService.updateHouse(houseId, req.body);
+
+    if (!house) {
+      throw new HttpException(StatusCodes.NOT_FOUND, "Nhà không tồn tại");
+    }
+
+    return res.redirect(`/houses/${houseId}`);
+  } catch (error) {
+    return next(error);
   }
-
-  const { id } = req.params;
-
-  const { title, description, address, districtCode, price, area, visible } =
-    req.body;
-
-  const { user } = req.session;
-
-  await updateHouseService(
-    id,
-    title,
-    description,
-    address,
-    districtCode,
-    price,
-    area,
-    visible,
-  );
-
-  return res.redirect(`/houses/${id}`);
 };
 
 module.exports = {
