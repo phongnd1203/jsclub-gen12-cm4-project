@@ -9,12 +9,12 @@
       <div
         id="slider"
         style="
-          background-image: url(&quot;https://tromoi.com/frontend/home/images/bg_head.jpg&quot;);
-          height: 400px;
+          background-image: url(/images/banner.jpg);
+          height: 36rem;
           background-size: cover;
         "
       >
-        <div class="text-content">
+        <div class="text-content text-left">
           <h1 class="text-heading">
             TÌM NHANH, KIẾM DỄ<br />
             TRỌ HÀ NỘI
@@ -28,79 +28,80 @@
           </div>
         </div>
       </div>
-      <% if (locals.user) { %>
-
-      <div class="page-wrapper">
-        <div class="page-header d-print-none">
-          <div class="container-xl">
-            <div class="row g-2 align-items-center">
-              <div class="col">
-                <h1 class="page-title">Trọ của bạn</h1>
-                <div class="text-secondary mt-1">1-6 của 241 ảnh</div>
-              </div>
-              <!-- Page title actions -->
-              <div class="col-auto ms-auto d-print-none">
-                <div class="d-flex">
-                  <a href="/houses/create" class="btn btn-primary">
-                    <%- include('../partials/icons/home-plus.ejs') %>
-                    <span>Đăng tin</span>
-                  </a>
+      <div class="page-wrapper mt-3">
+        <% if (locals.user) { %>
+        <div class="page-wrapper">
+          <div class="page-header d-print-none">
+            <div class="container-xl">
+              <div class="row g-2 align-items-center">
+                <div class="col">
+                  <h1 class="page-title">Trọ của bạn</h1>
+                  <div class="text-secondary mt-1">1-6 của 241 ảnh</div>
+                </div>
+                <!-- Page title actions -->
+                <div class="col-auto ms-auto d-print-none">
+                  <div class="d-flex">
+                    <a href="/houses/create" class="btn btn-primary">
+                      <%- include('../partials/icons/home-plus.ejs') %>
+                      <span>Đăng tin</span>
+                    </a>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
-        </div>
-        <div class="page-body">
-          <div class="container-xl">
-            <div class="row row-cards">
-              <% if (ownedHouses) { %> <% ownedHouses.forEach((house) => { %>
-              <%- include('../partials/cards/house.ejs', { house }) %>
-              <% }) %>
-              <% } %>
-            </div>
-          </div>
-        </div>
-      </div>
-      <% } %>
-      <div class="page-wrapper">
-        <div class="page-header d-print-none">
-          <div class="container-xl">
-            <div class="row g-2 align-items-center">
-              <div class="col">
-                <h1 class="page-title">Trọ nổi bật</h1>
-                <div class="text-secondary mt-1">1-6 của 241 ảnh</div>
+          <div class="page-body">
+            <div class="container-xl">
+              <div class="row row-cards">
+                <% if (ownedHouses) { %> <% ownedHouses.forEach((house) => { %>
+                <%- include('../partials/cards/house.ejs', { house }) %>
+                <% }) %>
+                <% } %>
               </div>
             </div>
           </div>
         </div>
-        <div class="page-body">
-          <div class="container-xl">
-            <div class="row row-cards">
-              <% featuredHouses.forEach((house) => { %>
-              <%- include('../partials/cards/house.ejs', { house }) %>
-              <% }) %>
+        <% } %>
+        <div class="page-wrapper">
+          <div class="page-header d-print-none">
+            <div class="container-xl">
+              <div class="row g-2 align-items-center">
+                <div class="col">
+                  <h1 class="page-title">Trọ nổi bật</h1>
+                  <div class="text-secondary mt-1">1-6 của 241 ảnh</div>
+                </div>
+              </div>
             </div>
           </div>
-        </div>
-      </div>
-      <div class="page-wrapper">
-        <div class="page-header d-print-none">
-          <div class="container-xl">
-            <div class="row g-2 align-items-center">
-              <div class="col">
-                <h1 class="page-title">Trọ gần đây</h1>
-                <div class="text-secondary mt-1">1-6 của 241 ảnh</div>
+          <div class="page-body">
+            <div class="container-xl">
+              <div class="row row-cards">
+                <% featuredHouses.forEach((house) => { %>
+                <%- include('../partials/cards/house.ejs', { house }) %>
+                <% }) %>
               </div>
             </div>
           </div>
         </div>
-        <div class="page-body">
-          <div class="container-xl">
-            <div class="row row-cards">
-              <% latestHouses.forEach((house) => { %>
-              <%- include('../partials/cards/house.ejs', { house }) %>
+        <div class="page-wrapper">
+          <div class="page-header d-print-none">
+            <div class="container-xl">
+              <div class="row g-2 align-items-center">
+                <div class="col">
+                  <h1 class="page-title">Trọ gần đây</h1>
+                  <div class="text-secondary mt-1">1-6 của 241 ảnh</div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="page-body">
+            <div class="container-xl">
+              <div class="row row-cards">
+                <% latestHouses.forEach((house) => { %>
+                <%- include('../partials/cards/house.ejs', { house }) %>
 
-              <% }) %>
+                <% }) %>
+              </div>
             </div>
           </div>
         </div>
