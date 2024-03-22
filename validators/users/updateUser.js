@@ -16,25 +16,25 @@ const userInputValidator = [
     .isEmail()
     .withMessage("Địa chỉ email không hợp lệ")
     .normalizeEmail(),
-  validator
-    .body("password")
-    .optional()
-    .isLength({ min: 8 })
-    .withMessage("Mật khẩu phải chứa ít nhất 8 ký tự"),
-  validator
-    .body("confirmPassword")
-    .optional()
-    .custom((value, { req }) => {
-      if (value !== req.body.password) {
-        throw new Error("Mật khẩu không khớp");
-      }
+  validator.body("password").custom((value, { req }) => {
+    if (value && value.length < 8) {
+      throw new Error("Mật khẩu phải có ít nhất 8 ký tự");
+    }
+    return true;
+  }),
+  validator.body("confirmPassword").custom((value, { req }) => {
+    const { password } = req.body;
+
+    if (!password && !value) {
       return true;
-    }),
-  validator
-    .body("role")
-    .optional()
-    .isIn(Object.keys(userRoles))
-    .withMessage("Vai trò không hợp lệ"),
+    }
+
+    if (password !== value) {
+      throw new Error("Mật khẩu không trùng khớp");
+    }
+
+    return true;
+  }),
 ];
 
 module.exports = userInputValidator;

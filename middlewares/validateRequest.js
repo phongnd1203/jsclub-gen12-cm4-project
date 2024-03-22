@@ -12,8 +12,10 @@ const validateRequest = (validators) => [
       if (!validationErrors.isEmpty()) {
         throw new HttpException(
           StatusCodes.BAD_REQUEST,
-          "Thông tin đã nhập không hợp lệ",
-          validationErrors.array(),
+          validationErrors
+            .array()
+            .map((error) => error.msg)
+            .join("\n"),
         );
       }
 
