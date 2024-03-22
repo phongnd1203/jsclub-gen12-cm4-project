@@ -1,113 +1,110 @@
 <!doctype html>
 <html lang="en">
-  <%- include('../../partials/head.ejs') %>
+<%- include('../../partials/head.ejs') %>
+
   <body>
     <%- include('../../partials/scripts/pre-scripts.ejs') %>
-    <%- include('../../partials/layouts/header.ejs') %>
-    <main class="page-wrapper">
-      <div class="page-header d-print-none">
-        <div class="container-xl">
-          <div class="row g-2 align-items-center">
-            <div class="col">
-              <h2 class="page-title"><%= house.title %></h2>
-              <div class="text-secondary mt-1">
-                <%- house.location.address %>
-              </div>
-            </div>
-            <% if (locals.user) { %>
-            <div class="col-auto ms-auto d-print-none">
-              <% if ( locals.user._id.toString() === house.owner._id.toString())
-              { %>
-              <div class="d-flex">
-                <a
-                  href="
+      <%- include('../../partials/layouts/header.ejs') %>
+        <main class="page-wrapper">
+          <div class="page-header d-print-none">
+            <div class="container-xl">
+              <div class="row g-2 align-items-center">
+                <div class="col">
+                  <h2 class="page-title">
+                    <%= house.title %>
+                  </h2>
+                  <div class="text-secondary mt-1">
+                    <%- house.location.address %>
+                  </div>
+                </div>
+                <% if (locals.user) { %>
+                  <div class="col-auto ms-auto d-print-none">
+                    <% if ( locals.user._id.toString()===house.owner._id.toString()) { %>
+                      <div class="d-flex">
+                        <a href="
                   <%= `/houses/${house._id}/edit` %>
-                "
-                  class="btn btn-primary"
-                >
-                  <%- include('../../partials/icons/edit.ejs') %>
-                  <span> Chỉnh sửa </span>
-                </a>
+                " class="btn btn-primary">
+                          <%- include('../../partials/icons/edit.ejs') %>
+                            <span> Chỉnh sửa </span>
+                        </a>
+                      </div>
+                      <% } else { %>
+                        <form action="<%= `/houses/${house._id}/change/favorite` %>" method="post" class="d-flex">
+                          <button type="submit" class="btn btn-primary active">
+                            <% if (isFavorite.length) {%>
+                              <span class="switch-icon-a text-secondary"> <%- include('../../partials/icons/heart.ejs') %> </span>
+                            <% } else {%>
+                              <span class="switch-icon-b text-red"> <%- include('../../partials/icons/heart-filled.ejs') %> </span>
+                            <% } %>
+                                <span> Yêu thích </span>
+                          </button>
+                        </form>
+                        <% } %>
+                  </div>
+                  <% } %>
               </div>
-              <% } else { %>
-              <form
-                action="<%= `/houses/${house._id}/change/favorite` %>"
-                method="post"
-                class="d-flex"
-              >
-                <button type="submit" class="btn btn-primary active">
-                  <%- include('../../partials/icons/heart.ejs') %>
-                  <span> Yêu thích </span>
-                </button>
-              </form>
-              <% } %>
             </div>
-            <% } %>
           </div>
-        </div>
-      </div>
-      <div class="page-body">
-        <div class="container-xl">
-          <div class="row row-card g-3">
-            <div class="col">
-              <div class="card mb-3">
-                <div class="card-header">
-                  <h3 class="card-title">Mô tả</h3>
-                </div>
-                <div class="card-body">
-                  <p class="card-text"><%= house.description %></p>
-                </div>
-              </div>
-              <div class="card">
-                <div class="card-header">
-                  <h3 class="card-title">Comments</h3>
-                </div>
-                <div class="card-body">
-                  <div class="comment">
-                    <div class="comment-author">
-                      <h5>Author Name</h5>
+          <div class="page-body">
+            <div class="container-xl">
+              <div class="row row-card g-3">
+                <div class="col">
+                  <div class="card mb-3">
+                    <div class="card-header">
+                      <h3 class="card-title">Mô tả</h3>
                     </div>
-                    <div class="comment-body">
-                      <p>Comment text goes here...</p>
+                    <div class="card-body">
+                      <p class="card-text">
+                        <%= house.description %>
+                      </p>
                     </div>
                   </div>
-                  <div class="comment">
-                    <div class="comment-author">
-                      <h5>Author Name</h5>
+                  <div class="card">
+                    <div class="card-header">
+                      <h3 class="card-title">Comments</h3>
                     </div>
-                    <div class="comment-body">
-                      <p>Comment text goes here...</p>
+                    <div class="card-body">
+                      <div class="comment">
+                        <div class="comment-author">
+                          <h5>Author Name</h5>
+                        </div>
+                        <div class="comment-body">
+                          <p>Comment text goes here...</p>
+                        </div>
+                      </div>
+                      <div class="comment">
+                        <div class="comment-author">
+                          <h5>Author Name</h5>
+                        </div>
+                        <div class="comment-body">
+                          <p>Comment text goes here...</p>
+                        </div>
+                      </div>
+                      <!-- Repeat the 'comment' div for each comment -->
                     </div>
                   </div>
-                  <!-- Repeat the 'comment' div for each comment -->
-                </div>
-              </div>
-              <div class="card mb-3">
-                <div class="card-header">
-                  <h3 class="card-title">Bản đồ</h3>
-                </div>
-                <div class="card-body">
-                  <div class="ratio ratio-16x9">
-                    <iframe
-                      style="border: 0"
-                      loading="lazy"
-                      allowfullscreen
-                      referrerpolicy="no-referrer-when-downgrade"
-                      src="
+                  <div class="card mb-3">
+                    <div class="card-header">
+                      <h3 class="card-title">Bản đồ</h3>
+                    </div>
+                    <div class="card-body">
+                      <div class="ratio ratio-16x9">
+                        <iframe style="border: 0" loading="lazy" allowfullscreen
+                          referrerpolicy="no-referrer-when-downgrade" src="
                       https://www.google.com/maps/embed/v1/place?key=<%= locals.maps.apiKey %>&q=<%= `${house.name}, ${house.location.address}` %>
-                      "
-                    >
-                    </iframe>
+                      ">
+                        </iframe>
+                      </div>
+                    </div>
                   </div>
+                  <div class="mb-3 card"></div>
                 </div>
+                <div class="col-lg-4"></div>
               </div>
-              <div class="mb-3 card"></div>
             </div>
-            <div class="col-lg-4"></div>
           </div>
-        </div>
-      </div>
-    </main>
-    <%- include('../../partials/scripts/post-scripts.ejs') %>
+        </main>
+        <%- include('../../partials/scripts/post-scripts.ejs') %>
   </body>
+
 </html>
