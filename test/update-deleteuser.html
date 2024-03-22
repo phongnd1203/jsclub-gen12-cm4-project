@@ -31,7 +31,6 @@
         </style>
     </head>
     <body>
-        <%- include('../../partials/layouts/header.ejs') %>
         <div class="page-wrapper">
             <div class="page-header d-print-none">
               <div class="container-xl">
@@ -81,20 +80,17 @@
                         <div class="row g-3">
                           <div class="col-md">
                             <div class="form-label">UserName</div>
-                            <textarea type="text" class="form-control" value="<%= locals.user.name %>">
-                                <%= locals.user.name %>
+                            <textarea type="text" class="form-control">
                             </textarea>
                           </div>
                           <div class="col-md">
                             <div class="form-label">User ID</div>
-                            <textarea type="text" class="form-control" value="<%= locals.user.id %>">
-                                <%= locals.user.id %>
+                            <textarea type="text" class="form-control">
                             </textarea>
                           </div>
                           <div class="col-md">
                             <div class="form-label">Phone Number</div>
-                            <textarea type="text" class="form-control" value="<%= locals.user.phone %>">
-                                <%= locals.user.phone %>
+                            <textarea type="text" class="form-control">
                             </textarea>
                           </div>
                         </div>
@@ -102,8 +98,7 @@
                         <div>
                           <div class="row g-2">
                             <div class="col-auto">
-                              <textarea type="text" class="form-control w-auto" value="<%= locals.user.email %>">
-                                <%= locals.user.email %>
+                              <textarea type="text" class="form-control w-auto">
                                 </textarea>
                             </div>
                             <div class="col-auto"><a href="#" class="btn">
@@ -116,8 +111,7 @@
                           <a href="#" class="btn">
                             Set new password
                           </a>
-                          <textarea type="password" class="form-control w-auto" value="<%= locals.user.password %>">
-                            <%= locals.user.password %>
+                          <textarea type="password" class="form-control w-auto">
                             </textarea>
                       <div class="card-footer bg-transparent mt-auto">
                         <div class="btn-list justify-content-end">
