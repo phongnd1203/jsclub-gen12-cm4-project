@@ -1,0 +1,1635 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <%- include('../head.document.ejs', { title: 'Dashboard' }) %>
+
+  <body>
+    <div class="page-wrapper">
+      <!-- Page header -->
+      <div class="page-header d-print-none">
+        <div class="container-xl">
+          <div class="row g-2 align-items-center">
+            <div class="col">
+              <!-- Page pre-title -->
+              <div class="page-pretitle">Overview</div>
+              <h2 class="page-title">Dashboard</h2>
+            </div>
+            <!-- Page title actions -->
+          </div>
+        </div>
+      </div>
+      <!-- Page body -->
+      <div class="page-body">
+        <div class="container-xl">
+          <div class="row row-deck row-cards">
+            <div class="col-12">
+              <div class="row row-cards">
+                <div class="col-sm-6 col-lg-3">
+                  <div class="card card-sm">
+                    <div class="card-body">
+                      <div class="row align-items-center">
+                        <div class="col-auto">
+                          <span class="bg-primary text-white avatar"
+                            ><!-- Download SVG icon from http://tabler-icons.io/i/currency-dollar -->
+                            <svg
+                              xmlns="http://www.w3.org/2000/svg"
+                              class="icon"
+                              width="24"
+                              height="24"
+                              viewBox="0 0 24 24"
+                              stroke-width="2"
+                              stroke="currentColor"
+                              fill="none"
+                              stroke-linecap="round"
+                              stroke-linejoin="round"
+                            >
+                              <path
+                                stroke="none"
+                                d="M0 0h24v24H0z"
+                                fill="none"
+                              ></path>
+                              <path
+                                d="M16.7 8a3 3 0 0 0 -2.7 -2h-4a3 3 0 0 0 0 6h4a3 3 0 0 1 0 6h-4a3 3 0 0 1 -2.7 -2"
+                              ></path>
+                              <path d="M12 3v3m0 12v3"></path>
+                            </svg>
+                          </span>
+                        </div>
+                        <div class="col">
+                          <div class="font-weight-medium">132 Sales</div>
+                          <div class="text-secondary">12 waiting payments</div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-sm-6 col-lg-3">
+                  <div class="card card-sm">
+                    <div class="card-body">
+                      <div class="row align-items-center">
+                        <div class="col-auto">
+                          <span class="bg-green text-white avatar"
+                            ><!-- Download SVG icon from http://tabler-icons.io/i/shopping-cart -->
+                            <svg
+                              xmlns="http://www.w3.org/2000/svg"
+                              class="icon"
+                              width="24"
+                              height="24"
+                              viewBox="0 0 24 24"
+                              stroke-width="2"
+                              stroke="currentColor"
+                              fill="none"
+                              stroke-linecap="round"
+                              stroke-linejoin="round"
+                            >
+                              <path
+                                stroke="none"
+                                d="M0 0h24v24H0z"
+                                fill="none"
+                              ></path>
+                              <path
+                                d="M6 19m-2 0a2 2 0 1 0 4 0a2 2 0 1 0 -4 0"
+                              ></path>
+                              <path
+                                d="M17 19m-2 0a2 2 0 1 0 4 0a2 2 0 1 0 -4 0"
+                              ></path>
+                              <path d="M17 17h-11v-14h-2"></path>
+                              <path d="M6 5l14 1l-1 7h-13"></path>
+                            </svg>
+                          </span>
+                        </div>
+                        <div class="col">
+                          <div class="font-weight-medium">78 Orders</div>
+                          <div class="text-secondary">32 shipped</div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-sm-6 col-lg-3">
+                  <div class="card card-sm">
+                    <div class="card-body">
+                      <div class="row align-items-center">
+                        <div class="col-auto">
+                          <span class="bg-twitter text-white avatar"
+                            ><!-- Download SVG icon from http://tabler-icons.io/i/brand-twitter -->
+                            <svg
+                              xmlns="http://www.w3.org/2000/svg"
+                              class="icon"
+                              width="24"
+                              height="24"
+                              viewBox="0 0 24 24"
+                              stroke-width="2"
+                              stroke="currentColor"
+                              fill="none"
+                              stroke-linecap="round"
+                              stroke-linejoin="round"
+                            >
+                              <path
+                                stroke="none"
+                                d="M0 0h24v24H0z"
+                                fill="none"
+                              ></path>
+                              <path
+                                d="M22 4.01c-1 .49 -1.98 .689 -3 .99c-1.121 -1.265 -2.783 -1.335 -4.38 -.737s-2.643 2.06 -2.62 3.737v1c-3.245 .083 -6.135 -1.395 -8 -4c0 0 -4.182 7.433 4 11c-1.872 1.247 -3.739 2.088 -6 2c3.308 1.803 6.913 2.423 10.034 1.517c3.58 -1.04 6.522 -3.723 7.651 -7.742a13.84 13.84 0 0 0 .497 -3.753c0 -.249 1.51 -2.772 1.818 -4.013z"
+                              ></path>
+                            </svg>
+                          </span>
+                        </div>
+                        <div class="col">
+                          <div class="font-weight-medium">623 Shares</div>
+                          <div class="text-secondary">16 today</div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-sm-6 col-lg-3">
+                  <div class="card card-sm">
+                    <div class="card-body">
+                      <div class="row align-items-center">
+                        <div class="col-auto">
+                          <span class="bg-facebook text-white avatar"
+                            ><!-- Download SVG icon from http://tabler-icons.io/i/brand-facebook -->
+                            <svg
+                              xmlns="http://www.w3.org/2000/svg"
+                              class="icon"
+                              width="24"
+                              height="24"
+                              viewBox="0 0 24 24"
+                              stroke-width="2"
+                              stroke="currentColor"
+                              fill="none"
+                              stroke-linecap="round"
+                              stroke-linejoin="round"
+                            >
+                              <path
+                                stroke="none"
+                                d="M0 0h24v24H0z"
+                                fill="none"
+                              ></path>
+                              <path
+                                d="M7 10v4h3v7h4v-7h3l1 -4h-4v-2a1 1 0 0 1 1 -1h3v-4h-3a5 5 0 0 0 -5 5v2h-3"
+                              ></path>
+                            </svg>
+                          </span>
+                        </div>
+                        <div class="col">
+                          <div class="font-weight-medium">132 Likes</div>
+                          <div class="text-secondary">21 today</div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-6">
+              <div class="row row-cards">
+                <div class="col-12"></div>
+                <div class="col-12">
+                  <div class="card" style="height: 28rem">
+                    <div
+                      class="card-body card-body-scrollable card-body-scrollable-shadow"
+                    >
+                      <div class="divide-y">
+                        <div>
+                          <div class="row">
+                            <div class="col-auto">
+                              <span class="avatar">JL</span>
+                            </div>
+                            <div class="col">
+                              <div class="text-truncate">
+                                <strong>Jeffie Lewzey</strong> commented on your
+                                <strong>"I'm not a witch."</strong> post.
+                              </div>
+                              <div class="text-secondary">yesterday</div>
+                            </div>
+                            <div class="col-auto align-self-center">
+                              <div class="badge bg-primary"></div>
+                            </div>
+                          </div>
+                        </div>
+                        <div>
+                          <div class="row">
+                            <div class="col-auto">
+                              <span
+                                class="avatar"
+                                style="
+                                  background-image: url(./static/avatars/002m.jpg);
+                                "
+                              ></span>
+                            </div>
+                            <div class="col">
+                              <div class="text-truncate">
+                                It's <strong>Mallory Hulme</strong>'s birthday.
+                                Wish him well!
+                              </div>
+                              <div class="text-secondary">2 days ago</div>
+                            </div>
+                            <div class="col-auto align-self-center">
+                              <div class="badge bg-primary"></div>
+                            </div>
+                          </div>
+                        </div>
+                        <div>
+                          <div class="row">
+                            <div class="col-auto">
+                              <span
+                                class="avatar"
+                                style="
+                                  background-image: url(./static/avatars/003m.jpg);
+                                "
+                              ></span>
+                            </div>
+                            <div class="col">
+                              <div class="text-truncate">
+                                <strong>Dunn Slane</strong> posted
+                                <strong>"Well, what do you want?"</strong>.
+                              </div>
+                              <div class="text-secondary">today</div>
+                            </div>
+                            <div class="col-auto align-self-center">
+                              <div class="badge bg-primary"></div>
+                            </div>
+                          </div>
+                        </div>
+                        <div>
+                          <div class="row">
+                            <div class="col-auto">
+                              <span
+                                class="avatar"
+                                style="
+                                  background-image: url(./static/avatars/000f.jpg);
+                                "
+                              ></span>
+                            </div>
+                            <div class="col">
+                              <div class="text-truncate">
+                                <strong>Emmy Levet</strong> created a new
+                                project <strong>Morning alarm clock</strong>.
+                              </div>
+                              <div class="text-secondary">4 days ago</div>
+                            </div>
+                            <div class="col-auto align-self-center">
+                              <div class="badge bg-primary"></div>
+                            </div>
+                          </div>
+                        </div>
+                        <div>
+                          <div class="row">
+                            <div class="col-auto">
+                              <span
+                                class="avatar"
+                                style="
+                                  background-image: url(./static/avatars/001f.jpg);
+                                "
+                              ></span>
+                            </div>
+                            <div class="col">
+                              <div class="text-truncate">
+                                <strong>Maryjo Lebarree</strong> liked your
+                                photo.
+                              </div>
+                              <div class="text-secondary">2 days ago</div>
+                            </div>
+                          </div>
+                        </div>
+                        <div>
+                          <div class="row">
+                            <div class="col-auto">
+                              <span class="avatar">EP</span>
+                            </div>
+                            <div class="col">
+                              <div class="text-truncate">
+                                <strong>Egan Poetz</strong> registered new
+                                client as <strong>Trilia</strong>.
+                              </div>
+                              <div class="text-secondary">yesterday</div>
+                            </div>
+                          </div>
+                        </div>
+                        <div>
+                          <div class="row">
+                            <div class="col-auto">
+                              <span
+                                class="avatar"
+                                style="
+                                  background-image: url(./static/avatars/002f.jpg);
+                                "
+                              ></span>
+                            </div>
+                            <div class="col">
+                              <div class="text-truncate">
+                                <strong>Kellie Skingley</strong> closed a new
+                                deal on project
+                                <strong>Pen Pineapple Apple Pen</strong>.
+                              </div>
+                              <div class="text-secondary">2 days ago</div>
+                            </div>
+                          </div>
+                        </div>
+                        <div>
+                          <div class="row">
+                            <div class="col-auto">
+                              <span
+                                class="avatar"
+                                style="
+                                  background-image: url(./static/avatars/003f.jpg);
+                                "
+                              ></span>
+                            </div>
+                            <div class="col">
+                              <div class="text-truncate">
+                                <strong>Christabel Charlwood</strong> created a
+                                new project for <strong>Wikibox</strong>.
+                              </div>
+                              <div class="text-secondary">4 days ago</div>
+                            </div>
+                          </div>
+                        </div>
+                        <div>
+                          <div class="row">
+                            <div class="col-auto">
+                              <span class="avatar">HS</span>
+                            </div>
+                            <div class="col">
+                              <div class="text-truncate">
+                                <strong>Haskel Shelper</strong> change status of
+                                <strong>Tabler Icons</strong> from
+                                <strong>open</strong> to
+                                <strong>closed</strong>.
+                              </div>
+                              <div class="text-secondary">today</div>
+                            </div>
+                          </div>
+                        </div>
+                        <div>
+                          <div class="row">
+                            <div class="col-auto">
+                              <span
+                                class="avatar"
+                                style="
+                                  background-image: url(./static/avatars/006m.jpg);
+                                "
+                              ></span>
+                            </div>
+                            <div class="col">
+                              <div class="text-truncate">
+                                <strong>Lorry Mion</strong> liked
+                                <strong>Tabler UI Kit</strong>.
+                              </div>
+                              <div class="text-secondary">yesterday</div>
+                            </div>
+                          </div>
+                        </div>
+                        <div>
+                          <div class="row">
+                            <div class="col-auto">
+                              <span
+                                class="avatar"
+                                style="
+                                  background-image: url(./static/avatars/004f.jpg);
+                                "
+                              ></span>
+                            </div>
+                            <div class="col">
+                              <div class="text-truncate">
+                                <strong>Leesa Beaty</strong> posted new video.
+                              </div>
+                              <div class="text-secondary">2 days ago</div>
+                            </div>
+                          </div>
+                        </div>
+                        <div>
+                          <div class="row">
+                            <div class="col-auto">
+                              <span
+                                class="avatar"
+                                style="
+                                  background-image: url(./static/avatars/007m.jpg);
+                                "
+                              ></span>
+                            </div>
+                            <div class="col">
+                              <div class="text-truncate">
+                                <strong>Perren Keemar</strong> and 3 others
+                                followed you.
+                              </div>
+                              <div class="text-secondary">2 days ago</div>
+                            </div>
+                          </div>
+                        </div>
+                        <div>
+                          <div class="row">
+                            <div class="col-auto">
+                              <span class="avatar">SA</span>
+                            </div>
+                            <div class="col">
+                              <div class="text-truncate">
+                                <strong>Sunny Airey</strong> upload 3 new photos
+                                to category <strong>Inspirations</strong>.
+                              </div>
+                              <div class="text-secondary">2 days ago</div>
+                            </div>
+                          </div>
+                        </div>
+                        <div>
+                          <div class="row">
+                            <div class="col-auto">
+                              <span
+                                class="avatar"
+                                style="
+                                  background-image: url(./static/avatars/009m.jpg);
+                                "
+                              ></span>
+                            </div>
+                            <div class="col">
+                              <div class="text-truncate">
+                                <strong>Geoffry Flaunders</strong> made a
+                                <strong>$10</strong> donation.
+                              </div>
+                              <div class="text-secondary">2 days ago</div>
+                            </div>
+                          </div>
+                        </div>
+                        <div>
+                          <div class="row">
+                            <div class="col-auto">
+                              <span
+                                class="avatar"
+                                style="
+                                  background-image: url(./static/avatars/010m.jpg);
+                                "
+                              ></span>
+                            </div>
+                            <div class="col">
+                              <div class="text-truncate">
+                                <strong>Thatcher Keel</strong> created a
+                                profile.
+                              </div>
+                              <div class="text-secondary">3 days ago</div>
+                            </div>
+                          </div>
+                        </div>
+                        <div>
+                          <div class="row">
+                            <div class="col-auto">
+                              <span
+                                class="avatar"
+                                style="
+                                  background-image: url(./static/avatars/005f.jpg);
+                                "
+                              ></span>
+                            </div>
+                            <div class="col">
+                              <div class="text-truncate">
+                                <strong>Dyann Escala</strong> hosted the event
+                                <strong>Tabler UI Birthday</strong>.
+                              </div>
+                              <div class="text-secondary">4 days ago</div>
+                            </div>
+                          </div>
+                        </div>
+                        <div>
+                          <div class="row">
+                            <div class="col-auto">
+                              <span
+                                class="avatar"
+                                style="
+                                  background-image: url(./static/avatars/006f.jpg);
+                                "
+                              ></span>
+                            </div>
+                            <div class="col">
+                              <div class="text-truncate">
+                                <strong>Avivah Mugleston</strong> mentioned you
+                                on <strong>Best of 2020</strong>.
+                              </div>
+                              <div class="text-secondary">2 days ago</div>
+                            </div>
+                          </div>
+                        </div>
+                        <div>
+                          <div class="row">
+                            <div class="col-auto">
+                              <span class="avatar">AA</span>
+                            </div>
+                            <div class="col">
+                              <div class="text-truncate">
+                                <strong>Arlie Armstead</strong> sent a Review
+                                Request to <strong>Amanda Blake</strong>.
+                              </div>
+                              <div class="text-secondary">2 days ago</div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-6">
+              <div class="row row-cards">
+                <div class="col-12"></div>
+                <div class="col-12">
+                  <div class="card" style="height: 28rem">
+                    <div
+                      class="card-body card-body-scrollable card-body-scrollable-shadow"
+                    >
+                      <div class="divide-y">
+                        <div>
+                          <div class="row">
+                            <div class="col-auto">
+                              <span class="avatar">JL</span>
+                            </div>
+                            <div class="col">
+                              <div class="text-truncate">
+                                <strong>Jeffie Lewzey</strong> commented on your
+                                <strong>"I'm not a witch."</strong> post.
+                              </div>
+                              <div class="text-secondary">yesterday</div>
+                            </div>
+                            <div class="col-auto align-self-center">
+                              <div class="badge bg-primary"></div>
+                            </div>
+                          </div>
+                        </div>
+                        <div>
+                          <div class="row">
+                            <div class="col-auto">
+                              <span
+                                class="avatar"
+                                style="
+                                  background-image: url(./static/avatars/002m.jpg);
+                                "
+                              ></span>
+                            </div>
+                            <div class="col">
+                              <div class="text-truncate">
+                                It's <strong>Mallory Hulme</strong>'s birthday.
+                                Wish him well!
+                              </div>
+                              <div class="text-secondary">2 days ago</div>
+                            </div>
+                            <div class="col-auto align-self-center">
+                              <div class="badge bg-primary"></div>
+                            </div>
+                          </div>
+                        </div>
+                        <div>
+                          <div class="row">
+                            <div class="col-auto">
+                              <span
+                                class="avatar"
+                                style="
+                                  background-image: url(./static/avatars/003m.jpg);
+                                "
+                              ></span>
+                            </div>
+                            <div class="col">
+                              <div class="text-truncate">
+                                <strong>Dunn Slane</strong> posted
+                                <strong>"Well, what do you want?"</strong>.
+                              </div>
+                              <div class="text-secondary">today</div>
+                            </div>
+                            <div class="col-auto align-self-center">
+                              <div class="badge bg-primary"></div>
+                            </div>
+                          </div>
+                        </div>
+                        <div>
+                          <div class="row">
+                            <div class="col-auto">
+                              <span
+                                class="avatar"
+                                style="
+                                  background-image: url(./static/avatars/000f.jpg);
+                                "
+                              ></span>
+                            </div>
+                            <div class="col">
+                              <div class="text-truncate">
+                                <strong>Emmy Levet</strong> created a new
+                                project <strong>Morning alarm clock</strong>.
+                              </div>
+                              <div class="text-secondary">4 days ago</div>
+                            </div>
+                            <div class="col-auto align-self-center">
+                              <div class="badge bg-primary"></div>
+                            </div>
+                          </div>
+                        </div>
+                        <div>
+                          <div class="row">
+                            <div class="col-auto">
+                              <span
+                                class="avatar"
+                                style="
+                                  background-image: url(./static/avatars/001f.jpg);
+                                "
+                              ></span>
+                            </div>
+                            <div class="col">
+                              <div class="text-truncate">
+                                <strong>Maryjo Lebarree</strong> liked your
+                                photo.
+                              </div>
+                              <div class="text-secondary">2 days ago</div>
+                            </div>
+                          </div>
+                        </div>
+                        <div>
+                          <div class="row">
+                            <div class="col-auto">
+                              <span class="avatar">EP</span>
+                            </div>
+                            <div class="col">
+                              <div class="text-truncate">
+                                <strong>Egan Poetz</strong> registered new
+                                client as <strong>Trilia</strong>.
+                              </div>
+                              <div class="text-secondary">yesterday</div>
+                            </div>
+                          </div>
+                        </div>
+                        <div>
+                          <div class="row">
+                            <div class="col-auto">
+                              <span
+                                class="avatar"
+                                style="
+                                  background-image: url(./static/avatars/002f.jpg);
+                                "
+                              ></span>
+                            </div>
+                            <div class="col">
+                              <div class="text-truncate">
+                                <strong>Kellie Skingley</strong> closed a new
+                                deal on project
+                                <strong>Pen Pineapple Apple Pen</strong>.
+                              </div>
+                              <div class="text-secondary">2 days ago</div>
+                            </div>
+                          </div>
+                        </div>
+                        <div>
+                          <div class="row">
+                            <div class="col-auto">
+                              <span
+                                class="avatar"
+                                style="
+                                  background-image: url(./static/avatars/003f.jpg);
+                                "
+                              ></span>
+                            </div>
+                            <div class="col">
+                              <div class="text-truncate">
+                                <strong>Christabel Charlwood</strong> created a
+                                new project for <strong>Wikibox</strong>.
+                              </div>
+                              <div class="text-secondary">4 days ago</div>
+                            </div>
+                          </div>
+                        </div>
+                        <div>
+                          <div class="row">
+                            <div class="col-auto">
+                              <span class="avatar">HS</span>
+                            </div>
+                            <div class="col">
+                              <div class="text-truncate">
+                                <strong>Haskel Shelper</strong> change status of
+                                <strong>Tabler Icons</strong> from
+                                <strong>open</strong> to
+                                <strong>closed</strong>.
+                              </div>
+                              <div class="text-secondary">today</div>
+                            </div>
+                          </div>
+                        </div>
+                        <div>
+                          <div class="row">
+                            <div class="col-auto">
+                              <span
+                                class="avatar"
+                                style="
+                                  background-image: url(./static/avatars/006m.jpg);
+                                "
+                              ></span>
+                            </div>
+                            <div class="col">
+                              <div class="text-truncate">
+                                <strong>Lorry Mion</strong> liked
+                                <strong>Tabler UI Kit</strong>.
+                              </div>
+                              <div class="text-secondary">yesterday</div>
+                            </div>
+                          </div>
+                        </div>
+                        <div>
+                          <div class="row">
+                            <div class="col-auto">
+                              <span
+                                class="avatar"
+                                style="
+                                  background-image: url(./static/avatars/004f.jpg);
+                                "
+                              ></span>
+                            </div>
+                            <div class="col">
+                              <div class="text-truncate">
+                                <strong>Leesa Beaty</strong> posted new video.
+                              </div>
+                              <div class="text-secondary">2 days ago</div>
+                            </div>
+                          </div>
+                        </div>
+                        <div>
+                          <div class="row">
+                            <div class="col-auto">
+                              <span
+                                class="avatar"
+                                style="
+                                  background-image: url(./static/avatars/007m.jpg);
+                                "
+                              ></span>
+                            </div>
+                            <div class="col">
+                              <div class="text-truncate">
+                                <strong>Perren Keemar</strong> and 3 others
+                                followed you.
+                              </div>
+                              <div class="text-secondary">2 days ago</div>
+                            </div>
+                          </div>
+                        </div>
+                        <div>
+                          <div class="row">
+                            <div class="col-auto">
+                              <span class="avatar">SA</span>
+                            </div>
+                            <div class="col">
+                              <div class="text-truncate">
+                                <strong>Sunny Airey</strong> upload 3 new photos
+                                to category <strong>Inspirations</strong>.
+                              </div>
+                              <div class="text-secondary">2 days ago</div>
+                            </div>
+                          </div>
+                        </div>
+                        <div>
+                          <div class="row">
+                            <div class="col-auto">
+                              <span
+                                class="avatar"
+                                style="
+                                  background-image: url(./static/avatars/009m.jpg);
+                                "
+                              ></span>
+                            </div>
+                            <div class="col">
+                              <div class="text-truncate">
+                                <strong>Geoffry Flaunders</strong> made a
+                                <strong>$10</strong> donation.
+                              </div>
+                              <div class="text-secondary">2 days ago</div>
+                            </div>
+                          </div>
+                        </div>
+                        <div>
+                          <div class="row">
+                            <div class="col-auto">
+                              <span
+                                class="avatar"
+                                style="
+                                  background-image: url(./static/avatars/010m.jpg);
+                                "
+                              ></span>
+                            </div>
+                            <div class="col">
+                              <div class="text-truncate">
+                                <strong>Thatcher Keel</strong> created a
+                                profile.
+                              </div>
+                              <div class="text-secondary">3 days ago</div>
+                            </div>
+                          </div>
+                        </div>
+                        <div>
+                          <div class="row">
+                            <div class="col-auto">
+                              <span
+                                class="avatar"
+                                style="
+                                  background-image: url(./static/avatars/005f.jpg);
+                                "
+                              ></span>
+                            </div>
+                            <div class="col">
+                              <div class="text-truncate">
+                                <strong>Dyann Escala</strong> hosted the event
+                                <strong>Tabler UI Birthday</strong>.
+                              </div>
+                              <div class="text-secondary">4 days ago</div>
+                            </div>
+                          </div>
+                        </div>
+                        <div>
+                          <div class="row">
+                            <div class="col-auto">
+                              <span
+                                class="avatar"
+                                style="
+                                  background-image: url(./static/avatars/006f.jpg);
+                                "
+                              ></span>
+                            </div>
+                            <div class="col">
+                              <div class="text-truncate">
+                                <strong>Avivah Mugleston</strong> mentioned you
+                                on <strong>Best of 2020</strong>.
+                              </div>
+                              <div class="text-secondary">2 days ago</div>
+                            </div>
+                          </div>
+                        </div>
+                        <div>
+                          <div class="row">
+                            <div class="col-auto">
+                              <span class="avatar">AA</span>
+                            </div>
+                            <div class="col">
+                              <div class="text-truncate">
+                                <strong>Arlie Armstead</strong> sent a Review
+                                Request to <strong>Amanda Blake</strong>.
+                              </div>
+                              <div class="text-secondary">2 days ago</div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-6">
+              <div class="row row-cards">
+                <div class="col-12"></div>
+                <div class="col-12">
+                  <div class="card" style="height: 28rem">
+                    <div
+                      class="card-body card-body-scrollable card-body-scrollable-shadow"
+                    >
+                      <div class="divide-y">
+                        <div>
+                          <div class="row">
+                            <div class="col-auto">
+                              <span class="avatar">JL</span>
+                            </div>
+                            <div class="col">
+                              <div class="text-truncate">
+                                <strong>Jeffie Lewzey</strong> commented on your
+                                <strong>"I'm not a witch."</strong> post.
+                              </div>
+                              <div class="text-secondary">yesterday</div>
+                            </div>
+                            <div class="col-auto align-self-center">
+                              <div class="badge bg-primary"></div>
+                            </div>
+                          </div>
+                        </div>
+                        <div>
+                          <div class="row">
+                            <div class="col-auto">
+                              <span
+                                class="avatar"
+                                style="
+                                  background-image: url(./static/avatars/002m.jpg);
+                                "
+                              ></span>
+                            </div>
+                            <div class="col">
+                              <div class="text-truncate">
+                                It's <strong>Mallory Hulme</strong>'s birthday.
+                                Wish him well!
+                              </div>
+                              <div class="text-secondary">2 days ago</div>
+                            </div>
+                            <div class="col-auto align-self-center">
+                              <div class="badge bg-primary"></div>
+                            </div>
+                          </div>
+                        </div>
+                        <div>
+                          <div class="row">
+                            <div class="col-auto">
+                              <span
+                                class="avatar"
+                                style="
+                                  background-image: url(./static/avatars/003m.jpg);
+                                "
+                              ></span>
+                            </div>
+                            <div class="col">
+                              <div class="text-truncate">
+                                <strong>Dunn Slane</strong> posted
+                                <strong>"Well, what do you want?"</strong>.
+                              </div>
+                              <div class="text-secondary">today</div>
+                            </div>
+                            <div class="col-auto align-self-center">
+                              <div class="badge bg-primary"></div>
+                            </div>
+                          </div>
+                        </div>
+                        <div>
+                          <div class="row">
+                            <div class="col-auto">
+                              <span
+                                class="avatar"
+                                style="
+                                  background-image: url(./static/avatars/000f.jpg);
+                                "
+                              ></span>
+                            </div>
+                            <div class="col">
+                              <div class="text-truncate">
+                                <strong>Emmy Levet</strong> created a new
+                                project <strong>Morning alarm clock</strong>.
+                              </div>
+                              <div class="text-secondary">4 days ago</div>
+                            </div>
+                            <div class="col-auto align-self-center">
+                              <div class="badge bg-primary"></div>
+                            </div>
+                          </div>
+                        </div>
+                        <div>
+                          <div class="row">
+                            <div class="col-auto">
+                              <span
+                                class="avatar"
+                                style="
+                                  background-image: url(./static/avatars/001f.jpg);
+                                "
+                              ></span>
+                            </div>
+                            <div class="col">
+                              <div class="text-truncate">
+                                <strong>Maryjo Lebarree</strong> liked your
+                                photo.
+                              </div>
+                              <div class="text-secondary">2 days ago</div>
+                            </div>
+                          </div>
+                        </div>
+                        <div>
+                          <div class="row">
+                            <div class="col-auto">
+                              <span class="avatar">EP</span>
+                            </div>
+                            <div class="col">
+                              <div class="text-truncate">
+                                <strong>Egan Poetz</strong> registered new
+                                client as <strong>Trilia</strong>.
+                              </div>
+                              <div class="text-secondary">yesterday</div>
+                            </div>
+                          </div>
+                        </div>
+                        <div>
+                          <div class="row">
+                            <div class="col-auto">
+                              <span
+                                class="avatar"
+                                style="
+                                  background-image: url(./static/avatars/002f.jpg);
+                                "
+                              ></span>
+                            </div>
+                            <div class="col">
+                              <div class="text-truncate">
+                                <strong>Kellie Skingley</strong> closed a new
+                                deal on project
+                                <strong>Pen Pineapple Apple Pen</strong>.
+                              </div>
+                              <div class="text-secondary">2 days ago</div>
+                            </div>
+                          </div>
+                        </div>
+                        <div>
+                          <div class="row">
+                            <div class="col-auto">
+                              <span
+                                class="avatar"
+                                style="
+                                  background-image: url(./static/avatars/003f.jpg);
+                                "
+                              ></span>
+                            </div>
+                            <div class="col">
+                              <div class="text-truncate">
+                                <strong>Christabel Charlwood</strong> created a
+                                new project for <strong>Wikibox</strong>.
+                              </div>
+                              <div class="text-secondary">4 days ago</div>
+                            </div>
+                          </div>
+                        </div>
+                        <div>
+                          <div class="row">
+                            <div class="col-auto">
+                              <span class="avatar">HS</span>
+                            </div>
+                            <div class="col">
+                              <div class="text-truncate">
+                                <strong>Haskel Shelper</strong> change status of
+                                <strong>Tabler Icons</strong> from
+                                <strong>open</strong> to
+                                <strong>closed</strong>.
+                              </div>
+                              <div class="text-secondary">today</div>
+                            </div>
+                          </div>
+                        </div>
+                        <div>
+                          <div class="row">
+                            <div class="col-auto">
+                              <span
+                                class="avatar"
+                                style="
+                                  background-image: url(./static/avatars/006m.jpg);
+                                "
+                              ></span>
+                            </div>
+                            <div class="col">
+                              <div class="text-truncate">
+                                <strong>Lorry Mion</strong> liked
+                                <strong>Tabler UI Kit</strong>.
+                              </div>
+                              <div class="text-secondary">yesterday</div>
+                            </div>
+                          </div>
+                        </div>
+                        <div>
+                          <div class="row">
+                            <div class="col-auto">
+                              <span
+                                class="avatar"
+                                style="
+                                  background-image: url(./static/avatars/004f.jpg);
+                                "
+                              ></span>
+                            </div>
+                            <div class="col">
+                              <div class="text-truncate">
+                                <strong>Leesa Beaty</strong> posted new video.
+                              </div>
+                              <div class="text-secondary">2 days ago</div>
+                            </div>
+                          </div>
+                        </div>
+                        <div>
+                          <div class="row">
+                            <div class="col-auto">
+                              <span
+                                class="avatar"
+                                style="
+                                  background-image: url(./static/avatars/007m.jpg);
+                                "
+                              ></span>
+                            </div>
+                            <div class="col">
+                              <div class="text-truncate">
+                                <strong>Perren Keemar</strong> and 3 others
+                                followed you.
+                              </div>
+                              <div class="text-secondary">2 days ago</div>
+                            </div>
+                          </div>
+                        </div>
+                        <div>
+                          <div class="row">
+                            <div class="col-auto">
+                              <span class="avatar">SA</span>
+                            </div>
+                            <div class="col">
+                              <div class="text-truncate">
+                                <strong>Sunny Airey</strong> upload 3 new photos
+                                to category <strong>Inspirations</strong>.
+                              </div>
+                              <div class="text-secondary">2 days ago</div>
+                            </div>
+                          </div>
+                        </div>
+                        <div>
+                          <div class="row">
+                            <div class="col-auto">
+                              <span
+                                class="avatar"
+                                style="
+                                  background-image: url(./static/avatars/009m.jpg);
+                                "
+                              ></span>
+                            </div>
+                            <div class="col">
+                              <div class="text-truncate">
+                                <strong>Geoffry Flaunders</strong> made a
+                                <strong>$10</strong> donation.
+                              </div>
+                              <div class="text-secondary">2 days ago</div>
+                            </div>
+                          </div>
+                        </div>
+                        <div>
+                          <div class="row">
+                            <div class="col-auto">
+                              <span
+                                class="avatar"
+                                style="
+                                  background-image: url(./static/avatars/010m.jpg);
+                                "
+                              ></span>
+                            </div>
+                            <div class="col">
+                              <div class="text-truncate">
+                                <strong>Thatcher Keel</strong> created a
+                                profile.
+                              </div>
+                              <div class="text-secondary">3 days ago</div>
+                            </div>
+                          </div>
+                        </div>
+                        <div>
+                          <div class="row">
+                            <div class="col-auto">
+                              <span
+                                class="avatar"
+                                style="
+                                  background-image: url(./static/avatars/005f.jpg);
+                                "
+                              ></span>
+                            </div>
+                            <div class="col">
+                              <div class="text-truncate">
+                                <strong>Dyann Escala</strong> hosted the event
+                                <strong>Tabler UI Birthday</strong>.
+                              </div>
+                              <div class="text-secondary">4 days ago</div>
+                            </div>
+                          </div>
+                        </div>
+                        <div>
+                          <div class="row">
+                            <div class="col-auto">
+                              <span
+                                class="avatar"
+                                style="
+                                  background-image: url(./static/avatars/006f.jpg);
+                                "
+                              ></span>
+                            </div>
+                            <div class="col">
+                              <div class="text-truncate">
+                                <strong>Avivah Mugleston</strong> mentioned you
+                                on <strong>Best of 2020</strong>.
+                              </div>
+                              <div class="text-secondary">2 days ago</div>
+                            </div>
+                          </div>
+                        </div>
+                        <div>
+                          <div class="row">
+                            <div class="col-auto">
+                              <span class="avatar">AA</span>
+                            </div>
+                            <div class="col">
+                              <div class="text-truncate">
+                                <strong>Arlie Armstead</strong> sent a Review
+                                Request to <strong>Amanda Blake</strong>.
+                              </div>
+                              <div class="text-secondary">2 days ago</div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-6">
+              <div class="row row-cards">
+                <div class="col-12"></div>
+                <div class="col-12">
+                  <div class="card" style="height: 28rem">
+                    <div
+                      class="card-body card-body-scrollable card-body-scrollable-shadow"
+                    >
+                      <div class="divide-y">
+                        <div>
+                          <div class="row">
+                            <div class="col-auto">
+                              <span class="avatar">JL</span>
+                            </div>
+                            <div class="col">
+                              <div class="text-truncate">
+                                <strong>Jeffie Lewzey</strong> commented on your
+                                <strong>"I'm not a witch."</strong> post.
+                              </div>
+                              <div class="text-secondary">yesterday</div>
+                            </div>
+                            <div class="col-auto align-self-center">
+                              <div class="badge bg-primary"></div>
+                            </div>
+                          </div>
+                        </div>
+                        <div>
+                          <div class="row">
+                            <div class="col-auto">
+                              <span
+                                class="avatar"
+                                style="
+                                  background-image: url(./static/avatars/002m.jpg);
+                                "
+                              ></span>
+                            </div>
+                            <div class="col">
+                              <div class="text-truncate">
+                                It's <strong>Mallory Hulme</strong>'s birthday.
+                                Wish him well!
+                              </div>
+                              <div class="text-secondary">2 days ago</div>
+                            </div>
+                            <div class="col-auto align-self-center">
+                              <div class="badge bg-primary"></div>
+                            </div>
+                          </div>
+                        </div>
+                        <div>
+                          <div class="row">
+                            <div class="col-auto">
+                              <span
+                                class="avatar"
+                                style="
+                                  background-image: url(./static/avatars/003m.jpg);
+                                "
+                              ></span>
+                            </div>
+                            <div class="col">
+                              <div class="text-truncate">
+                                <strong>Dunn Slane</strong> posted
+                                <strong>"Well, what do you want?"</strong>.
+                              </div>
+                              <div class="text-secondary">today</div>
+                            </div>
+                            <div class="col-auto align-self-center">
+                              <div class="badge bg-primary"></div>
+                            </div>
+                          </div>
+                        </div>
+                        <div>
+                          <div class="row">
+                            <div class="col-auto">
+                              <span
+                                class="avatar"
+                                style="
+                                  background-image: url(./static/avatars/000f.jpg);
+                                "
+                              ></span>
+                            </div>
+                            <div class="col">
+                              <div class="text-truncate">
+                                <strong>Emmy Levet</strong> created a new
+                                project <strong>Morning alarm clock</strong>.
+                              </div>
+                              <div class="text-secondary">4 days ago</div>
+                            </div>
+                            <div class="col-auto align-self-center">
+                              <div class="badge bg-primary"></div>
+                            </div>
+                          </div>
+                        </div>
+                        <div>
+                          <div class="row">
+                            <div class="col-auto">
+                              <span
+                                class="avatar"
+                                style="
+                                  background-image: url(./static/avatars/001f.jpg);
+                                "
+                              ></span>
+                            </div>
+                            <div class="col">
+                              <div class="text-truncate">
+                                <strong>Maryjo Lebarree</strong> liked your
+                                photo.
+                              </div>
+                              <div class="text-secondary">2 days ago</div>
+                            </div>
+                          </div>
+                        </div>
+                        <div>
+                          <div class="row">
+                            <div class="col-auto">
+                              <span class="avatar">EP</span>
+                            </div>
+                            <div class="col">
+                              <div class="text-truncate">
+                                <strong>Egan Poetz</strong> registered new
+                                client as <strong>Trilia</strong>.
+                              </div>
+                              <div class="text-secondary">yesterday</div>
+                            </div>
+                          </div>
+                        </div>
+                        <div>
+                          <div class="row">
+                            <div class="col-auto">
+                              <span
+                                class="avatar"
+                                style="
+                                  background-image: url(./static/avatars/002f.jpg);
+                                "
+                              ></span>
+                            </div>
+                            <div class="col">
+                              <div class="text-truncate">
+                                <strong>Kellie Skingley</strong> closed a new
+                                deal on project
+                                <strong>Pen Pineapple Apple Pen</strong>.
+                              </div>
+                              <div class="text-secondary">2 days ago</div>
+                            </div>
+                          </div>
+                        </div>
+                        <div>
+                          <div class="row">
+                            <div class="col-auto">
+                              <span
+                                class="avatar"
+                                style="
+                                  background-image: url(./static/avatars/003f.jpg);
+                                "
+                              ></span>
+                            </div>
+                            <div class="col">
+                              <div class="text-truncate">
+                                <strong>Christabel Charlwood</strong> created a
+                                new project for <strong>Wikibox</strong>.
+                              </div>
+                              <div class="text-secondary">4 days ago</div>
+                            </div>
+                          </div>
+                        </div>
+                        <div>
+                          <div class="row">
+                            <div class="col-auto">
+                              <span class="avatar">HS</span>
+                            </div>
+                            <div class="col">
+                              <div class="text-truncate">
+                                <strong>Haskel Shelper</strong> change status of
+                                <strong>Tabler Icons</strong> from
+                                <strong>open</strong> to
+                                <strong>closed</strong>.
+                              </div>
+                              <div class="text-secondary">today</div>
+                            </div>
+                          </div>
+                        </div>
+                        <div>
+                          <div class="row">
+                            <div class="col-auto">
+                              <span
+                                class="avatar"
+                                style="
+                                  background-image: url(./static/avatars/006m.jpg);
+                                "
+                              ></span>
+                            </div>
+                            <div class="col">
+                              <div class="text-truncate">
+                                <strong>Lorry Mion</strong> liked
+                                <strong>Tabler UI Kit</strong>.
+                              </div>
+                              <div class="text-secondary">yesterday</div>
+                            </div>
+                          </div>
+                        </div>
+                        <div>
+                          <div class="row">
+                            <div class="col-auto">
+                              <span
+                                class="avatar"
+                                style="
+                                  background-image: url(./static/avatars/004f.jpg);
+                                "
+                              ></span>
+                            </div>
+                            <div class="col">
+                              <div class="text-truncate">
+                                <strong>Leesa Beaty</strong> posted new video.
+                              </div>
+                              <div class="text-secondary">2 days ago</div>
+                            </div>
+                          </div>
+                        </div>
+                        <div>
+                          <div class="row">
+                            <div class="col-auto">
+                              <span
+                                class="avatar"
+                                style="
+                                  background-image: url(./static/avatars/007m.jpg);
+                                "
+                              ></span>
+                            </div>
+                            <div class="col">
+                              <div class="text-truncate">
+                                <strong>Perren Keemar</strong> and 3 others
+                                followed you.
+                              </div>
+                              <div class="text-secondary">2 days ago</div>
+                            </div>
+                          </div>
+                        </div>
+                        <div>
+                          <div class="row">
+                            <div class="col-auto">
+                              <span class="avatar">SA</span>
+                            </div>
+                            <div class="col">
+                              <div class="text-truncate">
+                                <strong>Sunny Airey</strong> upload 3 new photos
+                                to category <strong>Inspirations</strong>.
+                              </div>
+                              <div class="text-secondary">2 days ago</div>
+                            </div>
+                          </div>
+                        </div>
+                        <div>
+                          <div class="row">
+                            <div class="col-auto">
+                              <span
+                                class="avatar"
+                                style="
+                                  background-image: url(./static/avatars/009m.jpg);
+                                "
+                              ></span>
+                            </div>
+                            <div class="col">
+                              <div class="text-truncate">
+                                <strong>Geoffry Flaunders</strong> made a
+                                <strong>$10</strong> donation.
+                              </div>
+                              <div class="text-secondary">2 days ago</div>
+                            </div>
+                          </div>
+                        </div>
+                        <div>
+                          <div class="row">
+                            <div class="col-auto">
+                              <span
+                                class="avatar"
+                                style="
+                                  background-image: url(./static/avatars/010m.jpg);
+                                "
+                              ></span>
+                            </div>
+                            <div class="col">
+                              <div class="text-truncate">
+                                <strong>Thatcher Keel</strong> created a
+                                profile.
+                              </div>
+                              <div class="text-secondary">3 days ago</div>
+                            </div>
+                          </div>
+                        </div>
+                        <div>
+                          <div class="row">
+                            <div class="col-auto">
+                              <span
+                                class="avatar"
+                                style="
+                                  background-image: url(./static/avatars/005f.jpg);
+                                "
+                              ></span>
+                            </div>
+                            <div class="col">
+                              <div class="text-truncate">
+                                <strong>Dyann Escala</strong> hosted the event
+                                <strong>Tabler UI Birthday</strong>.
+                              </div>
+                              <div class="text-secondary">4 days ago</div>
+                            </div>
+                          </div>
+                        </div>
+                        <div>
+                          <div class="row">
+                            <div class="col-auto">
+                              <span
+                                class="avatar"
+                                style="
+                                  background-image: url(./static/avatars/006f.jpg);
+                                "
+                              ></span>
+                            </div>
+                            <div class="col">
+                              <div class="text-truncate">
+                                <strong>Avivah Mugleston</strong> mentioned you
+                                on <strong>Best of 2020</strong>.
+                              </div>
+                              <div class="text-secondary">2 days ago</div>
+                            </div>
+                          </div>
+                        </div>
+                        <div>
+                          <div class="row">
+                            <div class="col-auto">
+                              <span class="avatar">AA</span>
+                            </div>
+                            <div class="col">
+                              <div class="text-truncate">
+                                <strong>Arlie Armstead</strong> sent a Review
+                                Request to <strong>Amanda Blake</strong>.
+                              </div>
+                              <div class="text-secondary">2 days ago</div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <footer class="footer footer-transparent d-print-none">
+        <div class="container-xl">
+          <div class="row text-center align-items-center flex-row-reverse">
+            <div class="col-lg-auto ms-lg-auto">
+              <ul class="list-inline list-inline-dots mb-0">
+                <li class="list-inline-item">
+                  <a
+                    href="https://github.com/phongnd1203/jsclub-gen12-cm4-project"
+                    target="_blank"
+                    class="link-secondary"
+                    rel="noopener"
+                    >Documentation</a
+                  >
+                </li>
+                <li class="list-inline-item">
+                  <a
+                    href="https://github.com/phongnd1203/jsclub-gen12-cm4-project"
+                    target="_blank"
+                    class="link-secondary"
+                    rel="noopener"
+                    >Source code</a
+                  >
+                </li>
+                <li class="list-inline-item">
+                  <a
+                    href="https://github.com/phongnd1203/jsclub-gen12-cm4-project"
+                    target="_blank"
+                    class="link-secondary"
+                    rel="noopener"
+                  >
+                    Sponsor
+                  </a>
+                </li>
+              </ul>
+            </div>
+            <div class="col-12 col-lg-auto mt-3 mt-lg-0">
+              <ul class="list-inline list-inline-dots mb-0">
+                <li class="list-inline-item">
+                  Copyright © 2024
+                  <a
+                    href="https://www.facebook.com/fu.jsclub"
+                    class="link-secondary"
+                    >JsClub.CTV_BCM4</a
+                  >. All rights reserved.
+                </li>
+                <li class="list-inline-item">
+                  <a
+                    href="https://www.facebook.com/fu.jsclub"
+                    class="link-secondary"
+                    rel="noopener"
+                  >
+                    v1.0.0-beta20
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </footer>
+    </div>
+  </body>
+</html>
