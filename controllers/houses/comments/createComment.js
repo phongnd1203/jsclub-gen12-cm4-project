@@ -8,7 +8,7 @@ const postCreateComment = async (req, res, next) => {
 
     await createCommentService.createComment(userId, houseId, content);
 
-    res.redirect(`/houses/${houseId}/comments`);
+    return res.redirect(`/houses/${houseId}/comments`);
   } catch (error) {
     next(error);
   }

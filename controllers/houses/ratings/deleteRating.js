@@ -6,7 +6,7 @@ const postDeleteRating = async (req, res, next) => {
 
     await deleteRatingService.deleteRating(ratingId);
 
-    res.redirect(`/houses/${houseId}/ratings`);
+    return res.redirect(`/houses/${houseId}/ratings`);
   } catch (error) {
     next(error);
   }

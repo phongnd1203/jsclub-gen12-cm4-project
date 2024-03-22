@@ -6,7 +6,7 @@ const postDeleteComment = async (req, res, next) => {
 
     await deleteCommentService.deleteComment(commentId);
 
-    res.redirect(`/houses/${houseId}/comments`);
+    return res.redirect(`/houses/${houseId}/comments`);
   } catch (error) {
     next(error);
   }

@@ -1,8 +1,7 @@
 const HouseModel = require("../../models/houses/house.js");
 
-const deleteHouse = async (id) => {
-  await HouseModel.findByIdAndDelete(id).exec();
-  return;
+const deleteHouse = async (houseId) => {
+  await HouseModel.findByIdAndDelete(houseId).exec();
 };
 
 const deleteHouseByOwnerId = async (ownerId) => {

@@ -8,7 +8,7 @@ const postCreateRating = async (req, res) => {
 
     await createRatingService.createRating(houseId, userId, rating, comment);
 
-    res.redirect(`/houses/${houseId}`);
+    return res.redirect(`/houses/${houseId}`);
   } catch (error) {
     res.status(400).send(error.message);
   }
