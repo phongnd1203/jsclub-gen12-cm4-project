@@ -26,7 +26,7 @@ const postDeleteCurrentUser = async (req, res, next) => {
     await deleteUserService.deleteUser(user.id);
     req.session.destroy();
 
-    res.redirect("/");
+    return res.redirect("/");
   } catch (error) {
     return next(error);
   }
@@ -71,7 +71,7 @@ const postDeleteUser = async (req, res, next) => {
 
     req.session.destroy();
 
-    res.redirect("/");
+    return res.redirect("/");
   } catch (error) {
     return next(error);
   }

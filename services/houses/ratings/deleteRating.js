@@ -9,10 +9,10 @@ const deleteRating = async (ratingId) => {
   }
 
   if (rating.comment) {
-    await HouseCommentModel.findByIdAndDelete(rating.comment);
+    await HouseCommentModel.findByIdAndDelete(rating.comment).exec();
   }
 
-  await HouseRatingModel.findByIdAndDelete(ratingId);
+  await HouseRatingModel.findByIdAndDelete(ratingId).exec();
 
   return;
 };
