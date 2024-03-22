@@ -1,4 +1,4 @@
-const HouseCommentModel = require("../../../models/houses/comments/comment.js");
+const HouseRatingModel = require("../../../models/houses/ratings/rating.js");
 
 const defaultOptions = {
   limit: 30,
@@ -7,20 +7,20 @@ const defaultOptions = {
   populate: [],
 };
 
-const getComments = async (options = defaultOptions) => {
+const getHouseRatings = async (houseId, options = defaultOptions) => {
   const limit = Math.min(30, Math.max(0, options.limit));
   const skip = (Math.max(1, options.page) - 1) * limit;
 
-  const comments = HouseCommentModel.find()
+  const ratings = HouseRatingModel.find({ house: houseId })
     .skip(skip)
     .limit(limit)
     .sort(options.sort)
     .populate(options.populate)
     .exec();
 
-  return comments;
+  return ratings;
 };
 
 module.exports = {
-  getComments,
+  getHouseRatings,
 };
