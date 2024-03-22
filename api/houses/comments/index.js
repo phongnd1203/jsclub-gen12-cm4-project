@@ -6,9 +6,9 @@ const deleteCommentController = require("../../../controllers/houses/comments/de
 
 const houseCommentRouter = express.Router();
 
-houseCommentRouter.get("/", getCommentsController.getCommentsPage);
-
 houseCommentRouter.post("/create", createCommentController.postCreateComment);
+
+houseCommentRouter.get("/", getCommentsController.getCommentsPage);
 
 houseCommentRouter.post(
   "/:commentId/delete",

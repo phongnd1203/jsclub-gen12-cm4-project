@@ -4,7 +4,7 @@ const defaultOptions = {
   limit: 30,
   page: 1,
   sort: { createdAt: -1 },
-  populate: "",
+  populate: [],
 };
 
 const createComment = async (houseId, userId, comment) => {

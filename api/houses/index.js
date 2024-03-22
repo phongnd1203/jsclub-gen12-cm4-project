@@ -35,5 +35,6 @@ housesRouter.post(
 housesRouter.post("/:houseId/delete", deleteHouseController.postDeleteHouse);
 
 housesRouter.use("/:houseId/comments", require("./comments"));
+housesRouter.use("/:houseId/ratings", require("./ratings"));
 
 module.exports = housesRouter;
