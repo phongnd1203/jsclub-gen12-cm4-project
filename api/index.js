@@ -61,7 +61,7 @@ app.use("/", require("./home"));
 app.use("/auth", require("./auth"));
 app.use("/user", require("./user"));
 app.use("/users", require("./users"));
-app.use("/houses", require("./houses"));
+app.use("/houses", require("./houses/index.js"));
 
 app.use(require("../middlewares/errorHandler.js"));
 

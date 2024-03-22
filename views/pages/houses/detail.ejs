@@ -31,16 +31,11 @@
               </div>
               <% } else { %>
               <form
-                action="<%= `/houses/${house._id}/favorite` %>"
+                action="<%= `/houses/${house._id}/change/favorite` %>"
                 method="post"
                 class="d-flex"
               >
-                <button
-                  type="submit"
-                  name="favorite"
-                  value="true"
-                  class="btn btn-primary"
-                >
+                <button type="submit" class="btn btn-primary active">
                   <%- include('../../partials/icons/heart.ejs') %>
                   <span> Yêu thích </span>
                 </button>

@@ -12,6 +12,8 @@ const updateHouseValidator = require("../../validators/houses/updateHouse.js");
 
 const housesRouter = express.Router();
 
+housesRouter.use("/", require("./favorite/index.js"));
+
 housesRouter.get("/create", createHouseController.getCreateHousePage);
 
 housesRouter.post(
