@@ -42,6 +42,15 @@ const houseSchema = mongoose.Schema(
       default: 0,
       index: true,
     },
+    images: {
+      type: [
+        {
+          type: mongoose.Schema.Types.ObjectId,
+          ref: "File",
+        },
+      ],
+      default: [],
+    },
     status: {
       type: String,
       enum: Object.keys(houseStatus),

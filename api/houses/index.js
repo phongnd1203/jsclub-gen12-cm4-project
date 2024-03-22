@@ -10,12 +10,15 @@ const validateData = require("../../middlewares/validateRequest.js");
 const createHouseValidator = require("../../validators/houses/createHouse.js");
 const updateHouseValidator = require("../../validators/houses/updateHouse.js");
 
+const fileHandler = require("../../middlewares/fileHandler.js");
+
 const housesRouter = express.Router();
 
 housesRouter.get("/create", createHouseController.getCreateHousePage);
 
 housesRouter.post(
   "/create",
+  fileHandler().array("images", 5),
   validateData(createHouseValidator),
   createHouseController.postCreateHouse,
 );
@@ -28,6 +31,7 @@ housesRouter.get("/:houseId/edit", editHouseController.getEditHousePage);
 
 housesRouter.post(
   "/:houseId/edit",
+  fileHandler().array("images", 5),
   validateData(updateHouseValidator),
   editHouseController.postEditHouse,
 );
