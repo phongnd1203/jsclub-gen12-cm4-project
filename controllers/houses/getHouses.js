@@ -19,8 +19,6 @@ const getHousesPage = async (req, res, next) => {
         limit,
       });
 
-      console.log("page", page, "maxPage", maxPage);
-
       return res.render("pages/houses/list.ejs", {
         houses,
         page: _page,
