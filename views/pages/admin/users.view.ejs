@@ -4,5 +4,89 @@
   <body>
     <%- include('../../components/layouts/header.layout.ejs') %>
     <main><%- include('../../components/layouts/database.layout.ejs') %></main>
+    <div class="page-wrapper">
+      <!-- Page header -->
+      <div class="page-header d-print-none">
+        <div class="container-xl">
+          <div class="row g-2 align-items-center">
+            <div class="col">
+              <h2 class="page-title">Người dùng</h2>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Page body -->
+      <div class="page-body">
+        <div class="container-xl">
+          <div class="card">
+            <div class="card-body">
+              <div id="table-default" class="table-responsive">
+                <table class="table">
+                  <thead>
+                    <tr>
+                      <th>
+                        <button class="table-sort" data-sort="sort-name">
+                          Name
+                        </button>
+                      </th>
+                      <th>
+                        <button class="table-sort" data-sort="sort-city">
+                          City
+                        </button>
+                      </th>
+                      <th>
+                        <button class="table-sort" data-sort="sort-type">
+                          Type
+                        </button>
+                      </th>
+                      <th>
+                        <button class="table-sort" data-sort="sort-date">
+                          Date
+                        </button>
+                      </th>
+                    </tr>
+                  </thead>
+                  <tbody class="table-tbody">
+                    <tr>
+                      <td class="sort-name">Outlaw Run</td>
+                      <td class="sort-city">
+                        Silver Dollar City, United States
+                      </td>
+                      <td class="sort-type">RMC Hybrid</td>
+                      <td class="sort-date" data-date="1559333540">
+                        May 31, 2019
+                      </td>
+                      <td class="sort-progress" data-progress="64">
+                        <div class="row align-items-center">
+                          <div class="col-12 col-lg-auto">64%</div>
+                          <div class="col">
+                            <div class="progress" style="width: 5rem">
+                              <div
+                                class="progress-bar"
+                                style="width: 64%"
+                                role="progressbar"
+                                aria-valuenow="64"
+                                aria-valuemin="0"
+                                aria-valuemax="100"
+                                aria-label="64% Complete"
+                              >
+                                <span class="visually-hidden"
+                                  >64% Complete</span
+                                >
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   </body>
 </html>
