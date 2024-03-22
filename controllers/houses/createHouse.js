@@ -29,11 +29,8 @@ const postCreateHouse = async (req, res, next) => {
     }
 
     const { userId } = req.session;
-  
 
-
-
-   const house = await createHouseService.createHouse(userId, req.body);
+    const house = await createHouseService.createHouse(userId, req.body);
 
     return res.redirect(`/houses/${house._id}`);
   } catch (error) {
