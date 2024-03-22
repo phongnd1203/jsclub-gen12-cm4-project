@@ -12,6 +12,7 @@ const updateHouseValidator = require("../../validators/houses/updateHouse.js");
 
 const housesRouter = express.Router();
 
+housesRouter.use("/", require("./comments"));
 housesRouter.use("/", require("./favorite/index.js"));
 
 housesRouter.get("/create", createHouseController.getCreateHousePage);
@@ -35,5 +36,8 @@ housesRouter.post(
 );
 
 housesRouter.post("/:id/delete", deleteHouseController.postDeleteHouse);
+
+
+// housesRouter.use("/:houseId/ratings", require("./ratings"));
 
 module.exports = housesRouter;

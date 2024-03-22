@@ -3,7 +3,8 @@ const { StatusCodes } = require("http-status-codes");
 const HttpException = require("../../utils/httpException.js");
 
 const getHousesService = require("../../services/houses/getHouses.js");
-const favoriteService = require('../../services/houses/favorite/favoriteService.js')
+const favoriteService = require('../../services/houses/favorite/favoriteService.js');
+const commentService = require('../../services/houses/comments/houseComments.js');
 
 const getHouseDetailPage = async (req, res, next) => {
   try {
@@ -11,11 +12,17 @@ const getHouseDetailPage = async (req, res, next) => {
     const { userId } = req.session;
     const house = await getHousesService.getHouseById(id);
     const isFavorite = await favoriteService.getFavorite(userId, id);
+    const comments = await commentService.getComments(id);
+    console.log(house);
+    console.log(comments);
     if (!house) {
       throw new HttpException(StatusCodes.NOT_FOUND, "Không tìm thấy nhà");
     }
 
-    return res.render("pages/houses/detail.ejs", { house, isFavorite});
+    return res.render("pages/houses/detail.ejs", { 
+      house,
+      isFavorite,
+      comments });
   } catch (error) {
     return next(error);
   }
