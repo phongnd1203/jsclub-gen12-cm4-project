@@ -11,7 +11,7 @@ const houseInputValidator = [
     .withMessage("Địa chỉ không hợp lệ"),
   validator
     .body("location.district")
-    .isLength({ min: 3, max: 3 })
+    .isString()
     .withMessage("Khu vực không hợp lệ"),
   validator.body("price").isInt({ min: 0 }).withMessage("Giá không hợp lệ"),
   validator

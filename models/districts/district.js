@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 
 const districtSchema = mongoose.Schema({
-  districtCode: {
+  code: {
     type: String,
     required: true,
     index: true,
