@@ -2,7 +2,7 @@ const deleteCommentService = require("../../../services/houses/comments/deleteCo
 
 const postDeleteComment = async (req, res, next) => {
   try {
-    const { commentId, houseId} = req.params;
+    const { commentId, houseId } = req.params;
 
     await deleteCommentService.deleteComment(commentId);
 

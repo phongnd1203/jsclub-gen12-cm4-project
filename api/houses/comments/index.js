@@ -6,7 +6,10 @@ const deleteCommentController = require("../../../controllers/houses/comments/de
 
 const houseCommentRouter = express.Router();
 
-houseCommentRouter.post("/:houseId/comments/create", createCommentController.postCreateComment);
+houseCommentRouter.post(
+  "/:houseId/comments/create",
+  createCommentController.postCreateComment,
+);
 
 // houseCommentRouter.get("/:houseId", getCommentsController.getCommentsPage);
 

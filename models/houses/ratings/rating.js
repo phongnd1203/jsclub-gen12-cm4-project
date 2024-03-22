@@ -1,22 +1,21 @@
 const mongoose = require("mongoose");
 
-const commentSchema = mongoose.Schema(
+const ratingSchema = mongoose.Schema(
   {
     house: {
       type: mongoose.Schema.Types.ObjectId,
-      ref: "House",
+      rel: "House",
       require: true,
-      index: true,
     },
-    owner: {
+    user: {
       type: mongoose.Schema.Types.ObjectId,
       ref: "User",
-      require: true,
-      index: true,
+      required: true,
     },
-    content: {
-      type: String,
-      require: true,
+    score: {
+      type: Number,
+      enum: [1, 2, 3, 4, 5],
+      required: true,
     },
   },
   {
@@ -27,6 +26,6 @@ const commentSchema = mongoose.Schema(
   },
 );
 
-const HouseCommentModel = mongoose.model("Comment", commentSchema);
+const HouseRatingModel = mongoose.model("Rating", ratingSchema);
 
-module.exports = HouseCommentModel;
+module.exports = HouseRatingModel;

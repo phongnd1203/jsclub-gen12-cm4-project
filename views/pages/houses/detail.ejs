@@ -73,107 +73,134 @@
                   </div>
 
                   <div class="card mb-3">
-                    <div class="ct">
-                      <div class="card-header">
-                        <h1 class="card-title">Đánh giá</h1>
-                      </div>
-                      <div class="card-body">
-                        <div class="rating">
-                          <input type="radio" name="rating" id="star-1" class="rating-radio" value="1">
-                          <label for="star-1"><i class="fa-solid fa-star"></i></label>
-
-                          <input type="radio" name="rating" id="star-2" class="rating-radio" value="2">
-                          <label for="star-2"><i class="fa-solid fa-star"></i></label>
-
-                          <input type="radio" name="rating" id="star-3" class="rating-radio" value="3">
-                          <label for="star-3"><i class="fa-solid fa-star"></i></label>
-
-                          <input type="radio" name="rating" id="star-4" class="rating-radio" value="4">
-                          <label for="star-4"><i class="fa-solid fa-star"></i></label>
-
-                          <input type="radio" name="rating" id="star-5" class="rating-radio" value="5">
-                          <label for="star-5"><i class="fa-solid fa-star"></i></label>
-
-                        </div>
-                      </div>
-                    </div>
-
-                    <div class="card mb-3">
-                      <div class="card-header">
-                        <h1 class="card-title">Comments</h1>
-                      </div>
-                      <div class="card-body">
-                        <div class="comment">
-                          <div class="comment-author">
-                            <h5>Bình luận: </h5>
-                          </div>
-                          <div class="comment-body">
-                            <div class="comment">
-
-                              <form action="<%= house._id %>/comments/create" method="POST" class="cm">
-                                <textarea class="comment" name="content"></textarea>
-                                <br>
-                                <input class="s" type="submit" name="submit" value="Gửi bình luận">
-                              </form>
-                            </div>
-                            <hr>
-
-                            <% if (comments.length) { %>
-                              <% comments.forEach((comment)=> { %>
-                                <div class="comment">
-                                  <div class="comment-author">
-                                    <h5>
-                                      <%= comment.owner.name %>
-                                    </h5>
-                                  </div>
-                                  <div class="comment-body">
-                                    <p>
-                                      <%= comment.content %>
-                                    </p>
-                                  </div>
-                                  <form action="<%= house._id %>/comments/<%= comment._id %>/delete" method="POST" class="cm">
-                                    <button type="submit" class="btn btn-secondary">
-                                      <%- include('../../partials/icons/trashcan.ejs') %>
-                                    </button>
-                                    <br> <br> 
-                                  </form>
-
-
-                                </div>
-                                <% }) %>
-                                  <%} else { %>
-                                    <p>Chưa có bình luận nào.</p>
-                                    <% } %>
-                          </div>
-
-                        </div>
-                      </div>
-                    </div>
-
-
-
-
-                    <!-- Repeat the 'comment' div for each comment -->
                   </div>
+                  <br> <br>
+                  <div class="make-rate">
+                    <form action="/houses/<%= house._id %>/rating/create" method="post">
+                      <label for="rating">
+                        <h1>Đánh giá của bạn:</h1>
+                      </label>
+                      <input type="radio" name="rating" value="1" /> Rất tệ
+                      <input type="radio" name="rating" value="2" /> Tệ
+                      <input type="radio" name="rating" value="3" /> Trung bình
+                      <input type="radio" name="rating" value="4" /> Tốt
+                      <input type="radio" name="rating" value="5" /> Tuyệt vời
+                      <input type="submit" value="Gửi">
+                    </form>
+                  </div>
+                  <form method="post" action="/houses/<%= house._id %>/rating/<%= rating._id %>/delete">
+                    <input type="submit" name="delete" id="delete" value="Delete Rating">
+                  </form>
                 </div>
-                <div class="card mb-3">
+                <!-- <div class="ct">
                   <div class="card-header">
-                    <h3 class="card-title">Bản đồ</h3>
+                    <h1 class="card-title">Đánh giá</h1>
                   </div>
                   <div class="card-body">
-                    <div class="ratio ratio-16x9">
-                      <iframe style="border: 0" loading="lazy" allowfullscreen
-                        referrerpolicy="no-referrer-when-downgrade" src="
-                      https://www.google.com/maps/embed/v1/place?key=<%= locals.maps.apiKey %>&q=<%= `${house.name}, ${house.location.address}` %>
-                      ">
-                      </iframe>
+                    <div class="rating">
+                      <input type="radio" name="rating" id="star-1" class="rating-radio" value="1">
+                      <label for="star-1"><i class="fa-solid fa-star"></i></label>
+
+                      <input type="radio" name="rating" id="star-2" class="rating-radio" value="2">
+                      <label for="star-2"><i class="fa-solid fa-star"></i></label>
+
+                      <input type="radio" name="rating" id="star-3" class="rating-radio" value="3">
+                      <label for="star-3"><i class="fa-solid fa-star"></i></label>
+
+                      <input type="radio" name="rating" id="star-4" class="rating-radio" value="4">
+                      <label for="star-4"><i class="fa-solid fa-star"></i></label>
+
+                      <input type="radio" name="rating" id="star-5" class="rating-radio" value="5">
+                      <label for="star-5"><i class="fa-solid fa-star"></i></label>
+
+                    </div>
+                  </div> -->
+                  
+                </div>
+                  <br><br><br><br>
+
+
+
+
+                
+
+                <div class="card mb-3">
+                  <div class="card-header">
+                    <h1 class="card-title">Comments</h1>
+                  </div>
+                  <div class="card-body">
+                    <div class="comment">
+                      <div class="comment-author">
+                        <h5>Bình luận: </h5>
+                      </div>
+                      <div class="comment-body">
+                        <div class="comment">
+
+                          <form action="/houses/<%= house._id %>/comments/create" method="POST" class="cm">
+                            <textarea class="comment" name="content"></textarea>
+                            <br>
+                            <input class="s" type="submit" name="submit" value="Gửi bình luận">
+                          </form>
+                        </div>
+                        <hr>
+
+                        <% if (comments.length) { %>
+                          <% comments.forEach((comment)=> { %>
+                            <div class="comment">
+                              <div class="comment-author">
+                                <h5>
+                                  <%= comment.owner.name %>
+                                </h5>
+                              </div>
+                              <div class="comment-body">
+                                <p>
+                                  <%= comment.content %>
+                                </p>
+                              </div>
+                              <form action="/houses/<%= house._id %>/comments/<%= comment._id %>/delete" method="POST"
+                                class="cm">
+                                <button type="submit" class="btn btn-secondary">
+                                  <%- include('../../partials/icons/trashcan.ejs') %>
+                                </button>
+                                <br> <br>
+                              </form>
+
+
+                            </div>
+                            <% }) %>
+                              <%} else { %>
+                                <p>Chưa có bình luận nào.</p>
+                                <% } %>
+                      </div>
+
                     </div>
                   </div>
                 </div>
-                <div class="mb-3 card"></div>
+
+
+
+
+                <!-- Repeat the 'comment' div for each comment -->
               </div>
-              <div class="col-lg-4"></div>
             </div>
+            <div class="card mb-3">
+              <div class="card-header">
+                <h3 class="card-title">Bản đồ</h3>
+              </div>
+              <div class="card-body">
+                <div class="ratio ratio-16x9">
+                  <iframe style="border: 0" loading="lazy" allowfullscreen referrerpolicy="no-referrer-when-downgrade"
+                    src="
+                      https://www.google.com/maps/embed/v1/place?key=<%= locals.maps.apiKey %>&q=<%= `${house.name}, ${house.location.address}` %>
+                      ">
+                  </iframe>
+                </div>
+              </div>
+            </div>
+            <div class="mb-3 card"></div>
+          </div>
+          <div class="col-lg-4"></div>
+          </div>
           </div>
           </div>
         </main>

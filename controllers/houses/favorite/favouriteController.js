@@ -7,7 +7,6 @@ const getAllFavoriteHouse = async (req, res) => {
   const page = 1;
   const { userId } = req.session;
   const favorites = await favoriteService.getAllFavorite(userId);
-  // console.log(favorites);
   res.render("pages/houses/favorite/favorite.ejs", {
     metadata,
     favorites,

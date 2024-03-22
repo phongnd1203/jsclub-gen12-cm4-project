@@ -5,9 +5,11 @@ const postCreateComment = async (req, res, next) => {
     const { userId } = req.session;
     const { houseId } = req.params;
     const { content } = req.body;
-    console.log(userId, houseId, content);
-    const comment = await createCommentService.createComment(userId, houseId, content);
-    console.log(comment);
+    const comment = await createCommentService.createComment(
+      userId,
+      houseId,
+      content,
+    );
     return res.redirect(`/houses/${houseId}`);
   } catch (error) {
     next(error);
