@@ -7,16 +7,15 @@ const getHousesPage = async (req, res, next) => {
   try {
     const { page } = req.query;
 
-    const limit = 30;
-
-    const maxPage = Math.floor((await getHousesService.countHouses()) / limit);
+    const maxPage = Math.floor((await getHousesService.countHouses()) / 30);
 
     const _page = Math.max(1, Math.min(maxPage, parseInt(page, 10) || 1));
 
     try {
       const houses = await getHousesService.getHouses({
         page: _page,
-        limit,
+        limit: 30,
+        populate: ["images"],
       });
 
       return res.render("pages/houses/list.ejs", {

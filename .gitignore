@@ -23,3 +23,6 @@ dist/
 
 # Visual Studio Code
 .vscode/
+
+# Uploads
+uploads/

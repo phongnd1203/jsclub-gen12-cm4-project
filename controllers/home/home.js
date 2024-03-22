@@ -8,14 +8,21 @@ const getHomePage = async (req, res, next) => {
 
     const ownedHouses = await getHousesService.getHousesByOwner(
       req.session.userId,
-      { limit: 6 },
+      {
+        limit: 6,
+        populate: ["images"],
+      },
     );
 
     const featuredHouses = await getHousesService.getFeaturedHouses({
       limit: 6,
+      populate: ["images"],
     });
 
-    const latestHouses = await getHousesService.getHouses({ limit: 6 });
+    const latestHouses = await getHousesService.getHouses({
+      limit: 6,
+      populate: ["images"],
+    });
 
     return res.render("pages/home", {
       metadata,
