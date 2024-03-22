@@ -2,7 +2,9 @@
 <html lang="vi">
   <%- include('../../partials/head.ejs') %>
   <body>
+    <%- include('../../partials/scripts/pre-scripts.ejs') %>
     <%- include('../../partials/layouts/header.ejs') %>
+
     <main>
       <div class="container">
         <h1>Edit Profile</h1>
@@ -27,7 +29,7 @@
               <i class="fa fa-coffee"></i> Hãy nhập thông tin
             </div>
             <h3>Thông tin</h3>
-            <form class="form-horizontal" role="form">
+            <form method="post" class="form-horizontal" role="form">
               <div class="form-group">
                 <label class="col-lg-3 control-label">Name:</label>
                 <div class="col-lg-8">
@@ -99,6 +101,7 @@
         </div>
       </div>
       <hr />
+      <%- include('../../partials/scripts/post-scripts.ejs') %>
     </main>
   </body>
 </html>
