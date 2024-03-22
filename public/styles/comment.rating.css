@@ -1,0 +1,24 @@
+.ct .rating {
+  direction: rtl;
+  text-align: left;
+  margin: 20px;
+}
+.ct .rating label {
+  display: inline-block;
+  cursor: pointer;
+  color: black;
+}
+.ct .rating label i {
+  transition: 0.1s ease-in;
+}
+.ct .rating label:hover i,
+.ct .rating label:hover ~ label i {
+  color: #ffea4e;
+}
+.ct .rating .rating-radio {
+  display: none;
+}
+.ct .rating input[type="radio"]:checked + label i,
+.ct .rating input[type="radio"]:checked ~ label i {
+  color: #ffea4e;
+}

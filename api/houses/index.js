@@ -14,6 +14,10 @@ const fileHandler = require("../../middlewares/fileHandler.js");
 
 const housesRouter = express.Router();
 
+housesRouter.use("/", require("./ratings/rating.js"));
+housesRouter.use("/", require("./comments"));
+housesRouter.use("/", require("./favorite"));
+
 housesRouter.get("/create", createHouseController.getCreateHousePage);
 
 housesRouter.post(

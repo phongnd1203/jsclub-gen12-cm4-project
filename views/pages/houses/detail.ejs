@@ -1,118 +1,210 @@
 <!doctype html>
 <html lang="en">
-  <%- include('../../partials/head.ejs') %>
+<%- include('../../partials/head.ejs') %>
+
   <body>
     <%- include('../../partials/scripts/pre-scripts.ejs') %>
-    <%- include('../../partials/layouts/header.ejs') %>
-    <main class="page-wrapper">
-      <div class="page-header d-print-none">
-        <div class="container-xl">
-          <div class="row g-2 align-items-center">
-            <div class="col">
-              <h2 class="page-title"><%= house.title %></h2>
-              <div class="text-secondary mt-1">
-                <%- house.location.address %>
-              </div>
-            </div>
-            <% if (locals.user) { %>
-            <div class="col-auto ms-auto d-print-none">
-              <% if ( locals.user._id.toString() === house.owner._id.toString())
-              { %>
-              <div class="d-flex">
-                <a
-                  href="
+      <%- include('../../partials/layouts/header.ejs') %>
+        <main class="page-wrapper">
+          <div class="page-header d-print-none">
+            <div class="container-xl">
+              <div class="row g-2 align-items-center">
+                <div class="col">
+                  <h2 class="page-title">
+                    <%= house.title %>
+                  </h2>
+                  <div class="text-secondary mt-1">
+                    <h4 class="card-text">Địa chỉ: <%- house.location.address %></h4>
+
+                  </div>
+                </div>
+                <% if (locals.user) { %>
+                  <div class="col-auto ms-auto d-print-none">
+                    <% if ( locals.user._id.toString()===house.owner._id.toString()) { %>
+                      <div class="d-flex">
+                        <a href="
                   <%= `/houses/${house._id}/edit` %>
-                "
-                  class="btn btn-primary"
-                >
-                  <%- include('../../partials/icons/edit.ejs') %>
-                  <span> Chỉnh sửa </span>
-                </a>
+                " class="btn btn-primary">
+                          <%- include('../../partials/icons/edit.ejs') %>
+                            <span> Chỉnh sửa </span>
+                        </a>
+                      </div>
+                      <% } else { %>
+                        <form action="<%= `/houses/${house._id}/change/favorite` %>" method="post" class="d-flex">
+                          <button type="submit" class="btn btn-primary active">
+                            <% if (isFavorite.length) {%>
+                              <span class="switch-icon-a text-secondary"> <%- include('../../partials/icons/heart.ejs')
+                                  %> </span>
+                              <% } else {%>
+                                <span class="switch-icon-b text-red"> <%-
+                                    include('../../partials/icons/heart-filled.ejs') %> </span>
+                                <% } %>
+                                  <span> Yêu thích </span>
+                          </button>
+                        </form>
+                        <% } %>
+                  </div>
+                  <% } %>
               </div>
-              <% } else { %>
-              <form
-                action="<%= `/houses/${house._id}/favorite` %>"
-                method="post"
-                class="d-flex"
-              >
-                <button
-                  type="submit"
-                  name="favorite"
-                  value="true"
-                  class="btn btn-primary"
-                >
-                  <%- include('../../partials/icons/heart.ejs') %>
-                  <span> Yêu thích </span>
-                </button>
-              </form>
-              <% } %>
             </div>
-            <% } %>
           </div>
-        </div>
-      </div>
-      <div class="page-body">
-        <div class="container-xl">
-          <div class="row row-card g-3">
-            <div class="col">
-              <div class="card mb-3">
-                <div class="card-header">
-                  <h3 class="card-title">Mô tả</h3>
-                </div>
-                <div class="card-body">
-                  <p class="card-text"><%= house.description %></p>
-                </div>
-              </div>
-              <div class="card">
-                <div class="card-header">
-                  <h3 class="card-title">Comments</h3>
-                </div>
-                <div class="card-body">
-                  <div class="comment">
-                    <div class="comment-author">
-                      <h5>Author Name</h5>
+          <div class="page-body">
+            <div class="container-xl">
+              <div class="row row-card g-3">
+                <div class="col">
+                  <div class="card mb-3">
+                    <div class="card-header">
+                      <h3 class="card-title">Mô tả</h3>
                     </div>
-                    <div class="comment-body">
-                      <p>Comment text goes here...</p>
+                    <div class="card-body">
+                      <h4 class="card-text">Diện tích (m&#178): </h4>
+                      <p class="card-text">
+                        <%= house.area %>
+                      </p>
+                      <h4 class="card-text">Giá: </h4>
+                      <p class="card-text">
+                        <%= house.price %>
+                      </p>
+                      <h4 class="card-text">Chi tiết: </h4>
+                      <p class="card-text">
+                        <%= house.description %>
+                      </p>
                     </div>
                   </div>
-                  <div class="comment">
-                    <div class="comment-author">
-                      <h5>Author Name</h5>
+
+                  <div class="card mb-3">
+                  </div>
+                  <br> <br>
+                  <div class="make-rate">
+                    <form action="/houses/<%= house._id %>/rating/create" method="post">
+                      <label for="rating">
+                        <h1>Đánh giá của bạn:</h1>
+                      </label>
+                      <input type="radio" name="rating" value="1" /> Rất tệ
+                      <input type="radio" name="rating" value="2" /> Tệ
+                      <input type="radio" name="rating" value="3" /> Trung bình
+                      <input type="radio" name="rating" value="4" /> Tốt
+                      <input type="radio" name="rating" value="5" /> Tuyệt vời
+                      <input type="submit" value="Gửi">
+                    </form>
+                  </div>
+                  <form method="post" action="/houses/<%= house._id %>/rating/<%= rating._id %>/delete">
+                    <input type="submit" name="delete" id="delete" value="Delete Rating">
+                  </form>
+                </div>
+                <!-- <div class="ct">
+                  <div class="card-header">
+                    <h1 class="card-title">Đánh giá</h1>
+                  </div>
+                  <div class="card-body">
+                    <div class="rating">
+                      <input type="radio" name="rating" id="star-1" class="rating-radio" value="1">
+                      <label for="star-1"><i class="fa-solid fa-star"></i></label>
+
+                      <input type="radio" name="rating" id="star-2" class="rating-radio" value="2">
+                      <label for="star-2"><i class="fa-solid fa-star"></i></label>
+
+                      <input type="radio" name="rating" id="star-3" class="rating-radio" value="3">
+                      <label for="star-3"><i class="fa-solid fa-star"></i></label>
+
+                      <input type="radio" name="rating" id="star-4" class="rating-radio" value="4">
+                      <label for="star-4"><i class="fa-solid fa-star"></i></label>
+
+                      <input type="radio" name="rating" id="star-5" class="rating-radio" value="5">
+                      <label for="star-5"><i class="fa-solid fa-star"></i></label>
+
                     </div>
-                    <div class="comment-body">
-                      <p>Comment text goes here...</p>
+                  </div> -->
+                  
+                </div>
+                  <br><br><br><br>
+
+
+
+
+                
+
+                <div class="card mb-3">
+                  <div class="card-header">
+                    <h1 class="card-title">Comments</h1>
+                  </div>
+                  <div class="card-body">
+                    <div class="comment">
+                      <div class="comment-author">
+                        <h5>Bình luận: </h5>
+                      </div>
+                      <div class="comment-body">
+                        <div class="comment">
+
+                          <form action="/houses/<%= house._id %>/comments/create" method="POST" class="cm">
+                            <textarea class="comment" name="content"></textarea>
+                            <br>
+                            <input class="s" type="submit" name="submit" value="Gửi bình luận">
+                          </form>
+                        </div>
+                        <hr>
+
+                        <% if (comments.length) { %>
+                          <% comments.forEach((comment)=> { %>
+                            <div class="comment">
+                              <div class="comment-author">
+                                <h5>
+                                  <%= comment.owner.name %>
+                                </h5>
+                              </div>
+                              <div class="comment-body">
+                                <p>
+                                  <%= comment.content %>
+                                </p>
+                              </div>
+                              <form action="/houses/<%= house._id %>/comments/<%= comment._id %>/delete" method="POST"
+                                class="cm">
+                                <button type="submit" class="btn btn-secondary">
+                                  <%- include('../../partials/icons/trashcan.ejs') %>
+                                </button>
+                                <br> <br>
+                              </form>
+
+
+                            </div>
+                            <% }) %>
+                              <%} else { %>
+                                <p>Chưa có bình luận nào.</p>
+                                <% } %>
+                      </div>
+
                     </div>
                   </div>
-                  <!-- Repeat the 'comment' div for each comment -->
                 </div>
+
+
+
+
+                <!-- Repeat the 'comment' div for each comment -->
               </div>
-              <div class="card mb-3">
-                <div class="card-header">
-                  <h3 class="card-title">Bản đồ</h3>
-                </div>
-                <div class="card-body">
-                  <div class="ratio ratio-16x9">
-                    <iframe
-                      style="border: 0"
-                      loading="lazy"
-                      allowfullscreen
-                      referrerpolicy="no-referrer-when-downgrade"
-                      src="
+            </div>
+            <div class="card mb-3">
+              <div class="card-header">
+                <h3 class="card-title">Bản đồ</h3>
+              </div>
+              <div class="card-body">
+                <div class="ratio ratio-16x9">
+                  <iframe style="border: 0" loading="lazy" allowfullscreen referrerpolicy="no-referrer-when-downgrade"
+                    src="
                       https://www.google.com/maps/embed/v1/place?key=<%= locals.maps.apiKey %>&q=<%= `${house.name}, ${house.location.address}` %>
-                      "
-                    >
-                    </iframe>
-                  </div>
+                      ">
+                  </iframe>
                 </div>
               </div>
-              <div class="mb-3 card"></div>
             </div>
-            <div class="col-lg-4"></div>
+            <div class="mb-3 card"></div>
           </div>
-        </div>
-      </div>
-    </main>
-    <%- include('../../partials/scripts/post-scripts.ejs') %>
+          <div class="col-lg-4"></div>
+          </div>
+          </div>
+          </div>
+        </main>
+        <%- include('../../partials/scripts/post-scripts.ejs') %>
   </body>
+
 </html>

@@ -1,17 +1,20 @@
 const express = require("express");
 
 const getCommentsController = require("../../../controllers/houses/comments/getComments.js");
-const createCommentController = require("../../../controllers/houses/comments/createComment.js");
-const deleteCommentController = require("../../../controllers/houses/comments/deleteComment.js");
+const createCommentController = require("../../../controllers/houses/comments/createComments.js");
+const deleteCommentController = require("../../../controllers/houses/comments/deleteComments.js");
 
 const houseCommentRouter = express.Router();
 
-houseCommentRouter.post("/create", createCommentController.postCreateComment);
+houseCommentRouter.post(
+  "/:houseId/comments/create",
+  createCommentController.postCreateComment,
+);
 
-houseCommentRouter.get("/", getCommentsController.getCommentsPage);
+// houseCommentRouter.get("/:houseId", getCommentsController.getCommentsPage);
 
 houseCommentRouter.post(
-  "/:commentId/delete",
+  "/:houseId/comments/:commentId/delete",
   deleteCommentController.postDeleteComment,
 );
 
