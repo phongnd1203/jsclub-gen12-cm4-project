@@ -1,0 +1,23 @@
+<div class="card">
+  <div class="card-body p-4 text-center">
+    <span
+      class="avatar avatar-xl mb-3 rounded"
+      style="background-image: url(./static/avatars/000m.jpg)"
+    ></span>
+    <h3 class="m-0 mb-1">
+      <a href="<%= `/users/${user._id}` %>"><%= user.name %></a>
+    </h3>
+
+    <div class="text-secondary"><%= user.role %></div>
+  </div>
+  <div class="d-flex">
+    <a href="<%= `/users/${user.email}` %>" class="card-btn">
+      <%- include('../../partials/icons/mail.ejs') %>
+      <span> Email </span>
+    </a>
+    <a href="<%= `/users/${user.phone}` %>" class="card-btn">
+      <%= include('../../partials/icons/phone.ejs') %>
+      <span> Số điện thoại </span>
+    </a>
+  </div>
+</div>
