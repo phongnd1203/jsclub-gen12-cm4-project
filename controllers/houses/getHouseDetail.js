@@ -9,13 +9,13 @@ const ratingService = require("../../services/houses/ratings/rating.js");
 
 const getHouseDetailPage = async (req, res, next) => {
   try {
-    const { id } = req.params;
+    const { houseId } = req.params;
     const { userId } = req.session;
 
-    const house = await getHousesService.getHouseById(id);
-    const isFavorite = await favoriteService.getFavorite(userId, id);
-    const comments = await commentService.getComments(id);
-    const rating = await ratingService.getYourRating(id, userId);
+    const house = await getHousesService.getHouseById(houseId);
+    const isFavorite = await favoriteService.getFavorite(userId, houseId);
+    const comments = await commentService.getComments(houseId);
+    const rating = await ratingService.getYourRating(houseId, userId);
 
     if (!house) {
       throw new HttpException(StatusCodes.NOT_FOUND, "Không tìm thấy nhà");
