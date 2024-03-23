@@ -22,7 +22,7 @@ const createFavorite = async (userId, houseId) => {
 // get one favor
 const getFavorite = async (userId, houseId) => {
   try {
-    const favoriteHouse = await FavoriteModel.find({
+    const favoriteHouse = await FavoriteModel.findOne({
       user: userId,
       house: houseId,
     })
