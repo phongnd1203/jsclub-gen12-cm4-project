@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="vi">
+  <%- include('../../../partials/head.ejs') %>
+
+  <body>
+    <%- include('../../../partials/layouts/header.ejs') %>
+    <main>
+      <div class="page-wrapper">
+        <div class="page-header d-print-none">
+          <div class="container-xl">
+            <div class="row g-2 align-items-center">
+              <div class="col">
+                <h1 class="page-title">Danh sách trọ</h1>
+                <div class="text-secondary mt-1">1-6 của 241 ảnh</div>
+              </div>
+              <!-- Page title actions -->
+              <div class="col-auto ms-auto d-print-none">
+                <div class="d-flex">
+                  <a href="#" class="btn btn-primary">
+                    <%- include('../../../partials/icons/home-plus.ejs') %>
+                    <span>Đăng tin</span>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="page-body">
+          <div class="container-xl">
+            <div class="row row-cards">
+              <% if (favorites) { %> <% favorites.forEach((favorite)=> { %>
+              <%- include('../../../partials/cards/house.ejs', { house: favorite.house }) %>
+              <% }) %>
+              <% } %>
+            </div>
+          </div>
+        </div>
+        <div class="container-xl">
+          <div class="d-flex">
+            <ul class="pagination ms-auto">
+              <li class="page-item">
+                <a
+                  class="page-link"
+                  href="/houses/page/<%= Math.max(1, page - 1)%>"
+                >
+                  <!-- Download SVG icon from http://tabler-icons.io/i/chevron-left -->
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    class="icon"
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                    stroke-width="2"
+                    stroke="currentColor"
+                    fill="none"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  >
+                    <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                    <path d="M15 6l-6 6l6 6"></path>
+                  </svg>
+                  prev
+                </a>
+              </li>
+              <li class="page-item <%= (page == 1 ? 'active' : '') %>">
+                <a class="page-link" href="/houses/page/1">1</a>
+              </li>
+              <li class="page-item <%= (page == 2 ? 'active' : '') %>">
+                <a class="page-link" href="/houses/page/2">2</a>
+              </li>
+              <li class="page-item <%= (page == 3 ? 'active' : '') %>">
+                <a class="page-link" href="/houses/page/3">3</a>
+              </li>
+              <li class="page-item <%= (page == 4 ? 'active' : '') %>">
+                <a class="page-link" href="/houses/page/4">4</a>
+              </li>
+              <li class="page-item <%= (page == 5 ? 'active' : '') %>">
+                <a class="page-link" href="/houses/page/5">5</a>
+              </li>
+              <li class="page-item">
+                <a
+                  class="page-link"
+                  href="/houses/page/<%= Math.min(5, page + 1)%>"
+                >
+                  next
+                  <!-- Download SVG icon from http://tabler-icons.io/i/chevron-right -->
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    class="icon"
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                    stroke-width="2"
+                    stroke="currentColor"
+                    fill="none"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  >
+                    <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                    <path d="M9 6l6 6l-6 6"></path>
+                  </svg>
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </main>
+  </body>
+</html>

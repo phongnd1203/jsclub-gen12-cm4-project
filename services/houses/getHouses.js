@@ -22,7 +22,8 @@ const getHouses = async (options) => {
     .populate(_options.populate)
     .exec();
 
-  console.log(houses, "t", typeof houses);
+  console.log(JSON.stringify(houses, null, 2));
+  console.log("===============================================");
 
   if (_options.populate.includes("images")) {
     const promises = houses.map(async (house) => {
@@ -32,6 +33,8 @@ const getHouses = async (options) => {
 
     houses = await Promise.all(promises);
   }
+
+  console.log(JSON.stringify(houses, null, 2));
 
   return houses;
 };

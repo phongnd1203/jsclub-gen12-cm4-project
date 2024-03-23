@@ -1,5 +1,6 @@
 <div class="col-sm-6 col-lg-4">
   <a class="card card-sm" href="<%= `/houses/${house._id}` %>">
+    <% if (house.images.length > 0) { %>
     <div class="d-block">
       <img
         class="card-img-top"
@@ -7,6 +8,7 @@
         alt="<%= house.title %>"
       />
     </div>
+    <% } %>
     <div class="card-body">
       <h3 class="card-title"><%= house.title %></h3>
       <p class="text-secondary">

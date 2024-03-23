@@ -9,6 +9,7 @@
   <link rel="stylesheet" href="/styles/tabler-flags.min.css" />
   <link rel="stylesheet" href="/styles/tabler-payments.min.css" />
   <link rel="stylesheet" href="/styles/tabler-vendors.min.css" />
+  <link rel="stylesheet" href="/styles/comment.rating.css" />
   <link rel="stylesheet" href="/styles/banner.css" />
 
   <style>
@@ -18,8 +19,39 @@
       --tblr-font-sans-serif: Inter, -apple-system, BlinkMacSystemFont,
         San Francisco, Segoe UI, Roboto, Helvetica Neue, sans-serif;
     }
+
     body {
       font-feature-settings: "cv03", "cv04", "cv11";
+    }
+
+    .ct .rating {
+      direction: rtl;
+      text-align: left;
+      margin: 20px;
+    }
+
+    .ct .rating label {
+      display: inline-block;
+      cursor: pointer;
+      color: black;
+    }
+
+    .ct .rating label i {
+      transition: 0.1s ease-in;
+    }
+
+    .ct .rating label:hover i,
+    .ct .rating label:hover ~ label i {
+      color: #ffea4e;
+    }
+
+    .ct .rating .rating-radio {
+      display: none;
+    }
+
+    .ct .rating input[type="radio"]:checked + label i,
+    .ct .rating input[type="radio"]:checked ~ label i {
+      color: #ffea4e;
     }
   </style>
 

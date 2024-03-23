@@ -19,15 +19,8 @@ const getEditHousePage = async (req, res, next) => {
       throw new HttpException(StatusCodes.NOT_FOUND, "Nhà không tồn tại");
     }
 
-    if (
-      req.user._id.toString() !== house.owner._id.toString() ||
-      userRoles[req.user.role] <= userRoles.admin
-    ) {
-      throw new HttpException(
-        StatusCodes.FORBIDDEN,
-        "Bạn không có quyền chỉnh sửa nhà này",
-      );
-    }
+    console.log(req.user._id.toString() !== house.owner._id.toString());
+    console.log(userRoles[req.user.role] > userRoles.admin);
 
     return res.status(StatusCodes.OK).render("pages/houses/edit.ejs", {
       house,

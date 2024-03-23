@@ -7,7 +7,7 @@ const getCommentsPage = async (req, res, next) => {
 
     const { page } = req.query;
 
-    const house = await getHouseService.getHouse({ houseId });
+    const house = await getHouseService.getHouseById({ houseId });
 
     const comments = await getCommentsService.getComments({
       houseId,

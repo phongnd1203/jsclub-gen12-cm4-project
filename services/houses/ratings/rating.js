@@ -1,55 +1,52 @@
-const RatingModel = require("../../../models/houses/ratings/rating");
+const HouseModel = require("../../../models/houses/house.js");
+const HouseRatingModel = require("../../../models/houses/ratings/rating.js");
 
-// CREATE: Thêm một đánh giá mới
-const addRating = async (house, user, score) => {
-  try {
-    const newRate = new RatingModel({
-      house,
-      user,
-      score,
-    });
-    const rate = await RatingModel.findOne({ house, user }).exec();
-    if (rate) {
-      //update
-      rate.score = score;
-      await rate.save();
-    } else {
-      await newRate.save();
-    }
-    return newRate;
-  } catch (error) {
-    throw error;
+const getYourRating = async (houseId, userId) => {
+  const ratings = await HouseRatingModel.find({
+    house: houseId,
+    user: userId,
+  }).exec();
+  return ratings;
+};
+const createRating = async (houseId, userId, rating) => {
+  if (rating < 1 || rating > 5) {
+    throw new Error("Đánh giá phải từ 1 đến 5 sao");
   }
+
+  let isExist = await HouseRatingModel.findOne({
+    house: houseId,
+    user: userId,
+  }).exec();
+  if (isExist) {
+    isExist.score = rating;
+    await isExist.save();
+    // await HouseModel.findByIdAndUpdate(isExist._id, {score: rating}, {new: true}).exec();
+    return;
+  }
+
+  isExist = new HouseRatingModel({
+    house: houseId,
+    user: userId,
+    score: rating,
+  });
+
+  await isExist.save();
 };
 
-// READ: Lấy trung binh cong đánh giá của một căn nhà
-const getAverageRatings = async (houseId) => {
-  try {
-    const rates = await RatingModel.find({ house: houseId }).exec();
+const deleteRating = async (ratingId) => {
+  const rating = await HouseRatingModel.findById(ratingId).exec();
 
-    if (!rates) return 0;
-    else {
-      let sum = 0;
-      for (let i = 0; i < rates.length; i++) sum += rates[i].score;
-      return sum / rates.length;
-    }
-  } catch (error) {
-    throw error;
+  if (!rating.length) {
+    return;
   }
-};
 
-// // DELETE: Xóa đánh giá của một người dùng
-const deleteRating = async (house, user) => {
-  try {
-    // const rate = await RatingModel.findOne({ house, user }).exec();
-    await RatingModel.deleteOne({ house, user }).exec();
-  } catch (error) {
-    throw error;
-  }
+  await HouseRatingModel.findByIdAndDelete(ratingId).exec();
+
+  return;
 };
 
 module.exports = {
-  addRating,
-  getAverageRatings,
+  getYourRating,
+  createRating,
   deleteRating,
 };

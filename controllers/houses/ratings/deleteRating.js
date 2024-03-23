@@ -1,12 +1,12 @@
-const deleteRatingService = require("../../../services/houses/ratings/deleteRating.js");
+const ratingService = require("../../../services/houses/ratings/rating.js");
 
 const postDeleteRating = async (req, res, next) => {
   try {
     const { houseId, ratingId } = req.params;
 
-    await deleteRatingService.deleteRating(ratingId);
+    await ratingService.deleteRating(ratingId);
 
-    return res.redirect(`/houses/${houseId}/ratings`);
+    return res.redirect(`/houses/${houseId}`);
   } catch (error) {
     next(error);
   }
